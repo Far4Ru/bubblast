@@ -26,11 +26,49 @@ void Game::init() {
 
 void Game::runGameLoop() {
     SDL_RenderPresent(this->renderer );
+	Uint32 frameStart = 0;
+    int fpsCap = 60;
+    Uint32 frameTimeToComplete = -1;
+    double frameLength;
+
+	Uint64 startTime;
+	Uint64 endTime;
+    int i = 100;
+    int flag = 0;
     while (true) {
+		frameStart = SDL_GetTicks();
+		startTime = SDL_GetPerformanceCounter();
         if (SDL_PollEvent(&this->windowEvent)) {
             if (SDL_QUIT == this->windowEvent.type) {
                 break;
             }
+        }
+
+		endTime = SDL_GetPerformanceCounter();
+		frameLength = (endTime - startTime) / static_cast<double>(SDL_GetPerformanceFrequency());
+        SDL_RenderClear(this->renderer);
+        SDL_Rect background_RECT = { -200, (flag ? i++ : i--) -200, 1400, 900 };
+        SDL_RenderCopyEx(this->renderer,background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
+        if (i < -50) {
+            SDL_Rect player_RECT = { 400, 300, (1 - i * 2) + 100, (1 - i * 2) + 100 };
+            SDL_RenderCopyEx(this->renderer, this->image, NULL, &player_RECT, 0, NULL, SDL_FLIP_NONE);
+        }
+
+        SDL_RenderPresent(this->renderer);
+
+		// Finished rendering, cap framerate.
+		// If frame is finished early, wait remaining time.
+		frameTimeToComplete = SDL_GetTicks() - frameStart;
+		if (1000 / fpsCap > frameTimeToComplete) {
+			SDL_Delay((1000 / fpsCap) - frameTimeToComplete);
+		}
+		//assert(1000 / fpsCap > frameTimeToComplete);
+		if (!(1000 / fpsCap > frameTimeToComplete)) {
+			printf("DID NOT FINISH IN TIME\n");
+		}
+        if (flag ? i > 100 : i < -100) {
+            i = flag ? 100 : -100;
+            flag = !flag;
         }
     }
 }
