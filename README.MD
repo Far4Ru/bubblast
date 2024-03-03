@@ -8,4 +8,4 @@ The user controls a character trapped in the arena. Enemies of several types com
 
 ## Screens
 
-![screen](images/screen.png)
+![screen](presentation/screen.png)
