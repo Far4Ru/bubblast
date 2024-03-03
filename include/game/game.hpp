@@ -2,6 +2,9 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
+#define WIDTH 800
+#define HEIGHT 600
+
 class Game {
     public:
         Game();

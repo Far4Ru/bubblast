@@ -3,7 +3,7 @@
 ## Build and run
 - Linux
 > make
-- Windows
+- Windows (bash)
 > mingw32-make
 
 ## Game rules
