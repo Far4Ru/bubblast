@@ -1,11 +1,23 @@
+OSTYPE   := $(shell echo $$OSTYPE)
+WINDOWS  := msys
+LINUX    := "linux"
+OSX      := "darwin"
 CXX      := g++
-CXXFLAGS := 
+CXXFLAGS :=
+
+ifeq ("$(OSTYPE)", "$(WINDOWS)")
+LDFLAGS  := -L SDL2/lib -mwindows -lmingw32 -lSDL2main -lSDL2
+INCLUDE  := -Iinclude/ -ISDL2/include/
+BUILD    := ./build/build-windows
+else
 LDFLAGS  := -lSDL2
-BUILD    := ./build
+INCLUDE  := -Iinclude/
+BUILD    := ./build/build-linux
+endif
+
 OBJ_DIR  := $(BUILD)/objects
 APP_DIR  := $(BUILD)/apps
 TARGET   := program
-INCLUDE  := -Iinclude/
 SRC      :=                      \
    $(wildcard src/game/*.cpp)    \
    $(wildcard src/*.cpp)         \
