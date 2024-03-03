@@ -29,7 +29,7 @@ DEPENDENCIES \
 all: clean build $(APP_DIR)/$(TARGET) run
 
 run:
-	./build/apps/program
+	$(APP_DIR)/program
 
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(@D)
