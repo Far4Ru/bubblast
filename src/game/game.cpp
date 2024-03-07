@@ -26,54 +26,67 @@ void Game::init() {
 
 void Game::runGameLoop() {
     SDL_RenderPresent(this->renderer );
-	Uint32 frameStart = 0;
+    Uint32 frameStart = 0;
     int fpsCap = 60;
     Uint32 frameTimeToComplete = -1;
     double frameLength;
 
-	Uint64 startTime;
-	Uint64 endTime;
-    int i = 100;
+    Uint64 startTime;
+    Uint64 endTime;
+    int x = 0, y = 0;
     int flag = 0;
+    SDL_StartTextInput();
+    const Uint8* currentKeyState;
+    int isRight = 1;
     while (true) {
         // Start FPS count
-		frameStart = SDL_GetTicks();
-		startTime = SDL_GetPerformanceCounter();
-        
-        // Exit event
+        frameStart = SDL_GetTicks();
+        startTime = SDL_GetPerformanceCounter();
+        SDL_PumpEvents();
+        currentKeyState = SDL_GetKeyboardState(nullptr);
         if (SDL_PollEvent(&this->windowEvent)) {
             if (SDL_QUIT == this->windowEvent.type) {
+                // Exit event
                 break;
             }
         }
-
-		// Render
-        SDL_RenderClear(this->renderer);
-        SDL_Rect background_RECT = { -200, (flag ? i++ : i--) -200, 1400, 900 };
-        SDL_RenderCopyEx(this->renderer,background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
-        if (i < -50) {
-            SDL_Rect player_RECT = { 400, 300, (1 - i * 2) + 100, (1 - i * 2) + 100 };
-            SDL_RenderCopyEx(this->renderer, this->image, NULL, &player_RECT, 0, NULL, SDL_FLIP_NONE);
+        // Keyboard event
+        SDL_Keycode keycode = this->windowEvent.key.keysym.sym;
+        if (currentKeyState[SDL_SCANCODE_W]) {
+            y += 10;
         }
+        if (currentKeyState[SDL_SCANCODE_S]) {
+            y -= 10;
+        }
+        if (currentKeyState[SDL_SCANCODE_A]) {
+            isRight = 0;
+            x += 10;
+        }
+        if (currentKeyState[SDL_SCANCODE_D]){
+            isRight = 1;
+            x -= 10;
+        }
+        SDL_StopTextInput();
+
+        // Render
+        SDL_RenderClear(this->renderer);
+        SDL_Rect background_RECT = { x + -200, y + -200, 1400, 900 };
+        SDL_RenderCopyEx(this->renderer,background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
+        SDL_Rect player_RECT = { 400, 300, 100, 100 };
+        SDL_RenderCopyEx(this->renderer, this->image, NULL, &player_RECT, 0, NULL, isRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL);
         SDL_RenderPresent(this->renderer);
         
         // End FPS count
         endTime = SDL_GetPerformanceCounter();
-		frameLength = (endTime - startTime) / static_cast<double>(SDL_GetPerformanceFrequency());
+        frameLength = (endTime - startTime) / static_cast<double>(SDL_GetPerformanceFrequency());
         
         // Delay to FPS cap
-		frameTimeToComplete = SDL_GetTicks() - frameStart;
-		if (1000 / fpsCap > frameTimeToComplete) {
-			SDL_Delay((1000 / fpsCap) - frameTimeToComplete);
-		}
-		if (!(1000 / fpsCap > frameTimeToComplete)) {
-			printf("DID NOT FINISH IN TIME\n");
-		}
-
-        // Reverse animation loop
-        if (flag ? i > 100 : i < -100) {
-            i = flag ? 100 : -100;
-            flag = !flag;
+        frameTimeToComplete = SDL_GetTicks() - frameStart;
+        if (1000 / fpsCap > frameTimeToComplete) {
+            SDL_Delay((1000 / fpsCap) - frameTimeToComplete);
+        }
+        if (!(1000 / fpsCap > frameTimeToComplete)) {
+            printf("DID NOT FINISH IN TIME\n");
         }
     }
 }
