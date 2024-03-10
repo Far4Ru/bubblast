@@ -1,6 +1,8 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "game/game.hpp"
+#include "game/background.hpp"
+#include <math.h>
 
 Game::Game() {
     this->init();
@@ -9,8 +11,9 @@ Game::Game() {
     this->createRenderer();
     
     this->loadImages();
+
     this->createBackground();
-    
+    this->createCrosshair();
     this->createImage();
     
     this->runGameLoop();
@@ -38,6 +41,8 @@ void Game::runGameLoop() {
     SDL_StartTextInput();
     const Uint8* currentKeyState;
     int isRight = 1;
+
+    int mouseX, mouseY;
     while (true) {
         // Start FPS count
         frameStart = SDL_GetTicks();
@@ -50,6 +55,7 @@ void Game::runGameLoop() {
                 break;
             }
         }
+        SDL_GetMouseState(&mouseX, &mouseY);
         // Keyboard event
         SDL_Keycode keycode = this->windowEvent.key.keysym.sym;
         if (currentKeyState[SDL_SCANCODE_W]) {
@@ -67,13 +73,24 @@ void Game::runGameLoop() {
             x -= 10;
         }
         SDL_StopTextInput();
+        SDL_ShowCursor(SDL_DISABLE);
 
         // Render
         SDL_RenderClear(this->renderer);
         SDL_Rect background_RECT = { x + -200, y + -200, 1400, 900 };
-        SDL_RenderCopyEx(this->renderer,background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
+        SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
+        int newX = std::floor(x / 1400);
+        int newY = std::floor(y / 900);
+        background_RECT = { newX * 1400 + -200 - newX * 1400, y + -200, 1400, 900 };
+        SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
+        background_RECT = { x + -200, y + -200 - newY * 900, 1400, 900 };
+        SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
+        // SDL_Log("%d %d", x, y);
+        // SDL_Log("%d %d", newX, newY);
         SDL_Rect player_RECT = { 400, 300, 100, 100 };
         SDL_RenderCopyEx(this->renderer, this->image, NULL, &player_RECT, 0, NULL, isRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL);
+        SDL_Rect mouse_RECT = { mouseX, mouseY, 30, 30 };
+        SDL_RenderCopyEx(this->renderer, this->crosshair, NULL, &mouse_RECT, 0, NULL, isRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL);
         SDL_RenderPresent(this->renderer);
         
         // End FPS count
@@ -133,7 +150,8 @@ int Game::createRenderer() {
 int Game::loadImages() {
     this->background = this->loadImage("assets/background.bmp", this->renderer );
     this->image = this->loadImage("assets/image.bmp", this->renderer );
-    if (this->background == nullptr || this->image == nullptr) {
+    this->crosshair = this->loadImage("assets/crosshair.bmp", this->renderer );
+    if (this->background == nullptr || this->image == nullptr || this->crosshair == nullptr) {
         return 4;
     }
     SDL_RenderClear(this->renderer);
@@ -152,6 +170,14 @@ void Game::createImage() {
     int x = WIDTH / 2 - iW / 2;
     int y = HEIGHT / 2 - iH / 2;
     this->applySurface(x, y, this->image, this->renderer );
+}
+
+void Game::createCrosshair() {
+    int iW, iH;
+    SDL_QueryTexture(this->crosshair, NULL, NULL, &iW, &iH);
+    int x = WIDTH / 2 - iW / 2;
+    int y = HEIGHT / 2 - iH / 2;
+    this->applySurface(x, y, this->crosshair, this->renderer );
 }
 
 void Game::clear() {
