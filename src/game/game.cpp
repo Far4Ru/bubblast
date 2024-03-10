@@ -183,6 +183,6 @@ void Game::createCrosshair() {
 void Game::clear() {
     SDL_DestroyTexture(this->background);
     SDL_DestroyTexture(this->image);
-    SDL_DestroyRenderer(this->renderer );
+    SDL_DestroyRenderer(this->renderer);
     SDL_DestroyWindow(this->window);
 }

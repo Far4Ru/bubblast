@@ -3,10 +3,10 @@
 #include <SDL2/SDL.h>
 
 /**
- * This class is responsible for the background
+ * This class is responsible for the bullet as an object
 */
-class Background {
+class Bullet {
     public:
-        Background();
+        Bullet();
     private:
 };

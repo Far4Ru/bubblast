@@ -3,10 +3,10 @@
 #include <SDL2/SDL.h>
 
 /**
- * This class is responsible for the background
+ * 
 */
-class Background {
+class Loader {
     public:
-        Background();
+        Loader();
     private:
 };
