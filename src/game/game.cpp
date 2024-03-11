@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include "game/game.hpp"
 #include "game/background.hpp"
+#include "game/loader.hpp"
 #include <math.h>
 
 Game::Game() {
@@ -9,8 +10,13 @@ Game::Game() {
 
     this->createWindow();
     this->createRenderer();
-    
-    this->loadImages();
+    this->loader = new Loader(this->renderer);
+    this->loader->start();
+    this->background = this->loader->get("background");
+    this->crosshair = this->loader->get("crosshair");
+    this->image = this->loader->get("image");
+
+    SDL_RenderClear(this->renderer);
 
     this->createBackground();
     this->createCrosshair();
@@ -30,7 +36,6 @@ void Game::init() {
 void Game::runGameLoop() {
     SDL_RenderPresent(this->renderer );
     Uint32 frameStart = 0;
-    int fpsCap = 60;
     Uint32 frameTimeToComplete = -1;
     double frameLength;
 
@@ -99,26 +104,13 @@ void Game::runGameLoop() {
         
         // Delay to FPS cap
         frameTimeToComplete = SDL_GetTicks() - frameStart;
-        if (1000 / fpsCap > frameTimeToComplete) {
-            SDL_Delay((1000 / fpsCap) - frameTimeToComplete);
+        if (1000 / FPS > frameTimeToComplete) {
+            SDL_Delay((1000 / FPS) - frameTimeToComplete);
         }
-        if (!(1000 / fpsCap > frameTimeToComplete)) {
+        if (!(1000 / FPS > frameTimeToComplete)) {
             printf("DID NOT FINISH IN TIME\n");
         }
     }
-}
-
-SDL_Texture* Game::loadImage(std::string file, SDL_Renderer* renderer){
-    SDL_Surface *loadedImage = nullptr;
-    SDL_Texture *texture = nullptr;
-        loadedImage = SDL_LoadBMP(file.c_str());
-    if (loadedImage != nullptr){
-        texture = SDL_CreateTextureFromSurface(renderer, loadedImage);
-        SDL_FreeSurface(loadedImage);
-    }
-    else
-        std::cout << SDL_GetError() << std::endl;
-    return texture;
 }
 
 void Game::applySurface(int x, int y, SDL_Texture *tex, SDL_Renderer *rend){
@@ -147,17 +139,6 @@ int Game::createRenderer() {
     return 0;
 }
 
-int Game::loadImages() {
-    this->background = this->loadImage("assets/background.bmp", this->renderer );
-    this->image = this->loadImage("assets/image.bmp", this->renderer );
-    this->crosshair = this->loadImage("assets/crosshair.bmp", this->renderer );
-    if (this->background == nullptr || this->image == nullptr || this->crosshair == nullptr) {
-        return 4;
-    }
-    SDL_RenderClear(this->renderer);
-    return 0;
-}
-
 void Game::createBackground() {
     int bW, bH;
     SDL_QueryTexture(this->background, NULL, NULL, &bW, &bH);
@@ -181,8 +162,7 @@ void Game::createCrosshair() {
 }
 
 void Game::clear() {
-    SDL_DestroyTexture(this->background);
-    SDL_DestroyTexture(this->image);
+    this->loader->destroy();
     SDL_DestroyRenderer(this->renderer);
     SDL_DestroyWindow(this->window);
 }
