@@ -9,4 +9,5 @@ class Background {
     public:
         Background();
     private:
+        SDL_Texture* background;
 };

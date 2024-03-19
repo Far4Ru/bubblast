@@ -1,2 +1,6 @@
 build
 .vscode
+
+# SDL
+SDL2/
+SDL2.dll

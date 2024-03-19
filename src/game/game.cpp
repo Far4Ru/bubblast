@@ -63,17 +63,17 @@ void Game::runGameLoop() {
         SDL_GetMouseState(&mouseX, &mouseY);
         // Keyboard event
         SDL_Keycode keycode = this->windowEvent.key.keysym.sym;
-        if (currentKeyState[SDL_SCANCODE_W]) {
+        if (currentKeyState[SDL_SCANCODE_W] || currentKeyState[SDL_SCANCODE_UP]) {
             y += 10;
         }
-        if (currentKeyState[SDL_SCANCODE_S]) {
+        if (currentKeyState[SDL_SCANCODE_S] || currentKeyState[SDL_SCANCODE_DOWN]) {
             y -= 10;
         }
-        if (currentKeyState[SDL_SCANCODE_A]) {
+        if (currentKeyState[SDL_SCANCODE_A] || currentKeyState[SDL_SCANCODE_LEFT]) {
             isRight = 0;
             x += 10;
         }
-        if (currentKeyState[SDL_SCANCODE_D]){
+        if (currentKeyState[SDL_SCANCODE_D] || currentKeyState[SDL_SCANCODE_RIGHT]){
             isRight = 1;
             x -= 10;
         }
@@ -90,11 +90,9 @@ void Game::runGameLoop() {
         SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
         background_RECT = { x + -200, y + -200 - newY * 900, 1400, 900 };
         SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
-        // SDL_Log("%d %d", x, y);
-        // SDL_Log("%d %d", newX, newY);
         SDL_Rect player_RECT = { 400, 300, 100, 100 };
         SDL_RenderCopyEx(this->renderer, this->image, NULL, &player_RECT, 0, NULL, isRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL);
-        SDL_Rect mouse_RECT = { mouseX, mouseY, 30, 30 };
+        SDL_Rect mouse_RECT = { mouseX-15, mouseY-15, 30, 30 };
         SDL_RenderCopyEx(this->renderer, this->crosshair, NULL, &mouse_RECT, 0, NULL, isRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL);
         SDL_RenderPresent(this->renderer);
         
