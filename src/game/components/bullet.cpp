@@ -21,7 +21,7 @@ void Bullet::applySurface(int x, int y, SDL_Texture *tex, SDL_Renderer *rend) {
     SDL_RenderCopy(rend, tex, NULL, &pos);
 }
 
-void Bullet::render(int x, int y, SDL_Renderer *renderer) {
-    SDL_Rect player_RECT = { x + 50, y + 50, 100, 100 };
+void Bullet::render(int x, int y, int bulletX, int bulletY, SDL_Renderer *renderer) {
+    SDL_Rect player_RECT = { x + bulletX, y + bulletY, 100, 100 };
     SDL_RenderCopyEx(renderer, this->image, NULL, &player_RECT, 0, NULL, SDL_FLIP_NONE);
 }

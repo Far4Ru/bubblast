@@ -45,6 +45,7 @@ void Game::init() {
 void Game::runGameLoop() {
     SDL_RenderPresent(this->renderer );
     int x = 0, y = 0;
+    int bulletX = 0, bulletY = 0;
     int flag = 0;
     SDL_StartTextInput();
     const Uint8* currentKeyState;
@@ -55,13 +56,19 @@ void Game::runGameLoop() {
         this->fps->start();
         SDL_PumpEvents();
         currentKeyState = SDL_GetKeyboardState(nullptr);
+        SDL_GetMouseState(&mouseX, &mouseY);
         if (SDL_PollEvent(&this->windowEvent)) {
-            if (SDL_QUIT == this->windowEvent.type) {
-                // Exit event
-                break;
+            switch (this->windowEvent.type) {
+                case SDL_QUIT:
+                    return;
+                case SDL_MOUSEBUTTONDOWN:
+                    if (this->windowEvent.button.button == SDL_BUTTON_LEFT) {
+                        bulletX = mouseX;
+                        bulletY = mouseY;
+                    }
+                    break;
             }
         }
-        SDL_GetMouseState(&mouseX, &mouseY);
         // Keyboard event
         SDL_Keycode keycode = this->windowEvent.key.keysym.sym;
         if (currentKeyState[SDL_SCANCODE_W] || currentKeyState[SDL_SCANCODE_UP]) {
@@ -87,7 +94,7 @@ void Game::runGameLoop() {
         this->background->render(x, y, this->renderer);
         this->player->render(this->renderer, isRight);
         this->enemy->render(x, y, this->renderer);
-        this->bullet->render(x, y, this->renderer);
+        this->bullet->render(x, y, bulletX, bulletY, this->renderer);
         this->crosshair->render(mouseX, mouseY, this->renderer, isRight);
 
         SDL_RenderPresent(this->renderer);
