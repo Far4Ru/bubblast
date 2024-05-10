@@ -5,6 +5,7 @@
 #include "game/components/crosshair.hpp"
 #include "game/components/player.hpp"
 #include "game/loader.hpp"
+#include "game/fps.hpp"
 #include <math.h>
 
 Game::Game() {
@@ -17,6 +18,8 @@ Game::Game() {
     this->background = new Background(this->loader);
     this->crosshair = new Crosshair(this->loader);
     this->player = new Player(this->loader);
+
+    this->fps = new FPS();
 
     SDL_RenderClear(this->renderer);
 
@@ -37,12 +40,6 @@ void Game::init() {
 
 void Game::runGameLoop() {
     SDL_RenderPresent(this->renderer );
-    Uint32 frameStart = 0;
-    Uint32 frameTimeToComplete = -1;
-    double frameLength;
-
-    Uint64 startTime;
-    Uint64 endTime;
     int x = 0, y = 0;
     int flag = 0;
     SDL_StartTextInput();
@@ -51,9 +48,7 @@ void Game::runGameLoop() {
 
     int mouseX, mouseY;
     while (true) {
-        // Start FPS count
-        frameStart = SDL_GetTicks();
-        startTime = SDL_GetPerformanceCounter();
+        this->fps->start();
         SDL_PumpEvents();
         currentKeyState = SDL_GetKeyboardState(nullptr);
         if (SDL_PollEvent(&this->windowEvent)) {
@@ -91,18 +86,7 @@ void Game::runGameLoop() {
 
         SDL_RenderPresent(this->renderer);
         
-        // End FPS count
-        endTime = SDL_GetPerformanceCounter();
-        frameLength = (endTime - startTime) / static_cast<double>(SDL_GetPerformanceFrequency());
-        
-        // Delay to FPS cap
-        frameTimeToComplete = SDL_GetTicks() - frameStart;
-        if (1000 / FPS > frameTimeToComplete) {
-            SDL_Delay((1000 / FPS) - frameTimeToComplete);
-        }
-        if (!(1000 / FPS > frameTimeToComplete)) {
-            printf("DID NOT FINISH IN TIME\n");
-        }
+        this->fps->end();
     }
 }
 

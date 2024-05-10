@@ -5,10 +5,10 @@
 #include "game/components/crosshair.hpp"
 #include "game/components/player.hpp"
 #include "game/loader.hpp"
+#include "game/fps.hpp"
 
 #define WIDTH 800
 #define HEIGHT 600
-#define FPS 60
 
 class Game {
     public:
@@ -22,6 +22,7 @@ class Game {
         Background *background;
         Player *player;
         Crosshair *crosshair;
+        FPS *fps;
 
         void init();
         void runGameLoop();
