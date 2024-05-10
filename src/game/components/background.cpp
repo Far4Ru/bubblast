@@ -12,13 +12,18 @@ Background::Background(Loader *loader) {
 void Background::create(SDL_Renderer *renderer) {
     int bW, bH;
     SDL_QueryTexture(this->image, NULL, NULL, &bW, &bH);
-    this->render(0, 0, this->image, renderer);
+    this->applySurface(0, 0, this->image, renderer);
 }
 
-void Background::render(int x, int y, SDL_Texture *tex, SDL_Renderer *rend){
+void Background::applySurface(int x, int y, SDL_Texture *tex, SDL_Renderer *rend) {
     SDL_Rect pos;
     pos.x = x;
     pos.y = y;
     SDL_QueryTexture(tex, NULL, NULL, &pos.w, &pos.h);
     SDL_RenderCopy(rend, tex, NULL, &pos);
+}
+
+void Background::render(int x, int y, SDL_Renderer *renderer) {
+    SDL_Rect background_RECT = { x + -200, y + -200, 1400, 900 };
+    SDL_RenderCopyEx(renderer,this->image,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
 }

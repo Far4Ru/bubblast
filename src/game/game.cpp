@@ -85,18 +85,9 @@ void Game::runGameLoop() {
         // Render
         SDL_RenderClear(this->renderer);
 
-        // SDL_Rect background_RECT = { x + -200, y + -200, 1400, 900 };
-        // SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
-        // int newX = std::floor(x / 1400);
-        // int newY = std::floor(y / 900);
-        // // background_RECT = { newX * 1400 + -200 - newX * 1400, y + -200, 1400, 900 };
-        // // SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
-        // // background_RECT = { x + -200, y + -200 - newY * 900, 1400, 900 };
-        // // SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
-        // SDL_Rect player_RECT = { 400, 300, 100, 100 };
-        // SDL_RenderCopyEx(this->renderer, this->image, NULL, &player_RECT, 0, NULL, isRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL);
-        // SDL_Rect mouse_RECT = { mouseX-15, mouseY-15, 30, 30 };
-        // SDL_RenderCopyEx(this->renderer, this->crosshair, NULL, &mouse_RECT, 0, NULL, isRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL);
+        this->background->render(x, y, this->renderer);
+        this->player->render(this->renderer, isRight);
+        this->crosshair->render(mouseX, mouseY, this->renderer, isRight);
 
         SDL_RenderPresent(this->renderer);
         

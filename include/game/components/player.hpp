@@ -11,7 +11,8 @@ class Player {
     public:
         Player(Loader *loader);
         void create(SDL_Renderer *renderer);
+        void render(SDL_Renderer *renderer, int isRight);
     private:
         SDL_Texture* image;
-        void render(int x, int y, SDL_Texture *tex, SDL_Renderer *rend);
+        void applySurface(int x, int y, SDL_Texture *tex, SDL_Renderer *rend);
 };
