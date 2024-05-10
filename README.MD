@@ -12,3 +12,12 @@ The user controls a character trapped in the arena. Enemies of several types com
 ## Screens
 
 ![screen](presentation/screen.gif)
+
+
+## SDL2
+### Windows
+[SDL2 download](https://github.com/libsdl-org/SDL/releases)
+
+- <...-w64-mingw32>/include -> \<project>/SDL2/include  
+- <...-w64-mingw32>/lib -> \<project>/SDL2/lib  
+- <...-w64-mingw32>/bin/SDL2.dll -> \<project>/SDL2.dll
