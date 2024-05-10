@@ -3,6 +3,25 @@
 #include "game/components/bullet.hpp"
 #include <math.h>
 
-Bullet::Bullet() {
-    
+Bullet::Bullet(Loader *loader) {
+    this->image = loader->get("bullet");
+}
+
+void Bullet::create(SDL_Renderer *renderer) {
+    int bW, bH;
+    SDL_QueryTexture(this->image, NULL, NULL, &bW, &bH);
+    this->applySurface(0, 0, this->image, renderer);
+}
+
+void Bullet::applySurface(int x, int y, SDL_Texture *tex, SDL_Renderer *rend) {
+    SDL_Rect pos;
+    pos.x = x;
+    pos.y = y;
+    SDL_QueryTexture(tex, NULL, NULL, &pos.w, &pos.h);
+    SDL_RenderCopy(rend, tex, NULL, &pos);
+}
+
+void Bullet::render(int x, int y, SDL_Renderer *renderer) {
+    SDL_Rect player_RECT = { x + 50, y + 50, 100, 100 };
+    SDL_RenderCopyEx(renderer, this->image, NULL, &player_RECT, 0, NULL, SDL_FLIP_NONE);
 }

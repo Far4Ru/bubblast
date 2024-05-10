@@ -4,6 +4,8 @@
 #include "game/components/background.hpp"
 #include "game/components/crosshair.hpp"
 #include "game/components/player.hpp"
+#include "game/components/bullet.hpp"
+#include "game/components/crosshair.hpp"
 #include "game/loader.hpp"
 #include "game/fps.hpp"
 #include <math.h>
@@ -18,6 +20,8 @@ Game::Game() {
     this->background = new Background(this->loader);
     this->crosshair = new Crosshair(this->loader);
     this->player = new Player(this->loader);
+    this->bullet = new Bullet(this->loader);
+    this->enemy = new Enemy(this->loader);
 
     this->fps = new FPS();
 
@@ -82,6 +86,8 @@ void Game::runGameLoop() {
 
         this->background->render(x, y, this->renderer);
         this->player->render(this->renderer, isRight);
+        this->enemy->render(x, y, this->renderer);
+        this->bullet->render(x, y, this->renderer);
         this->crosshair->render(mouseX, mouseY, this->renderer, isRight);
 
         SDL_RenderPresent(this->renderer);

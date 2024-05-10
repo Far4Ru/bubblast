@@ -8,15 +8,17 @@ Loader::Loader(SDL_Renderer *renderer) {
 }
 
 void Loader::start() {
-    this->images = new LoadedImage[3];
+    this->images = new LoadedImage[5];
+    this->images[0].name = "background";
+    this->images[1].name = "player";
+    this->images[2].name = "crosshair";
+    this->images[3].name = "bullet";
+    this->images[4].name = "enemy";
     this->loadImages();
 }
 
 int Loader::loadImages() {
-    this->images[0].name = "background";
-    this->images[1].name = "player";
-    this->images[2].name = "crosshair";
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < sizeof(*this->images); i++) {
         this->images[i].texture = this->loadImage("assets/" + this->images[i].name + ".bmp", this->renderer );
         if (this->images[i].texture == nullptr) {
             return 4;
@@ -39,7 +41,7 @@ SDL_Texture* Loader::loadImage(std::string file, SDL_Renderer* renderer){
 }
 
 SDL_Texture* Loader::get(std::string name) {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < sizeof(*this->images); i++) {
         if (this->images[i].name == name) {
             return this->images[i].texture;
         }
@@ -47,7 +49,7 @@ SDL_Texture* Loader::get(std::string name) {
 }
 
 void Loader::destroy() {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < sizeof(*this->images); i++) {
         SDL_DestroyTexture(this->images[i].texture);
     }
 }

@@ -4,6 +4,8 @@
 #include "game/components/background.hpp"
 #include "game/components/crosshair.hpp"
 #include "game/components/player.hpp"
+#include "game/components/bullet.hpp"
+#include "game/components/enemy.hpp"
 #include "game/loader.hpp"
 #include "game/fps.hpp"
 
@@ -18,11 +20,13 @@ class Game {
         SDL_Renderer *renderer;
         Loader *loader;
         SDL_Event windowEvent;
+        FPS *fps;
 
         Background *background;
         Player *player;
         Crosshair *crosshair;
-        FPS *fps;
+        Enemy *enemy;
+        Bullet *bullet;
 
         void init();
         void runGameLoop();
