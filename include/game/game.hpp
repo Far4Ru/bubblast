@@ -1,7 +1,9 @@
 #pragma once
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "game/background.hpp"
+#include "game/components/background.hpp"
+#include "game/components/crosshair.hpp"
+#include "game/components/player.hpp"
 #include "game/loader.hpp"
 
 #define WIDTH 800
@@ -12,22 +14,18 @@ class Game {
     public:
         Game();
     private:
-        Loader *loader;
-        Background *backgroundClass;
         SDL_Window *window;
         SDL_Renderer *renderer;
-        SDL_Texture *background;
-        SDL_Texture *image;
-        SDL_Texture *crosshair;
+        Loader *loader;
         SDL_Event windowEvent;
+
+        Background *background;
+        Player *player;
+        Crosshair *crosshair;
 
         void init();
         void runGameLoop();
-        void applySurface(int x, int y, SDL_Texture *tex, SDL_Renderer *rend);
         int createWindow();
         int createRenderer();
-        void createBackground();
-        void createImage();
-        void createCrosshair();
         void clear();
 };

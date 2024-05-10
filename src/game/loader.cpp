@@ -14,7 +14,7 @@ void Loader::start() {
 
 int Loader::loadImages() {
     this->images[0].name = "background";
-    this->images[1].name = "image";
+    this->images[1].name = "player";
     this->images[2].name = "crosshair";
     for (int i = 0; i < 3; i++) {
         this->images[i].texture = this->loadImage("assets/" + this->images[i].name + ".bmp", this->renderer );

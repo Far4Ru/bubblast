@@ -1,8 +1,8 @@
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "game/enemy.hpp"
+#include "game/input/keyboard.hpp"
 #include <math.h>
 
-Enemy::Enemy() {
+Keyboard::Keyboard() {
     
 }

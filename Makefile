@@ -19,7 +19,10 @@ OBJ_DIR  := $(BUILD)/objects
 APP_DIR  := $(BUILD)/apps
 TARGET   := program
 SRC      :=                      \
+   $(wildcard src/engine/*.cpp)    \
    $(wildcard src/game/*.cpp)    \
+   $(wildcard src/game/components/*.cpp)    \
+   $(wildcard src/game/components/utils*.cpp)    \
    $(wildcard src/*.cpp)         \
 
 OBJECTS  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)

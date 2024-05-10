@@ -1,9 +1,8 @@
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "game/background.hpp"
+#include "game/components/enemy.hpp"
 #include <math.h>
 
-Background::Background() {
+Enemy::Enemy() {
     
 }
-

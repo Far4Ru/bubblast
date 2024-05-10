@@ -1,8 +1,8 @@
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "game/keyboard.hpp"
+#include "game/components/bullet.hpp"
 #include <math.h>
 
-Keyboard::Keyboard() {
+Bullet::Bullet() {
     
 }

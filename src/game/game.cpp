@@ -1,7 +1,9 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "game/game.hpp"
-#include "game/background.hpp"
+#include "game/components/background.hpp"
+#include "game/components/crosshair.hpp"
+#include "game/components/player.hpp"
 #include "game/loader.hpp"
 #include <math.h>
 
@@ -12,15 +14,15 @@ Game::Game() {
     this->createRenderer();
     this->loader = new Loader(this->renderer);
     this->loader->start();
-    this->background = this->loader->get("background");
-    this->crosshair = this->loader->get("crosshair");
-    this->image = this->loader->get("image");
+    this->background = new Background(this->loader);
+    this->crosshair = new Crosshair(this->loader);
+    this->player = new Player(this->loader);
 
     SDL_RenderClear(this->renderer);
 
-    this->createBackground();
-    this->createCrosshair();
-    this->createImage();
+    this->background->create(this->renderer);
+    this->crosshair->create(this->renderer);
+    this->player->create(this->renderer);
     
     this->runGameLoop();
     
@@ -82,18 +84,20 @@ void Game::runGameLoop() {
 
         // Render
         SDL_RenderClear(this->renderer);
-        SDL_Rect background_RECT = { x + -200, y + -200, 1400, 900 };
-        SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
-        int newX = std::floor(x / 1400);
-        int newY = std::floor(y / 900);
-        background_RECT = { newX * 1400 + -200 - newX * 1400, y + -200, 1400, 900 };
-        SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
-        background_RECT = { x + -200, y + -200 - newY * 900, 1400, 900 };
-        SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
-        SDL_Rect player_RECT = { 400, 300, 100, 100 };
-        SDL_RenderCopyEx(this->renderer, this->image, NULL, &player_RECT, 0, NULL, isRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL);
-        SDL_Rect mouse_RECT = { mouseX-15, mouseY-15, 30, 30 };
-        SDL_RenderCopyEx(this->renderer, this->crosshair, NULL, &mouse_RECT, 0, NULL, isRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL);
+
+        // SDL_Rect background_RECT = { x + -200, y + -200, 1400, 900 };
+        // SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
+        // int newX = std::floor(x / 1400);
+        // int newY = std::floor(y / 900);
+        // // background_RECT = { newX * 1400 + -200 - newX * 1400, y + -200, 1400, 900 };
+        // // SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
+        // // background_RECT = { x + -200, y + -200 - newY * 900, 1400, 900 };
+        // // SDL_RenderCopyEx(this->renderer,this->background,NULL,&background_RECT, 0, NULL, SDL_FLIP_NONE);
+        // SDL_Rect player_RECT = { 400, 300, 100, 100 };
+        // SDL_RenderCopyEx(this->renderer, this->image, NULL, &player_RECT, 0, NULL, isRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL);
+        // SDL_Rect mouse_RECT = { mouseX-15, mouseY-15, 30, 30 };
+        // SDL_RenderCopyEx(this->renderer, this->crosshair, NULL, &mouse_RECT, 0, NULL, isRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL);
+
         SDL_RenderPresent(this->renderer);
         
         // End FPS count
@@ -109,14 +113,6 @@ void Game::runGameLoop() {
             printf("DID NOT FINISH IN TIME\n");
         }
     }
-}
-
-void Game::applySurface(int x, int y, SDL_Texture *tex, SDL_Renderer *rend){
-    SDL_Rect pos;
-    pos.x = x;
-    pos.y = y;
-    SDL_QueryTexture(tex, NULL, NULL, &pos.w, &pos.h);
-    SDL_RenderCopy(rend, tex, NULL, &pos);
 }
 
 int Game::createWindow() {
@@ -135,28 +131,6 @@ int Game::createRenderer() {
         return 2;
     }
     return 0;
-}
-
-void Game::createBackground() {
-    int bW, bH;
-    SDL_QueryTexture(this->background, NULL, NULL, &bW, &bH);
-    this->applySurface(0, 0, this->background, this->renderer );
-}
-
-void Game::createImage() {
-    int iW, iH;
-    SDL_QueryTexture(this->image, NULL, NULL, &iW, &iH);
-    int x = WIDTH / 2 - iW / 2;
-    int y = HEIGHT / 2 - iH / 2;
-    this->applySurface(x, y, this->image, this->renderer );
-}
-
-void Game::createCrosshair() {
-    int iW, iH;
-    SDL_QueryTexture(this->crosshair, NULL, NULL, &iW, &iH);
-    int x = WIDTH / 2 - iW / 2;
-    int y = HEIGHT / 2 - iH / 2;
-    this->applySurface(x, y, this->crosshair, this->renderer );
 }
 
 void Game::clear() {
