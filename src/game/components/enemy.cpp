@@ -3,7 +3,7 @@
 #include "game/components/enemy.hpp"
 #include <math.h>
 #include "game/loader.hpp"
-#include "game/components/utils/image_base.hpp"
+// #include "game/components/utils/image_base.hpp"
 
 Enemy::Enemy(Loader *loader) {
     this->image = loader->get("enemy");

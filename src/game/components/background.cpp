@@ -3,7 +3,7 @@
 #include "game/components/background.hpp"
 #include <math.h>
 #include "game/loader.hpp"
-#include "game/components/utils/image_base.hpp"
+// #include "game/components/utils/image_base.hpp"
 
 Background::Background(Loader *loader) {
     this->image = loader->get("background");

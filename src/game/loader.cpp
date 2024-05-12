@@ -18,7 +18,7 @@ void Loader::start() {
 }
 
 int Loader::loadImages() {
-    for (int i = 0; i < sizeof(*this->images); i++) {
+    for (int i = 0; i < 5; i++) {
         this->images[i].texture = this->loadImage("assets/" + this->images[i].name + ".bmp", this->renderer );
         if (this->images[i].texture == nullptr) {
             return 4;
@@ -41,7 +41,7 @@ SDL_Texture* Loader::loadImage(std::string file, SDL_Renderer* renderer){
 }
 
 SDL_Texture* Loader::get(std::string name) {
-    for (int i = 0; i < sizeof(*this->images); i++) {
+    for (int i = 0; i < 5; i++) {
         if (this->images[i].name == name) {
             return this->images[i].texture;
         }
@@ -49,7 +49,7 @@ SDL_Texture* Loader::get(std::string name) {
 }
 
 void Loader::destroy() {
-    for (int i = 0; i < sizeof(*this->images); i++) {
+    for (int i = 0; i < 5; i++) {
         SDL_DestroyTexture(this->images[i].texture);
     }
 }

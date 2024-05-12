@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include "game/components/bullet.hpp"
 #include <math.h>
+// #include "game/components/utils/image_base.hpp"
 
 Bullet::Bullet(Loader *loader) {
     this->image = loader->get("bullet");

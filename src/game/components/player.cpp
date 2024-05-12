@@ -3,7 +3,7 @@
 #include "game/components/player.hpp"
 #include <math.h>
 #include "game/loader.hpp"
-#include "game/components/utils/image_base.hpp"
+// #include "game/components/utils/image_base.hpp"
 
 Player::Player(Loader *loader) {
     this->image = loader->get("player");

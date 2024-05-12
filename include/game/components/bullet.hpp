@@ -2,7 +2,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "game/loader.hpp"
-#include "game/components/utils/image_base.hpp"
+// #include "game/components/utils/image_base.hpp"
 
 /**
  * This class is responsible for the bullet as an object

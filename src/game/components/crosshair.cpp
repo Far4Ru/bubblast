@@ -3,7 +3,7 @@
 #include "game/components/crosshair.hpp"
 #include <math.h>
 #include <game/loader.hpp>
-#include "game/components/utils/image_base.hpp"
+// #include "game/components/utils/image_base.hpp"
 
 Crosshair::Crosshair(Loader *loader) {
     this->image = loader->get("crosshair");
