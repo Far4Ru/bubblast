@@ -1,7 +1,4 @@
-#include <iostream>
-#include <SDL2/SDL.h>
-#include "game/loader.hpp"
-#include <math.h>
+#include "engine/loader.hpp"
 
 Loader::Loader(SDL_Renderer *renderer) {
     this->renderer = renderer;

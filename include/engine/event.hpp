@@ -1,12 +1,14 @@
 #pragma once
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <math.h>
 
 /**
  * 
 */
-class Keyboard {
+class Event {
     public:
-        Keyboard();
+        Event();
     private:
+        SDL_Event core;
 };

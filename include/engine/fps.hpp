@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
 #include <SDL2/SDL.h>
-
-#define MAX_FPS 60
+#include <math.h>
+#include "config/config.hpp"
 
 class FPS {
     public:

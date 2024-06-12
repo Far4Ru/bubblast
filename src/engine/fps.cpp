@@ -1,14 +1,14 @@
-#include <iostream>
-#include <SDL2/SDL.h>
-#include "game/fps.hpp"
-#include <math.h>
+#include "engine/fps.hpp"
 
 FPS::FPS() {
+    //
 }
+
 void FPS::start() {
     this->frameStart = SDL_GetTicks();
     this->startTime = SDL_GetPerformanceCounter();
 }
+
 void FPS::end() {
     // End FPS count
     this->endTime = SDL_GetPerformanceCounter();

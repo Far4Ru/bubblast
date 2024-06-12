@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <math.h>
 
 struct LoadedImage {
   std::string name;
