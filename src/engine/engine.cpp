@@ -9,7 +9,7 @@ Engine::Engine() {
     
     screen_surface = SDL_GetWindowSurface(this->window->get());
 
-    SDL_FillRect(screen_surface, NULL, SDL_MapRGB( screen_surface->format, 0, 255, 0));
+    SDL_FillRect(screen_surface, NULL, SDL_MapRGB( screen_surface->format, 255, 255, 255));
 
     SDL_UpdateWindowSurface(this->window->get());
 
