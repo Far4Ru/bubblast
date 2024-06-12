@@ -2,7 +2,18 @@
 
 Engine::Engine() {
     this->init();
+    this->window = new Window();
     this->window->create();
+
+    SDL_Surface* screen_surface = NULL;
+    
+    screen_surface = SDL_GetWindowSurface(this->window->get());
+
+    SDL_FillRect(screen_surface, NULL, SDL_MapRGB( screen_surface->format, 0, 255, 0));
+
+    SDL_UpdateWindowSurface(this->window->get());
+
+    SDL_Delay(2000);
 }
 
 int Engine::init() {

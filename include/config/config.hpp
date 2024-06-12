@@ -1,5 +1,4 @@
-
-#define GAME_NAME "Game"
+#define GAME_NAME "Isekai Quest"
 #define WIDTH 800
 #define HEIGHT 800
 #define SDL_ERROR "Could not create window: "

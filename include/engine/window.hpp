@@ -5,6 +5,7 @@
 class Window {
     public:
         Window();
+        ~Window();
         SDL_Window* get();
         int create();
     private:
