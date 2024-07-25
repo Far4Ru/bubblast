@@ -9,5 +9,5 @@ class Window {
         SDL_Window* get();
         int create();
     private:
-        SDL_Window *core;
+        SDL_Window *window;
 };

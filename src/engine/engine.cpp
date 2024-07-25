@@ -21,6 +21,7 @@ int Engine::init() {
         std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
         return 1;
     }
+    return 0;
 }
 
 Engine::~Engine() {

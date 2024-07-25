@@ -5,18 +5,19 @@ Window::Window() {
 }
 
 int Window::create() {
-    this->core = SDL_CreateWindow(GAME_NAME, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
-    if (this->core == NULL) {
-        SDL_Log(SDL_ERROR, SDL_GetError());
+    this->window = SDL_CreateWindow(GAME_NAME, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
+    if (this->window == NULL) {
+        SDL_Log(GAME_ERROR_WINDOW_CREATE);
+        // SDL_Log(SDL_GetError());
         return 1;
     }
     return 0;
 }
 
 SDL_Window* Window::get() {
-    return this->core;
+    return this->window;
 }
 
 Window::~Window() {
-    SDL_DestroyWindow(this->core);
+    SDL_DestroyWindow(this->window);
 }
