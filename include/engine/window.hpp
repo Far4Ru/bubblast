@@ -8,6 +8,6 @@ class Window {
         ~Window();
         SDL_Window* get();
         int create();
-    private:
         SDL_Window *window;
+    private:
 };
