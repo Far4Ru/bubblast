@@ -9,24 +9,25 @@ void Engine::start() {
 
     SDL_Event e;
 
-    bool run = true;
-    while (run) {
+    while (true) {
         while(SDL_PollEvent(&e) != 0) {
             if (e.type == SDL_QUIT) {
-                run = false;
-            }
-            else if( e.type == SDL_KEYDOWN ) {
-                switch( e.key.keysym.sym ) {
+                close();
+                return;
+            } else if(e.type == SDL_KEYDOWN) {
+                switch(e.key.keysym.sym) {
                     case SDLK_ESCAPE:
-                        run = false;
-                        break;
+                        close();
+                        return;
                 }
             }
         }
 
         renderer->render();
     }
+}
 
+void Engine::close() {
     this->~Engine();
 }
 
@@ -39,7 +40,7 @@ int Engine::init() {
     renderer = new Renderer();
 
     int flags = IMG_INIT_PNG;
-    if ( !( IMG_Init( flags ) & flags ) ) {
+    if (!(IMG_Init(flags) & flags)) {
         std::cout << "Can't init image: " << IMG_GetError() << std::endl;
         return 1;
     }

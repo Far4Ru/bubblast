@@ -1,34 +1,34 @@
 #include "engine/renderer.hpp"
 
 Renderer::Renderer() {
-    this->window = new Window();
-    this->window->create();
+    window = new Window();
+    window->create();
 
-    this->renderer = SDL_CreateRenderer(this->window->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if (this->renderer == NULL) {
+    renderer = SDL_CreateRenderer(window->get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (renderer == NULL) {
         std::cout << "Can't create renderer: " << SDL_GetError() << std::endl;
     }
-    SDL_SetRenderDrawColor(this->renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 }
 
 Renderer::~Renderer() {
-    SDL_FreeSurface(this->screen_surface);
-    SDL_DestroyTexture(this->flower);
-    this->window->~Window();
+    SDL_FreeSurface(screen_surface);
+    SDL_DestroyTexture(flower);
+    window->~Window();
 }
 
 void Renderer::start() {
     /** surface */
-    this->screen_surface = SDL_GetWindowSurface(this->window->get());
-    SDL_FillRect(this->screen_surface, NULL, SDL_MapRGB(this->screen_surface->format, 255, 255, 255));
+    screen_surface = SDL_GetWindowSurface(window->get());
+    SDL_FillRect(screen_surface, NULL, SDL_MapRGB(screen_surface->format, 255, 255, 255));
 
     load();
 }
 
 void Renderer::render() {
-    SDL_RenderClear(this->renderer);
-    SDL_RenderCopy(this->renderer, this->flower, NULL, NULL);
-    SDL_RenderPresent(this->renderer);
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, flower, NULL, NULL);
+    SDL_RenderPresent(renderer);
 
 }
 

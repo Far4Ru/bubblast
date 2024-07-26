@@ -12,4 +12,5 @@ class Engine {
     private:
         Renderer* renderer = NULL;
         int init();
+        void close();
 };
