@@ -4,5 +4,7 @@
 extern Engine engine;
 
 Game::Game() {
-    engine.run();
+    engine.start();
+    // image = engine.add.image("wizard");
+    // image.x = 50;
 }
