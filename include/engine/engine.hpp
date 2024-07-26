@@ -9,6 +9,7 @@ class Engine {
         ~Engine();
 
         Window* window;
+        void run();
     private:
         SDL_Surface* screen_surface = NULL;
         SDL_Texture* flower = NULL;
