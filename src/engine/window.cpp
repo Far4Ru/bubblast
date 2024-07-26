@@ -1,7 +1,7 @@
 #include "engine/window.hpp"
 
 Window::Window() {
-    //
+    create();
 }
 
 int Window::create() {

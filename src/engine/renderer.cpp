@@ -2,7 +2,6 @@
 
 Renderer::Renderer() {
     window = new Window();
-    window->create();
 
     renderer = SDL_CreateRenderer(window->get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (renderer == NULL) {
