@@ -25,8 +25,16 @@ void Renderer::start() {
 }
 
 void Renderer::render() {
+    SDL_SetRenderDrawColor(renderer, 0xFf, 0xFF, 0xFF, 0xFF);
     SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, flower, NULL, NULL);
+    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
+    SDL_Rect rect1 = {10, 10, 50, 50};
+    // SDL_RenderFillRect(renderer, &rect1);
+    for (int i = 10; i <= 640-10; i +=4 ) {
+        SDL_RenderDrawPoint(renderer, i, 90);
+    }
+    SDL_RenderDrawLine(renderer, 10, 70, 100, 70);
+    SDL_RenderCopy(renderer, flower, NULL, &rect1);
     SDL_RenderPresent(renderer);
 
 }
