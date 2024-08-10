@@ -36,11 +36,9 @@ void Renderer::render() {
     SDL_RenderDrawLine(renderer, 10, 70, 100, 70);
     SDL_RenderCopy(renderer, flower, NULL, &rect1);
     SDL_RenderPresent(renderer);
-
 }
 
 bool Renderer::load() {
-
     SDL_Surface * temp_surf = NULL;
     temp_surf = IMG_Load("assets/wizard.png");
     if (temp_surf == NULL) {

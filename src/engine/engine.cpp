@@ -10,12 +10,12 @@ void Engine::start() {
     SDL_Event e;
 
     while (true) {
-        while(SDL_PollEvent(&e) != 0) {
+        while (SDL_PollEvent(&e) != 0) {
             if (e.type == SDL_QUIT) {
                 close();
                 return;
-            } else if(e.type == SDL_KEYDOWN) {
-                switch(e.key.keysym.sym) {
+            } else if (e.type == SDL_KEYDOWN) {
+                switch (e.key.keysym.sym) {
                     case SDLK_ESCAPE:
                         close();
                         return;
@@ -32,7 +32,7 @@ void Engine::close() {
 }
 
 int Engine::init() {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0){
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
         return 1;
     }
