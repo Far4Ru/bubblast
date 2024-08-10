@@ -20,6 +20,7 @@ void Engine::start() {
                         close();
                         return;
                 }
+                renderer->keyDown();
             }
         }
 

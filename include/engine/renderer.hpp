@@ -12,9 +12,11 @@ class Renderer {
         void render();
         bool load();
         void start();
+        void keyDown();
 
         Window* window;
     private:
+        const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
         SDL_Surface* screen_surface = NULL;
         ImageObject* image = NULL;
         SDL_Renderer* renderer = NULL;

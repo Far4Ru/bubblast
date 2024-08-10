@@ -16,6 +16,19 @@ Renderer::~Renderer() {
     window->~Window();
 }
 
+void Renderer::keyDown() {
+    if (keyboard_state_array[SDL_SCANCODE_UP] || keyboard_state_array[SDL_SCANCODE_W]) {
+        image->y -= 10;
+    } else if (keyboard_state_array[SDL_SCANCODE_DOWN] || keyboard_state_array[SDL_SCANCODE_S]) {
+        image->y += 10;
+    }
+    if (keyboard_state_array[SDL_SCANCODE_LEFT] || keyboard_state_array[SDL_SCANCODE_A]) {
+        image->x -= 10;
+    } else if (keyboard_state_array[SDL_SCANCODE_RIGHT] || keyboard_state_array[SDL_SCANCODE_D]) {
+        image->x += 10;
+    }
+}
+
 void Renderer::start() {
     /** surface */
     screen_surface = SDL_GetWindowSurface(window->get());
