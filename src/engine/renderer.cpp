@@ -39,7 +39,7 @@ void Renderer::render() {
 
 bool Renderer::load() {
     image = new ImageObject();
-    image->setTexture(renderer);
+    image->load(renderer);
 
     return true;
 }
