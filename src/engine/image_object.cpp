@@ -27,7 +27,16 @@ bool ImageObject::load(SDL_Renderer* renderer) {
     return true;
 }
 
+void ImageObject::turnLeft() {
+    flipType = SDL_FLIP_HORIZONTAL;
+}
+
+void ImageObject::turnRight() {
+    flipType = SDL_FLIP_NONE;
+}
+
 void ImageObject::render(SDL_Renderer* renderer) {
     SDL_Rect rect1 = {x, y, width * scale, height * scale};
-    SDL_RenderCopy(renderer, texture, NULL, &rect1);
+    // SDL_RenderCopy(renderer, texture, NULL, &rect1);
+    SDL_RenderCopyEx(renderer, texture, NULL, &rect1, 0, NULL, flipType);
 }

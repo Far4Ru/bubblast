@@ -25,9 +25,11 @@ void Renderer::keyDown() {
     }
     if (keyboard_state_array[SDL_SCANCODE_LEFT] || keyboard_state_array[SDL_SCANCODE_A]) {
         image->x -= 10;
+        image->turnLeft();
     }
     if (keyboard_state_array[SDL_SCANCODE_RIGHT] || keyboard_state_array[SDL_SCANCODE_D]) {
         image->x += 10;
+        image->turnRight();
     }
 }
 
