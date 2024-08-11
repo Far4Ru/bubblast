@@ -9,6 +9,7 @@
 #include "engine/fps.hpp"
 #include "engine/text_object.hpp"
 #include "engine/sound_loader.hpp"
+#include "engine/font_loader.hpp"
 
 class Renderer {
     public:
@@ -31,4 +32,5 @@ class Renderer {
         int x = 0, y = 0;
         ImageLoader* imageLoader = NULL;
         SoundLoader* soundLoader = NULL;
+        FontLoader* fontLoader = NULL;
 };

@@ -64,13 +64,13 @@ void Renderer::render() {
 
         SDL_GetMouseState(&x,&y);
         text->setText(fps->get() + " FPS. Mouse:" + std::to_string(x) + ":" + std::to_string(y));
-        text->render(renderer, font);
+        text->render(renderer, fontLoader->get("WinterCat"));
         SDL_RenderPresent(renderer);
     }
 }
 
 bool Renderer::load() {
-    font = TTF_OpenFont("assets/fonts/WinterCat.ttf", 52);
+    fontLoader = new FontLoader();
     soundLoader = new SoundLoader();
     imageLoader = new ImageLoader();
     image = new ImageObject();
