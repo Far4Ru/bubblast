@@ -29,4 +29,5 @@ class Renderer {
         SDL_Color textColor = {255,0,0};
         Mix_Chunk* fireMusic = NULL;
         Mix_Music* music = NULL;
+        int x=0,y=0;
 };

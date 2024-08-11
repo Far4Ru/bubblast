@@ -68,8 +68,10 @@ void Renderer::render() {
         }
         SDL_RenderDrawLine(renderer, 10, 70, 100, 70);
         image->render(renderer);
+
+        SDL_GetMouseState(&x,&y);
         
-        textSurface = TTF_RenderText_Solid(rFont, (std::to_string(1000 / delta) + " FPS").c_str(), textColor);
+        textSurface = TTF_RenderText_Solid(rFont, (std::to_string(1000 / delta) + " FPS. Mouse:" + std::to_string(x) + ":" + std::to_string(y)).c_str(), textColor);
         mTexture =  SDL_CreateTextureFromSurface(renderer ,textSurface);
         SDL_Rect abcPosition = {210,0,textSurface->w,textSurface->h};
         SDL_RenderCopy(renderer,mTexture,NULL,&abcPosition);
