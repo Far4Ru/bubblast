@@ -1,4 +1,4 @@
-#include "engine/image_loader.hpp"
+#include "engine/loader/image_loader.hpp"
 
 ImageLoader::ImageLoader() {
     getImageNames();

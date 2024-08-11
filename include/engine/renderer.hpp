@@ -5,11 +5,9 @@
 
 #include "window.hpp"
 #include "engine/image_object.hpp"
-#include "engine/image_loader.hpp"
 #include "engine/fps.hpp"
 #include "engine/text_object.hpp"
-#include "engine/sound_loader.hpp"
-#include "engine/font_loader.hpp"
+#include "engine/loader/loader.hpp"
 
 class Renderer {
     public:
@@ -30,7 +28,5 @@ class Renderer {
         TTF_Font* font = NULL;
         FPS* fps = NULL;
         int x = 0, y = 0;
-        ImageLoader* imageLoader = NULL;
-        SoundLoader* soundLoader = NULL;
-        FontLoader* fontLoader = NULL;
+        Loader* loader;
 };

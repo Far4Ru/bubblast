@@ -1,4 +1,4 @@
-#include "engine/sound_loader.hpp"
+#include "engine/loader/sound_loader.hpp"
 
 SoundLoader::SoundLoader() {
     getSoundNames();

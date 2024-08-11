@@ -12,7 +12,7 @@ Renderer::Renderer() {
 }
 
 Renderer::~Renderer() {
-    imageLoader->~ImageLoader();
+    loader->~Loader();
     image->~ImageObject();
     window->~Window();
 }
@@ -33,7 +33,7 @@ void Renderer::keyDown() {
         image->turnRight();
     }
     if (keyboard_state_array[SDL_SCANCODE_SPACE]) {
-        Mix_PlayChannel(-1, soundLoader->getChunk("BubbleSpell"), 0);
+        Mix_PlayChannel(-1, loader->getChunk("BubbleSpell"), 0);
     }
     if (keyboard_state_array[SDL_SCANCODE_1]) {
         Mix_PauseMusic();
@@ -46,7 +46,7 @@ void Renderer::keyDown() {
 void Renderer::start() {
     window->fill();
     load();
-    Mix_PlayMusic(soundLoader->getMusic("PositiveEnergy"), -1);
+    Mix_PlayMusic(loader->getMusic("PositiveEnergy"), -1);
 }
 
 void Renderer::render() {
@@ -64,17 +64,15 @@ void Renderer::render() {
 
         SDL_GetMouseState(&x,&y);
         text->setText(fps->get() + " FPS. Mouse:" + std::to_string(x) + ":" + std::to_string(y));
-        text->render(renderer, fontLoader->get("WinterCat"));
+        text->render(renderer, loader->getFont("WinterCat"));
         SDL_RenderPresent(renderer);
     }
 }
 
 bool Renderer::load() {
-    fontLoader = new FontLoader();
-    soundLoader = new SoundLoader();
-    imageLoader = new ImageLoader();
+    loader = new Loader();
     image = new ImageObject();
-    image->load(renderer, imageLoader->get("wizard"));
+    image->load(renderer, loader->getImage("wizard"));
     text = new TextObject();
 
     return true;
