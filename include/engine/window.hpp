@@ -11,6 +11,6 @@ class Window {
         int create();
         void fill();
     private:
-        SDL_Surface* screen_surface = NULL;
+        SDL_Surface* screenSurface = NULL;
         SDL_Window *window;
 };

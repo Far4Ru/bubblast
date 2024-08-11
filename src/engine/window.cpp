@@ -20,11 +20,11 @@ SDL_Window* Window::get() {
 
 void Window::fill() {
     /** surface */
-    screen_surface = SDL_GetWindowSurface(get());
-    SDL_FillRect(screen_surface, NULL, SDL_MapRGB(screen_surface->format, 255, 255, 255));
+    screenSurface = SDL_GetWindowSurface(get());
+    SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 255, 255, 255));
 }
 
 Window::~Window() {
-    SDL_FreeSurface(screen_surface);
+    SDL_FreeSurface(screenSurface);
     SDL_DestroyWindow(window);
 }
