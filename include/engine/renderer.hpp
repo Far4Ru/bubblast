@@ -5,6 +5,7 @@
 
 #include "window.hpp"
 #include "engine/image_object.hpp"
+#include "engine/image_loader.hpp"
 
 class Renderer {
     public:
@@ -30,4 +31,5 @@ class Renderer {
         Mix_Chunk* fireMusic = NULL;
         Mix_Music* music = NULL;
         int x=0,y=0;
+        ImageLoader* imageLoader = NULL;
 };

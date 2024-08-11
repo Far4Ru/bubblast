@@ -11,6 +11,7 @@ Renderer::Renderer() {
 }
 
 Renderer::~Renderer() {
+    imageLoader->~ImageLoader();
     SDL_FreeSurface(screen_surface);
     image->~ImageObject();
     window->~Window();
@@ -80,13 +81,15 @@ void Renderer::render() {
 }
 
 bool Renderer::load() {
-    image = new ImageObject();
-    image->load(renderer);
   
     rFont = TTF_OpenFont("assets/fonts/WinterCat.ttf",52);
 
     fireMusic = Mix_LoadWAV("assets/sounds/BubbleSpell.wav");
     music = Mix_LoadMUS("assets/sounds/PositiveEnergy.wav");
+
+    imageLoader = new ImageLoader();
+    image = new ImageObject();
+    image->load(renderer);
 
     return true;
 }
