@@ -42,33 +42,36 @@ void Renderer::start() {
 }
 
 void Renderer::render() {
-    keyDown();
-    SDL_SetRenderDrawColor(renderer, 0xFf, 0xFF, 0xFF, 0xFF);
-    SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
-    // SDL_RenderFillRect(renderer, &rect1);
-    for (int i = 10; i <= 640-10; i +=4 ) {
-        SDL_RenderDrawPoint(renderer, i, 90);
+
+    Uint32 a = SDL_GetTicks();
+    Uint32 delta = a - b;
+
+    if (delta > 1000 / 60) {
+        b = a;
+        keyDown();
+        SDL_SetRenderDrawColor(renderer, 0xFf, 0xFF, 0xFF, 0xFF);
+        SDL_RenderClear(renderer);
+        SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
+        // SDL_RenderFillRect(renderer, &rect1);
+        for (int i = 10; i <= 640-10; i +=4 ) {
+            SDL_RenderDrawPoint(renderer, i, 90);
+        }
+        SDL_RenderDrawLine(renderer, 10, 70, 100, 70);
+        image->render(renderer);
+        
+        textSurface = TTF_RenderText_Solid(rFont, (std::to_string(1000 / delta) + " FPS").c_str(), textColor);
+        mTexture =  SDL_CreateTextureFromSurface(renderer ,textSurface);
+        SDL_Rect abcPosition = {210,0,textSurface->w,textSurface->h};
+        SDL_RenderCopy(renderer,mTexture,NULL,&abcPosition);
+        SDL_RenderPresent(renderer);
     }
-    SDL_RenderDrawLine(renderer, 10, 70, 100, 70);
-    image->render(renderer);
-    
-    SDL_Rect abcPosition = {210,0,textSurface->w,textSurface->h};
-    SDL_RenderCopy(renderer,mTexture,NULL,&abcPosition);
-    SDL_RenderPresent(renderer);
 }
 
 bool Renderer::load() {
     image = new ImageObject();
     image->load(renderer);
-
-    SDL_Color textColor = {255,0,0};
   
-    TTF_Font* rFont = TTF_OpenFont("assets/fonts/WinterCat.ttf",52);
-    
-    textSurface = TTF_RenderText_Solid(rFont, "Text", textColor);
-
-    mTexture =  SDL_CreateTextureFromSurface(renderer ,textSurface);
+    rFont = TTF_OpenFont("assets/fonts/WinterCat.ttf",52);
 
     return true;
 }

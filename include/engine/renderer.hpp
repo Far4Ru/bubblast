@@ -23,4 +23,7 @@ class Renderer {
         SDL_Renderer* renderer = NULL;
         SDL_Texture* mTexture = NULL;
         SDL_Surface* textSurface = NULL;
+        Uint32 b = 0;
+        TTF_Font* rFont = NULL;
+        SDL_Color textColor = {255,0,0};
 };
