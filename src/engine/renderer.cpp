@@ -8,6 +8,7 @@ Renderer::Renderer() {
         std::cout << "Can't create renderer: " << SDL_GetError() << std::endl;
     }
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+    fps = new FPS();
 }
 
 Renderer::~Renderer() {
@@ -53,12 +54,7 @@ void Renderer::start() {
 }
 
 void Renderer::render() {
-
-    Uint32 a = SDL_GetTicks();
-    Uint32 delta = a - b;
-
-    if (delta > 1000 / 60) {
-        b = a;
+    if (fps->tick()) {
         keyDown();
         SDL_SetRenderDrawColor(renderer, 0xFf, 0xFF, 0xFF, 0xFF);
         SDL_RenderClear(renderer);
@@ -72,7 +68,7 @@ void Renderer::render() {
 
         SDL_GetMouseState(&x,&y);
         
-        textSurface = TTF_RenderText_Solid(rFont, (std::to_string(1000 / delta) + " FPS. Mouse:" + std::to_string(x) + ":" + std::to_string(y)).c_str(), textColor);
+        textSurface = TTF_RenderText_Solid(rFont, (fps->get() + " FPS. Mouse:" + std::to_string(x) + ":" + std::to_string(y)).c_str(), textColor);
         mTexture =  SDL_CreateTextureFromSurface(renderer ,textSurface);
         SDL_Rect abcPosition = {210,0,textSurface->w,textSurface->h};
         SDL_RenderCopy(renderer,mTexture,NULL,&abcPosition);

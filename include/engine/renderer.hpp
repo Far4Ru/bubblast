@@ -6,6 +6,7 @@
 #include "window.hpp"
 #include "engine/image_object.hpp"
 #include "engine/image_loader.hpp"
+#include "engine/fps.hpp"
 
 class Renderer {
     public:
@@ -25,11 +26,11 @@ class Renderer {
         SDL_Renderer* renderer = NULL;
         SDL_Texture* mTexture = NULL;
         SDL_Surface* textSurface = NULL;
-        Uint32 b = 0;
         TTF_Font* rFont = NULL;
         SDL_Color textColor = {255,0,0};
         Mix_Chunk* fireMusic = NULL;
         Mix_Music* music = NULL;
+        FPS* fps = NULL;
         int x=0,y=0;
         ImageLoader* imageLoader = NULL;
 };

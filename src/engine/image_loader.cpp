@@ -6,9 +6,9 @@ ImageLoader::ImageLoader() {
 }
 
 ImageLoader::~ImageLoader() {
-    // for (auto const& image : images) {
-    //     SDL_FreeSurface(image.second);
-    // }
+    for (auto const& image : images) {
+        SDL_FreeSurface(image.second);
+    }
 }
 
 void ImageLoader::getImageNames() {
