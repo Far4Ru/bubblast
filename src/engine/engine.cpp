@@ -43,10 +43,14 @@ int Engine::init() {
         std::cout << "Can't init image: " << IMG_GetError() << std::endl;
         return 1;
     }
+
+    TTF_Init();
+
     return 0;
 }
 
 Engine::~Engine() {
-    SDL_Quit();
+    TTF_Quit();
     IMG_Quit();
+    SDL_Quit();
 }

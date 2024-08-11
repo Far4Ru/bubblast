@@ -6,11 +6,11 @@ CXX      := g++
 CXXFLAGS :=
 
 ifeq ("$(OSTYPE)", "$(WINDOWS)")
-LDFLAGS  := -L SDL2/lib -mwindows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
+LDFLAGS  := -L SDL2/lib -mwindows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 INCLUDE  := -Iinclude/ -ISDL2/include/
 BUILD    := ./build/build-windows
 else
-LDFLAGS  := -lSDL2 -lSDL2_image
+LDFLAGS  := -lSDL2 -lSDL2_image -lSDL2_ttf
 INCLUDE  := -Iinclude/
 BUILD    := ./build/build-linux
 endif

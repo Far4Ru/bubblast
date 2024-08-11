@@ -52,12 +52,23 @@ void Renderer::render() {
     }
     SDL_RenderDrawLine(renderer, 10, 70, 100, 70);
     image->render(renderer);
+    
+    SDL_Rect abcPosition = {210,0,textSurface->w,textSurface->h};
+    SDL_RenderCopy(renderer,mTexture,NULL,&abcPosition);
     SDL_RenderPresent(renderer);
 }
 
 bool Renderer::load() {
     image = new ImageObject();
     image->load(renderer);
+
+    SDL_Color textColor = {255,0,0};
+  
+    TTF_Font* rFont = TTF_OpenFont("assets/fonts/WinterCat.ttf",52);
+    
+    textSurface = TTF_RenderText_Solid(rFont, "Text", textColor);
+
+    mTexture =  SDL_CreateTextureFromSurface(renderer ,textSurface);
 
     return true;
 }
