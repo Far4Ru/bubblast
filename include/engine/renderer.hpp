@@ -8,6 +8,7 @@
 #include "engine/image_loader.hpp"
 #include "engine/fps.hpp"
 #include "engine/text_object.hpp"
+#include "engine/sound_loader.hpp"
 
 class Renderer {
     public:
@@ -26,9 +27,8 @@ class Renderer {
         SDL_Renderer* renderer = NULL;
         TextObject* text = NULL;
         TTF_Font* font = NULL;
-        Mix_Chunk* fireMusic = NULL;
-        Mix_Music* music = NULL;
         FPS* fps = NULL;
         int x = 0, y = 0;
         ImageLoader* imageLoader = NULL;
+        SoundLoader* soundLoader = NULL;
 };

@@ -33,7 +33,7 @@ void Renderer::keyDown() {
         image->turnRight();
     }
     if (keyboard_state_array[SDL_SCANCODE_SPACE]) {
-        Mix_PlayChannel(-1,fireMusic,0);
+        Mix_PlayChannel(-1, soundLoader->getChunk("BubbleSpell"), 0);
     }
     if (keyboard_state_array[SDL_SCANCODE_1]) {
         Mix_PauseMusic();
@@ -46,7 +46,7 @@ void Renderer::keyDown() {
 void Renderer::start() {
     window->fill();
     load();
-    Mix_PlayMusic(music,-1);
+    Mix_PlayMusic(soundLoader->getMusic("PositiveEnergy"), -1);
 }
 
 void Renderer::render() {
@@ -71,10 +71,7 @@ void Renderer::render() {
 
 bool Renderer::load() {
     font = TTF_OpenFont("assets/fonts/WinterCat.ttf", 52);
-
-    fireMusic = Mix_LoadWAV("assets/sounds/BubbleSpell.wav");
-    music = Mix_LoadMUS("assets/sounds/PositiveEnergy.wav");
-
+    soundLoader = new SoundLoader();
     imageLoader = new ImageLoader();
     image = new ImageObject();
     image->load(renderer, imageLoader->get("wizard"));
