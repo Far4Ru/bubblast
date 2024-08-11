@@ -1,6 +1,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
 
 #include "window.hpp"
 #include "engine/image_object.hpp"
@@ -26,4 +27,6 @@ class Renderer {
         Uint32 b = 0;
         TTF_Font* rFont = NULL;
         SDL_Color textColor = {255,0,0};
+        Mix_Chunk* fireMusic = NULL;
+        Mix_Music* music = NULL;
 };

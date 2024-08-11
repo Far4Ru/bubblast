@@ -31,6 +31,15 @@ void Renderer::keyDown() {
         image->x += 10;
         image->turnRight();
     }
+    if (keyboard_state_array[SDL_SCANCODE_SPACE]) {
+        Mix_PlayChannel(-1,fireMusic,0);
+    }
+    if (keyboard_state_array[SDL_SCANCODE_1]) {
+        Mix_PauseMusic();
+    }
+    if (keyboard_state_array[SDL_SCANCODE_2]) {
+        Mix_ResumeMusic();
+    }
 }
 
 void Renderer::start() {
@@ -39,6 +48,7 @@ void Renderer::start() {
     SDL_FillRect(screen_surface, NULL, SDL_MapRGB(screen_surface->format, 255, 255, 255));
 
     load();
+    Mix_PlayMusic(music,-1);
 }
 
 void Renderer::render() {
@@ -72,6 +82,9 @@ bool Renderer::load() {
     image->load(renderer);
   
     rFont = TTF_OpenFont("assets/fonts/WinterCat.ttf",52);
+
+    fireMusic = Mix_LoadWAV("assets/sounds/BubbleSpell.wav");
+    music = Mix_LoadMUS("assets/sounds/PositiveEnergy.wav");
 
     return true;
 }

@@ -45,6 +45,8 @@ int Engine::init() {
     }
 
     TTF_Init();
+    
+    Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT,2,2048);
 
     return 0;
 }
