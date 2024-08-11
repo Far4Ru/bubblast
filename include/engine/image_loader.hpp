@@ -5,8 +5,8 @@
 #include <dirent.h>
 #include <vector>
 
-#define ASSETS_FOLDER "assets"
-#define ASSETS_FOLDER_PATH "assets/"
+#define ASSETS_FOLDER "assets/images"
+#define ASSETS_FOLDER_PATH "assets/images/"
 #define IMAGE_EXTENSION ".png"
 
 class ImageLoader {
