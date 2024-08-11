@@ -67,11 +67,8 @@ void Renderer::render() {
         image->render(renderer);
 
         SDL_GetMouseState(&x,&y);
-        
-        textSurface = TTF_RenderText_Solid(rFont, (fps->get() + " FPS. Mouse:" + std::to_string(x) + ":" + std::to_string(y)).c_str(), textColor);
-        mTexture =  SDL_CreateTextureFromSurface(renderer ,textSurface);
-        SDL_Rect abcPosition = {210,0,textSurface->w,textSurface->h};
-        SDL_RenderCopy(renderer,mTexture,NULL,&abcPosition);
+        text->setText(fps->get() + " FPS. Mouse:" + std::to_string(x) + ":" + std::to_string(y));
+        text->render(renderer, rFont);
         SDL_RenderPresent(renderer);
     }
 }
@@ -86,6 +83,7 @@ bool Renderer::load() {
     imageLoader = new ImageLoader();
     image = new ImageObject();
     image->load(renderer, imageLoader->get("wizard"));
+    text = new TextObject();
 
     return true;
 }
