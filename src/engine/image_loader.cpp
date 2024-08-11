@@ -27,6 +27,10 @@ void ImageLoader::getImageNames() {
     }
 }
 
+SDL_Surface* ImageLoader::get(std::string image) {
+    return images[image];
+}
+
 void ImageLoader::load() {
     for (const std::string& imageName : imageNames) {
         SDL_Surface* imageSurface = IMG_Load((ASSETS_FOLDER_PATH + imageName).c_str());

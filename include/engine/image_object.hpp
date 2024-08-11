@@ -17,7 +17,7 @@ class ImageObject {
         void turnRight();
 
         void render(SDL_Renderer* renderer);
-        bool load(SDL_Renderer* renderer);
+        bool load(SDL_Renderer* renderer, SDL_Surface* imageSurface);
     private:
         SDL_RendererFlip flipType = SDL_FLIP_NONE;
         SDL_Texture* texture = NULL;

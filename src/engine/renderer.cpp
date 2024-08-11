@@ -89,7 +89,7 @@ bool Renderer::load() {
 
     imageLoader = new ImageLoader();
     image = new ImageObject();
-    image->load(renderer);
+    image->load(renderer, imageLoader->get("wizard"));
 
     return true;
 }
