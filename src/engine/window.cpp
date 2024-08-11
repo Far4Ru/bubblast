@@ -18,6 +18,13 @@ SDL_Window* Window::get() {
     return window;
 }
 
+void Window::fill() {
+    /** surface */
+    screen_surface = SDL_GetWindowSurface(get());
+    SDL_FillRect(screen_surface, NULL, SDL_MapRGB(screen_surface->format, 255, 255, 255));
+}
+
 Window::~Window() {
+    SDL_FreeSurface(screen_surface);
     SDL_DestroyWindow(window);
 }

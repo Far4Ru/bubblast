@@ -22,14 +22,13 @@ class Renderer {
         Window* window;
     private:
         const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
-        SDL_Surface* screen_surface = NULL;
         ImageObject* image = NULL;
         SDL_Renderer* renderer = NULL;
         TextObject* text = NULL;
-        TTF_Font* rFont = NULL;
+        TTF_Font* font = NULL;
         Mix_Chunk* fireMusic = NULL;
         Mix_Music* music = NULL;
         FPS* fps = NULL;
-        int x=0,y=0;
+        int x = 0, y = 0;
         ImageLoader* imageLoader = NULL;
 };

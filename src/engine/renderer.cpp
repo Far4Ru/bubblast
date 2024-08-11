@@ -13,7 +13,6 @@ Renderer::Renderer() {
 
 Renderer::~Renderer() {
     imageLoader->~ImageLoader();
-    SDL_FreeSurface(screen_surface);
     image->~ImageObject();
     window->~Window();
 }
@@ -45,10 +44,7 @@ void Renderer::keyDown() {
 }
 
 void Renderer::start() {
-    /** surface */
-    screen_surface = SDL_GetWindowSurface(window->get());
-    SDL_FillRect(screen_surface, NULL, SDL_MapRGB(screen_surface->format, 255, 255, 255));
-
+    window->fill();
     load();
     Mix_PlayMusic(music,-1);
 }
@@ -68,14 +64,13 @@ void Renderer::render() {
 
         SDL_GetMouseState(&x,&y);
         text->setText(fps->get() + " FPS. Mouse:" + std::to_string(x) + ":" + std::to_string(y));
-        text->render(renderer, rFont);
+        text->render(renderer, font);
         SDL_RenderPresent(renderer);
     }
 }
 
 bool Renderer::load() {
-  
-    rFont = TTF_OpenFont("assets/fonts/WinterCat.ttf",52);
+    font = TTF_OpenFont("assets/fonts/WinterCat.ttf", 52);
 
     fireMusic = Mix_LoadWAV("assets/sounds/BubbleSpell.wav");
     music = Mix_LoadMUS("assets/sounds/PositiveEnergy.wav");
