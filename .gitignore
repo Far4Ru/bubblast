@@ -3,4 +3,4 @@ build
 
 # SDL
 SDL2/
-SDL2.dll
+*.dll
