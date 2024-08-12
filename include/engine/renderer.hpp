@@ -18,6 +18,7 @@ class Renderer {
         bool load();
         void start();
         void keyDown();
+        void add(RenderObject* object);
 
         Window* window;
     private:

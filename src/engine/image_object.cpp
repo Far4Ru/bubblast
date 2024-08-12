@@ -26,6 +26,16 @@ void ImageObject::turnRight() {
     flipType = SDL_FLIP_NONE;
 }
 
+void ImageObject::process() {
+    if (process_function) {
+        process_function();
+    }
+}
+
+void ImageObject::setProcess(std::function<void()> func) {
+    process_function = func;
+}
+
 void ImageObject::render(SDL_Renderer* renderer) {
     SDL_Rect rect1 = {x, y, width * scale, height * scale};
     SDL_RenderCopyEx(renderer, texture, NULL, &rect1, 0, NULL, flipType);

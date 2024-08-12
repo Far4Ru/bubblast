@@ -61,8 +61,8 @@ void Renderer::render() {
         }
         SDL_RenderDrawLine(renderer, 10, 70, 100, 70);
         
-        // text->setText(fps->get() + " FPS. Mouse:" + std::to_string(x) + ":" + std::to_string(y));
         for (RenderObject* render_object : render_queue) {
+            render_object->process();
             render_object->render(renderer);
         }
 
@@ -71,14 +71,21 @@ void Renderer::render() {
     }
 }
 
+void Renderer::add(RenderObject* object) {
+    render_queue.push_back(object);
+}
+
 bool Renderer::load() {
     loader = new Loader();
     image = new ImageObject();
     image->load(renderer, loader->getImage("wizard"));
-    render_queue.push_back(image);
+    add(image);
     text = new TextObject();
-    text->setText("Text");
+    auto textFunc = [&]() {
+        text->setText(fps->get() + " FPS. Mouse:" + std::to_string(x) + ":" + std::to_string(y));
+    };
+    text->setProcess(textFunc);
     text->setFont(loader->getFont("WinterCat"));
-    render_queue.push_back(text);
+    add(text);
     return true;
 }
