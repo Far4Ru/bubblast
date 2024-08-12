@@ -8,7 +8,11 @@ void TextObject::setText(std::string text) {
     this->text = text;
 }
 
-void TextObject::render(SDL_Renderer* renderer, TTF_Font* font) {
+void TextObject::setFont(TTF_Font* font) {
+    this->font = font;
+}
+
+void TextObject::render(SDL_Renderer* renderer) {
     textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
     mTexture =  SDL_CreateTextureFromSurface(renderer, textSurface);
     SDL_Rect abcPosition = { 210, 0, textSurface->w, textSurface->h };

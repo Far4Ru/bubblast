@@ -2,7 +2,9 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
-class ImageObject {
+#include "render_object.hpp"
+
+class ImageObject : public RenderObject {
     public:
         ImageObject();
         ~ImageObject();

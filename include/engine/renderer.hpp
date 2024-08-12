@@ -25,8 +25,8 @@ class Renderer {
         ImageObject* image = NULL;
         SDL_Renderer* renderer = NULL;
         TextObject* text = NULL;
-        TTF_Font* font = NULL;
         FPS* fps = NULL;
         int x = 0, y = 0;
         Loader* loader;
+        std::vector<RenderObject*> render_queue;
 };
