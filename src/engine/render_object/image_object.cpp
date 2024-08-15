@@ -1,4 +1,4 @@
-#include "engine/image_object.hpp"
+#include "engine/render_object/image_object.hpp"
 
 ImageObject::ImageObject() {
 

@@ -22,6 +22,7 @@ TARGET   := program
 SRC      :=                      \
    $(wildcard src/engine/*.cpp)    \
    $(wildcard src/engine/loader/*.cpp)    \
+   $(wildcard src/engine/render_object/*.cpp)    \
    $(wildcard src/game/*.cpp)    \
    $(wildcard src/*.cpp)         \
 

@@ -7,9 +7,9 @@
 #define RENDERER_H
 
 #include "window.hpp"
-#include "engine/image_object.hpp"
+#include "engine/render_object/image_object.hpp"
 #include "engine/fps.hpp"
-#include "engine/text_object.hpp"
+#include "engine/render_object/text_object.hpp"
 #include "engine/loader/loader.hpp"
 
 class Renderer {
