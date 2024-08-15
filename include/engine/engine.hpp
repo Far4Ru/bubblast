@@ -9,6 +9,7 @@
 #include "engine/sound_manager.hpp"
 #include "engine/keyboard_manager.hpp"
 #include "engine/fps.hpp"
+#include "engine/mouse_manager.hpp"
 
 class Engine {
     public:
@@ -19,10 +20,11 @@ class Engine {
         ObjectFactory* add;
         SoundManager* sound;
         KeyboardManager* keyboard;
+        FPS* fps;
+        MouseManager* mouse;
     private:
         Renderer* renderer;
         Loader* loader;
         int init();
         void close();
-        FPS* fps;
 };

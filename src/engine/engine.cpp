@@ -25,6 +25,7 @@ void Engine::start() {
         
         if (fps->tick()) {
             keyboard->process();
+            mouse->process();
             renderer->render();
         }
     }
@@ -55,6 +56,7 @@ int Engine::init() {
     sound = new SoundManager(loader);
     keyboard = new KeyboardManager();
     fps = new FPS();
+    mouse = new MouseManager();
     add = new ObjectFactory(renderer, loader);
 
     return 0;

@@ -25,6 +25,6 @@ void TextObject::setProcess(std::function<void()> func) {
 void TextObject::render(SDL_Renderer* renderer) {
     textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
     mTexture =  SDL_CreateTextureFromSurface(renderer, textSurface);
-    SDL_Rect abcPosition = { 210, 0, textSurface->w, textSurface->h };
+    SDL_Rect abcPosition = { x, y, textSurface->w, textSurface->h };
     SDL_RenderCopy(renderer, mTexture, NULL, &abcPosition);
 }

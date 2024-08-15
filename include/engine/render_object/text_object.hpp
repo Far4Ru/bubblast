@@ -13,6 +13,8 @@ class TextObject : public RenderObject {
         void setFont(TTF_Font* font);
         void process();
         void setProcess(std::function<void()> func);
+        int x = 0;
+        int y = 0;
     private:
         SDL_Texture* mTexture = NULL;
         SDL_Surface* textSurface = NULL;

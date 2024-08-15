@@ -17,19 +17,13 @@ class Renderer {
         ~Renderer();
 
         void render();
-        bool load();
         void start();
         void add(RenderObject* object);
         SDL_Renderer* get();
 
         Window* window;
     private:
-        const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
-        ImageObject* image = NULL;
         SDL_Renderer* renderer = NULL;
-        TextObject* text = NULL;
-        int x = 0, y = 0;
-        Loader* loader;
         std::vector<RenderObject*> render_queue;
 };
 

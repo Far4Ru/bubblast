@@ -11,3 +11,10 @@ ImageObject* ObjectFactory::image(std::string name) {
     renderer->add(image);
     return image;
 }
+
+TextObject* ObjectFactory::text(std::string name) {
+    TextObject* text = new TextObject();
+    text->setFont(loader->getFont(name));
+    renderer->add(text);
+    return text;
+}
