@@ -46,7 +46,6 @@ void Renderer::keyDown() {
 void Renderer::start() {
     window->fill();
     load();
-    Mix_PlayMusic(loader->getMusic("PositiveEnergy"), -1);
 }
 
 void Renderer::render() {
