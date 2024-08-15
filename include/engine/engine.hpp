@@ -7,6 +7,8 @@
 #include "object_factory.hpp"
 #include "engine/loader/loader.hpp"
 #include "engine/sound_manager.hpp"
+#include "engine/keyboard_manager.hpp"
+#include "engine/fps.hpp"
 
 class Engine {
     public:
@@ -14,11 +16,13 @@ class Engine {
         ~Engine();
 
         void start();
-        ObjectFactory* add = NULL;
+        ObjectFactory* add;
         SoundManager* sound;
+        KeyboardManager* keyboard;
     private:
-        Renderer* renderer = NULL;
+        Renderer* renderer;
         Loader* loader;
         int init();
         void close();
+        FPS* fps;
 };

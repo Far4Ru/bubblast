@@ -22,7 +22,11 @@ void Engine::start() {
                 }
             }
         }
-        renderer->render();
+        
+        if (fps->tick()) {
+            keyboard->process();
+            renderer->render();
+        }
     }
 }
 
@@ -49,6 +53,8 @@ int Engine::init() {
     Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT,2,2048);
     loader = new Loader();
     sound = new SoundManager(loader);
+    keyboard = new KeyboardManager();
+    fps = new FPS();
     add = new ObjectFactory(renderer, loader);
 
     return 0;
