@@ -21,3 +21,7 @@ The user controls a character trapped in the arena. Enemies of several types com
 - <...-w64-mingw32>/include -> \<project>/SDL2/include  
 - <...-w64-mingw32>/lib -> \<project>/SDL2/lib  
 - <...-w64-mingw32>/bin/SDL2.dll -> \<project>/SDL2.dll
+
+- mixer-devel-2.8.0-mingw (i686-w64-mingw32)
+- image-devel-2.8.2-mingw (i686-w64-mingw32)
+- ttf-devel-2.22.0-mingw (i686-w64-mingw32)
