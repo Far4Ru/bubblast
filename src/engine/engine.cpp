@@ -23,11 +23,11 @@ void Engine::start() {
             }
         }
         
-        if (fps->tick()) {
-            keyboard->process();
-            mouse->process();
-            renderer->render();
-        }
+        fps->start();
+        keyboard->process();
+        mouse->process();
+        renderer->render();
+        fps->end();
     }
 }
 

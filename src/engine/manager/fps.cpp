@@ -1,20 +1,26 @@
 #include "engine/manager/fps.hpp"
 
 FPS::FPS() {
-
+    fpsTimer.start();
 }
 
 std::string FPS::get() {
     return value;
 }
 
-bool FPS::tick() {
-    Uint32 a = SDL_GetTicks();
-    Uint32 delta = a - b;
-    bool isTick = delta > 1000 / 60;
-    if (isTick) {
-        b = a;
-        value = std::to_string(1000 / delta);
+void FPS::start() {
+    capTimer.start();
+    float avgFPS = countedFrames / ( fpsTimer.get_ticks() / 1000.f );
+    if (avgFPS > 2000000) {
+        avgFPS = 0;
     }
-    return isTick;
+    value = std::to_string(avgFPS);
+}
+
+void FPS::end() {
+    ++countedFrames;
+    int frameTicks = capTimer.get_ticks();
+    if (frameTicks < 1000 / 60) {
+        SDL_Delay(1000 / 60 - frameTicks);
+    }
 }

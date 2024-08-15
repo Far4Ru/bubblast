@@ -1,13 +1,18 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 
+#include "engine/timer.hpp"
+
 class FPS {
     public:
         FPS();
 
         std::string get();
-        bool tick();
+        void start();
+        void end();
     private:
-        Uint32 b = 0;
         std::string value = "";
+        Timer fpsTimer;
+        Timer capTimer;
+        int countedFrames = 0;
 };
