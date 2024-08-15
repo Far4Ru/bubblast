@@ -6,10 +6,10 @@
 #include "engine/renderer.hpp"
 #include "object_factory.hpp"
 #include "engine/loader/loader.hpp"
-#include "engine/sound_manager.hpp"
-#include "engine/keyboard_manager.hpp"
-#include "engine/fps.hpp"
-#include "engine/mouse_manager.hpp"
+#include "engine/manager/sound_manager.hpp"
+#include "engine/manager/keyboard_manager.hpp"
+#include "engine/manager/fps.hpp"
+#include "engine/manager/mouse_manager.hpp"
 
 class Engine {
     public:
