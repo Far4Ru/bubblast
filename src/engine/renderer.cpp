@@ -75,6 +75,10 @@ void Renderer::add(RenderObject* object) {
     render_queue.push_back(object);
 }
 
+SDL_Renderer* Renderer::get() {
+    return renderer;
+}
+
 bool Renderer::load() {
     loader = new Loader();
     image = new ImageObject();

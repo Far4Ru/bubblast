@@ -1,10 +1,10 @@
 #include "game/game.hpp"
 #include "engine/engine.hpp"
 
-extern Engine engine;
+extern Engine* engine;
 
 Game::Game() {
-    engine.start();
-    // image = engine.add.image("wizard");
-    // image.x = 50;
+    ImageObject* image = engine->add->image("bg_back");
+    image->x = 50;
+    engine->start();
 }

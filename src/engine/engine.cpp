@@ -47,6 +47,8 @@ int Engine::init() {
     TTF_Init();
     
     Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT,2,2048);
+    loader = new Loader();
+    add = new ObjectFactory(renderer, loader);
 
     return 0;
 }

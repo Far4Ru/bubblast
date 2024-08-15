@@ -3,6 +3,9 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
 
+#ifndef RENDERER_H
+#define RENDERER_H
+
 #include "window.hpp"
 #include "engine/image_object.hpp"
 #include "engine/fps.hpp"
@@ -19,6 +22,7 @@ class Renderer {
         void start();
         void keyDown();
         void add(RenderObject* object);
+        SDL_Renderer* get();
 
         Window* window;
     private:
@@ -31,3 +35,5 @@ class Renderer {
         Loader* loader;
         std::vector<RenderObject*> render_queue;
 };
+
+#endif
