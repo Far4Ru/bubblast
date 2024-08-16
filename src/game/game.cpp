@@ -1,12 +1,10 @@
 #include "game/game.hpp"
-#include "engine/engine.hpp"
 
 extern Engine* engine;
 
 Game::Game() {
     engine->sound->playMusic("PositiveEnergy");
-    ImageObject* bg_front = engine->add->image("bg_front");
-    ImageObject* bg_back = engine->add->image("bg_frame");
+    Background* background = new Background();
     ImageObject* player = engine->add->image("wizard");
     TextObject* fps_text = engine->add->text("WinterCat");
     auto textFunc = [&]() {

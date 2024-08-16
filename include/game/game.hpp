@@ -1,7 +1,5 @@
-#pragma once
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <math.h>
+#include "engine/engine.hpp"
+#include "game/background.hpp"
 
 class Game {
     public:

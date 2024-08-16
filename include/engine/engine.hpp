@@ -3,6 +3,9 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
 
+#ifndef ENGINE_H
+#define ENGINE_H
+
 #include "engine/renderer.hpp"
 #include "engine/factory/object_factory.hpp"
 #include "engine/loader/loader.hpp"
@@ -28,3 +31,5 @@ class Engine {
         int init();
         void close();
 };
+
+#endif
