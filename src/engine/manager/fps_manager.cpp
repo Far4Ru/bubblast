@@ -1,4 +1,4 @@
-#include "engine/manager/fps.hpp"
+#include "engine/manager/fps_manager.hpp"
 
 FPS::FPS() {
     fpsTimer.start();

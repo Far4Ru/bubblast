@@ -4,11 +4,11 @@
 #include <SDL2/SDL_mixer.h>
 
 #include "engine/renderer.hpp"
-#include "object_factory.hpp"
+#include "engine/factory/object_factory.hpp"
 #include "engine/loader/loader.hpp"
 #include "engine/manager/sound_manager.hpp"
 #include "engine/manager/keyboard_manager.hpp"
-#include "engine/manager/fps.hpp"
+#include "engine/manager/fps_manager.hpp"
 #include "engine/manager/mouse_manager.hpp"
 
 class Engine {

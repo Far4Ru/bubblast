@@ -1,4 +1,4 @@
-#include "engine/object_factory.hpp"
+#include "engine/factory/object_factory.hpp"
 
 ObjectFactory::ObjectFactory(Renderer* renderer, Loader* loader) {
     this->renderer = renderer;
