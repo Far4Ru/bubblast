@@ -1,5 +1,5 @@
 #define GAME_NAME "Isekai Quest"
-#define WIDTH 800
+#define WIDTH 1600
 #define HEIGHT 800
 #define GAME_ERROR_WINDOW_CREATE "Could not create window: "
 

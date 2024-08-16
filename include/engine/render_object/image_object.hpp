@@ -13,7 +13,7 @@ class ImageObject : public RenderObject {
         int y = 0;
         int width = 100;
         int height = 100;
-        int scale = 1;
+        float scale = 1;
 
         void turnLeft();
         void turnRight();

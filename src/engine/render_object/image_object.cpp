@@ -10,6 +10,8 @@ ImageObject::~ImageObject() {
 
 bool ImageObject::load(SDL_Renderer* renderer, SDL_Surface* imageSurface) {
     texture = SDL_CreateTextureFromSurface(renderer, imageSurface);
+    width = imageSurface->w;
+    height = imageSurface->h;
 
     if (texture == NULL) {
         std::cout << "Can't create texture from surface: " << SDL_GetError() << std::endl;

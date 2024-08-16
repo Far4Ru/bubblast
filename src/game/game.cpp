@@ -5,7 +5,9 @@ extern Engine* engine;
 
 Game::Game() {
     engine->sound->playMusic("PositiveEnergy");
-    ImageObject* image = engine->add->image("wizard");
+    ImageObject* bg_front = engine->add->image("bg_front");
+    ImageObject* bg_back = engine->add->image("bg_frame");
+    ImageObject* player = engine->add->image("wizard");
     TextObject* fps_text = engine->add->text("WinterCat");
     auto textFunc = [&]() {
         fps_text->setText(engine->fps->get() + " FPS");
@@ -20,34 +22,51 @@ Game::Game() {
     mouse_text->setProcess(mouse_text_func);
     mouse_text->x = 400;
     mouse_text->y = 0;
-    image->x = 50;
+    player->x = 50;
+    player->scale = 0.25;
     engine->keyboard->add(SDL_SCANCODE_UP, [&]() {
-        image->y -= 10;
+        if (player->y > 0) {
+            player->y -= 10;
+        }
     });
     engine->keyboard->add(SDL_SCANCODE_W, [&]() {
-        image->y -= 10;
+        if (player->y > 0) {
+            player->y -= 10;
+        }
     });
     engine->keyboard->add(SDL_SCANCODE_DOWN, [&]() {
-        image->y += 10;
+        if (player->y < HEIGHT) {
+            player->y += 10;
+        }
     });
     engine->keyboard->add(SDL_SCANCODE_S, [&]() {
-        image->y += 10;
+        if (player->y < HEIGHT) {
+            player->y += 10;
+        }
     });
     engine->keyboard->add(SDL_SCANCODE_LEFT, [&]() {
-        image->x -= 10;
-        image->turnLeft();
+        if (player->x > 0) {
+            player->x -= 10;
+            player->turnLeft();
+        }
     });
     engine->keyboard->add(SDL_SCANCODE_A, [&]() {
-        image->x -= 10;
-        image->turnLeft();
+        if (player->x > 0) {
+            player->x -= 10;
+            player->turnLeft();
+        }
     });
     engine->keyboard->add(SDL_SCANCODE_RIGHT, [&]() {
-        image->x += 10;
-        image->turnRight();
+        if (player->x < WIDTH) {
+            player->x += 10;
+            player->turnRight();
+        }
     });
     engine->keyboard->add(SDL_SCANCODE_D, [&]() {
-        image->x += 10;
-        image->turnRight();
+        if (player->x < WIDTH) {
+            player->x += 10;
+            player->turnRight();
+        }
     });
     engine->keyboard->add(SDL_SCANCODE_SPACE, [&]() {
         engine->sound->playSound("BubbleSpell");
