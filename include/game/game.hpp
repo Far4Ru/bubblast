@@ -4,6 +4,7 @@
 #include "game/sound.hpp"
 #include "game/fps_text.hpp"
 #include "game/mouse_text.hpp"
+#include "game/bullet_manager.hpp"
 
 class Game {
     public:
