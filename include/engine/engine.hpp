@@ -32,4 +32,6 @@ class Engine {
         void close();
 };
 
+extern Engine* engine;
+
 #endif
