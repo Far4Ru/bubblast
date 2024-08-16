@@ -14,7 +14,8 @@ void FPS::start() {
     if (avgFPS > 2000000) {
         avgFPS = 0;
     }
-    value = std::to_string(avgFPS);
+    int int_value = std::round(avgFPS);
+    value = std::to_string(int_value);
 }
 
 void FPS::end() {

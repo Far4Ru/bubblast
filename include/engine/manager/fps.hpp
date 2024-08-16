@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <iostream>
+#include <math.h>
 
 #include "engine/timer.hpp"
 
