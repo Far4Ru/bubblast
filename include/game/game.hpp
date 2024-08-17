@@ -14,7 +14,8 @@ class Game {
         Game();
         void start();
 
-        Player* player; 
+        Player* player;
+        Sound* sound;
         BulletManager* bullet_manager;
 };
 

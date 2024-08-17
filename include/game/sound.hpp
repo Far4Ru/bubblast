@@ -3,4 +3,6 @@
 class Sound {
     public:
         Sound();
+
+        void playFire();
 };

@@ -6,6 +6,7 @@ BulletManager::BulletManager() {
         int ticks = timer.get_ticks();
         if (ticks > 10 * (1000 / 60)) {
             Bullet* bullet = new Bullet(game->player->x, game->player->y);
+            game->sound->playFire();
             timer.start();
         }
     });
