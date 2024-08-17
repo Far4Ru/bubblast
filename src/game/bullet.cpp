@@ -22,7 +22,7 @@ Bullet::Bullet() {
 }
 
 void Bullet::calc(SDL_FPoint* first, SDL_FPoint* second, SDL_FPoint* velocity) {
-    int steps = std::max(abs(first->x - second->x), abs(first->y - first->y));
+    int steps = std::max(abs(first->x - second->x), abs(first->y - second->y));
 
     if (steps == 0) {
         velocity->x = velocity->y = 0;
