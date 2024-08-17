@@ -1,25 +1,36 @@
 #include "game/bullet.hpp"
 
 Bullet::Bullet() {
-    ImageObject* bullet = engine->add->image("bullet_bubble");
-    bullet->scale = 0.1;
-    bullet->y -= (bullet->height / 2 * bullet->scale);
-    bullet->x -= (bullet->width / 2) * bullet->scale;
+    bullet_image = engine->add->image("bullet_bubble");
+    bullet_image->scale = 0.1;
+    bullet_image->y -= (bullet_image->height / 2 * bullet_image->scale);
+    bullet_image->x -= (bullet_image->width / 2) * bullet_image->scale;
 
-    auto bullet_func = [&, bullet]() {
-        int speed = 10;
-        SDL_FPoint first;
-        first.x = engine->mouse->x;
-        first.y = engine->mouse->y;
-        SDL_FPoint second;
-        second.x = bullet->x + (bullet->height / 2 * bullet->scale);
-        second.y = bullet->y + (bullet->width / 2 * bullet->scale);
-        SDL_FPoint velocity;
-        calc(&first, &second, &velocity);
-        bullet->x += velocity.x * speed;
-        bullet->y += velocity.y * speed;
+    auto bullet_func = [&]() {
+        if (life == 60) {
+            updateVelocity();
+        }
+        if (life > 0) {
+            bullet_image->x += velocity.x * speed;
+            bullet_image->y += velocity.y * speed;
+            life--;
+        }
     };
-    bullet->setProcess(bullet_func);
+    engine->keyboard->add(SDL_SCANCODE_SPACE, [&]() {
+        life = 60;
+    });
+    bullet_image->setProcess(bullet_func);
+}
+
+void Bullet::updateVelocity() {
+    SDL_FPoint first;
+    first.x = engine->mouse->x;
+    first.y = engine->mouse->y;
+    SDL_FPoint second;
+    second.x = bullet_image->x + (bullet_image->height / 2 * bullet_image->scale);
+    second.y = bullet_image->y + (bullet_image->width / 2 * bullet_image->scale);
+    velocity;
+    calc(&first, &second, &velocity);
 }
 
 void Bullet::calc(SDL_FPoint* first, SDL_FPoint* second, SDL_FPoint* velocity) {
