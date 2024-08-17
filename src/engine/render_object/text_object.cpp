@@ -4,6 +4,10 @@ TextObject::TextObject() {
 
 }
 
+TextObject::~TextObject() {
+
+}
+
 void TextObject::setText(std::string text) {
     this->text = text;
 }

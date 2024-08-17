@@ -7,6 +7,7 @@
 class TextObject : public RenderObject {
     public:
         TextObject();
+        ~TextObject();
 
         void render(SDL_Renderer* renderer) override;
         void setText(std::string text);

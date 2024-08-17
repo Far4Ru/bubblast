@@ -27,6 +27,7 @@ void Renderer::render() {
             render_object->render(renderer);
         } else {
             remove(render_object);
+            render_object->destroy();
         }
     }
 
