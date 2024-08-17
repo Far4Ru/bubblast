@@ -8,6 +8,7 @@ class ImageObject : public RenderObject {
     public:
         ImageObject();
         ~ImageObject();
+        void destroy();
 
         float x = 0;
         float y = 0;

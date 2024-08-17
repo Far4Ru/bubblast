@@ -1,5 +1,7 @@
 #include "game/bullet_manager.hpp"
 
 BulletManager::BulletManager() {
-    Bullet* bullet = new Bullet();
+    engine->keyboard->add(SDL_SCANCODE_SPACE, [&]() {
+        Bullet* bullet = new Bullet();
+    });
 }

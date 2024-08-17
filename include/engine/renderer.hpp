@@ -19,6 +19,7 @@ class Renderer {
         void render();
         void start();
         void add(RenderObject* object);
+        void remove(RenderObject* object);
         SDL_Renderer* get();
 
         Window* window;

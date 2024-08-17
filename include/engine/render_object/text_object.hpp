@@ -13,6 +13,7 @@ class TextObject : public RenderObject {
         void setFont(TTF_Font* font);
         void process();
         void setProcess(std::function<void()> func);
+        void destroy();
         int x = 0;
         int y = 0;
     private:

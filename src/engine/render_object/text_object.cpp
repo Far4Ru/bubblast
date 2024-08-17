@@ -18,6 +18,10 @@ void TextObject::process() {
     }
 }
 
+void TextObject::destroy() {
+    this->~TextObject();
+}
+
 void TextObject::setProcess(std::function<void()> func) {
     process_function = func;
 }

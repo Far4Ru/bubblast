@@ -9,7 +9,9 @@ class RenderObject {
     public:
         virtual void render(SDL_Renderer* renderer) = 0;
         virtual void process() = 0;
+        virtual void destroy() = 0;
         virtual ~RenderObject() = default;
+        bool active = true;
 };
 
 #endif

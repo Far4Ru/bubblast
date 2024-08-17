@@ -20,6 +20,10 @@ bool ImageObject::load(SDL_Renderer* renderer, SDL_Surface* imageSurface) {
     return true;
 }
 
+void ImageObject::destroy() {
+    this->~ImageObject();
+}
+
 void ImageObject::turnLeft() {
     flipType = SDL_FLIP_HORIZONTAL;
 }

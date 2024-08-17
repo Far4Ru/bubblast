@@ -14,11 +14,10 @@ Bullet::Bullet() {
             bullet_image->x += velocity.x * speed;
             bullet_image->y += velocity.y * speed;
             life--;
+        } else {
+            bullet_image->active = false;
         }
     };
-    engine->keyboard->add(SDL_SCANCODE_SPACE, [&]() {
-        life = MAX_BULLET_LIFE;
-    });
     bullet_image->setProcess(bullet_func);
 }
 

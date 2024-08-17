@@ -22,8 +22,12 @@ void Renderer::render() {
     SDL_RenderClear(renderer);
 
     for (RenderObject* render_object : render_queue) {
-        render_object->process();
-        render_object->render(renderer);
+        if (render_object->active) {
+            render_object->process();
+            render_object->render(renderer);
+        } else {
+            remove(render_object);
+        }
     }
 
     SDL_RenderPresent(renderer);
@@ -31,6 +35,10 @@ void Renderer::render() {
 
 void Renderer::add(RenderObject* object) {
     render_queue.push_back(object);
+}
+
+void Renderer::remove(RenderObject* object) {
+    render_queue.erase(std::remove(render_queue.begin(), render_queue.end(), object), render_queue.end());
 }
 
 SDL_Renderer* Renderer::get() {
