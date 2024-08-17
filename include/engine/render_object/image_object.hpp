@@ -9,8 +9,8 @@ class ImageObject : public RenderObject {
         ImageObject();
         ~ImageObject();
 
-        int x = 0;
-        int y = 0;
+        float x = 0;
+        float y = 0;
         int width = 100;
         int height = 100;
         float scale = 1;
