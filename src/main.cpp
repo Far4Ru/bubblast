@@ -2,8 +2,9 @@
 #include "game/game.hpp"
 
 Engine* engine = new Engine();
+Game* game = new Game();
 
 int main(int argc, char *argv[]) {
-    Game* game = new Game();
+    game->start();
     return EXIT_SUCCESS;
 }

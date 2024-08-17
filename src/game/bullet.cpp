@@ -1,8 +1,10 @@
 #include "game/bullet.hpp"
 
-Bullet::Bullet() {
+Bullet::Bullet(int x, int y) {
     bullet_image = engine->add->image("bullet_bubble");
     bullet_image->scale = 0.1;
+    bullet_image->x = x;
+    bullet_image->y = y;
     bullet_image->y -= (bullet_image->height / 2 * bullet_image->scale);
     bullet_image->x -= (bullet_image->width / 2) * bullet_image->scale;
 

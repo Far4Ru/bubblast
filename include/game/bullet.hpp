@@ -5,7 +5,7 @@
 
 class Bullet {
     public:
-        Bullet();
+        Bullet(int x, int y);
     private:
         void calc(SDL_FPoint* first, SDL_FPoint* second, SDL_FPoint* velocity);
         void updateVelocity();

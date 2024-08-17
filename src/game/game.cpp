@@ -2,10 +2,13 @@
 
 Game::Game() {
     Background* background = new Background();
-    Player* player = new Player();
+    player = new Player();
     Sound* sound = new Sound();
     FPSText* fps_text = new FPSText();
     MouseText* mouse_text = new MouseText();
-    BulletManager* bullet_manager = new BulletManager();
+    bullet_manager = new BulletManager();
+}
+
+void Game::start() {
     engine->start();
 }
