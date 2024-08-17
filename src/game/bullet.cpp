@@ -7,7 +7,7 @@ Bullet::Bullet() {
     bullet_image->x -= (bullet_image->width / 2) * bullet_image->scale;
 
     auto bullet_func = [&]() {
-        if (life == 60) {
+        if (life == MAX_BULLET_LIFE) {
             updateVelocity();
         }
         if (life > 0) {
@@ -17,7 +17,7 @@ Bullet::Bullet() {
         }
     };
     engine->keyboard->add(SDL_SCANCODE_SPACE, [&]() {
-        life = 60;
+        life = MAX_BULLET_LIFE;
     });
     bullet_image->setProcess(bullet_func);
 }
@@ -29,7 +29,6 @@ void Bullet::updateVelocity() {
     SDL_FPoint second;
     second.x = bullet_image->x + (bullet_image->height / 2 * bullet_image->scale);
     second.y = bullet_image->y + (bullet_image->width / 2 * bullet_image->scale);
-    velocity;
     calc(&first, &second, &velocity);
 }
 
