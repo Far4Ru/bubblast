@@ -6,7 +6,7 @@ Bullet::Bullet() {
     bullet->y -= (bullet->height / 2 * bullet->scale);
     bullet->x -= (bullet->width / 2) * bullet->scale;
 
-    auto mouse_text_func = [&, bullet]() {
+    auto bullet_func = [&, bullet]() {
         int speed = 10;
         SDL_FPoint first;
         first.x = engine->mouse->x;
@@ -19,7 +19,7 @@ Bullet::Bullet() {
         bullet->x += velocity.x * speed;
         bullet->y += velocity.y * speed;
     };
-    bullet->setProcess(mouse_text_func);
+    bullet->setProcess(bullet_func);
 }
 
 void Bullet::calc(SDL_FPoint* first, SDL_FPoint* second, SDL_FPoint* velocity) {
@@ -32,5 +32,4 @@ void Bullet::calc(SDL_FPoint* first, SDL_FPoint* second, SDL_FPoint* velocity) {
 
     velocity->x = (first->x - second->x) / steps;
     velocity->y = (first->y - second->y) / steps;
-
 }
