@@ -1,6 +1,6 @@
 #include "engine/engine.hpp"
 
-class Enemy {
+class Enemy : public CollisionObject  {
     public:
         Enemy(int x, int y, std::string name);
         void updateVelocity();
