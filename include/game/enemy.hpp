@@ -2,7 +2,7 @@
 
 class Enemy {
     public:
-        Enemy(int x, int y);
+        Enemy(int x, int y, std::string name);
         void updateVelocity();
     private:
         ImageObject* enemy_image;

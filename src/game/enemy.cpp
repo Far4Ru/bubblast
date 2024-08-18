@@ -1,7 +1,7 @@
 #include "game/game.hpp"
 
-Enemy::Enemy(int x, int y) {
-    enemy_image = engine->add->image("candy_1");
+Enemy::Enemy(int x, int y, std::string name) {
+    enemy_image = engine->add->image(name);
     enemy_image->scale = 0.5;
     enemy_image->x = x;
     enemy_image->y = y;
