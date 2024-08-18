@@ -8,6 +8,8 @@
 #include "game/fps_text.hpp"
 #include "game/mouse_text.hpp"
 #include "game/bullet_manager.hpp"
+#include "game/enemy_manager.hpp"
+#include "game/utils.hpp"
 
 class Game {
     public:
@@ -17,6 +19,8 @@ class Game {
         Player* player;
         Sound* sound;
         BulletManager* bullet_manager;
+        EnemyManager* enemy_manager;
+        Utils* utils;
 };
 
 extern Game* game;

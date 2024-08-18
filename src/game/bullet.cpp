@@ -1,4 +1,5 @@
 #include "game/bullet.hpp"
+#include "game/game.hpp"
 
 Bullet::Bullet(int x, int y) {
     bullet_image = engine->add->image("bullet_bubble");
@@ -30,17 +31,5 @@ void Bullet::updateVelocity() {
     SDL_FPoint second;
     second.x = bullet_image->x + (bullet_image->height / 2 * bullet_image->scale);
     second.y = bullet_image->y + (bullet_image->width / 2 * bullet_image->scale);
-    calc(&first, &second, &velocity);
-}
-
-void Bullet::calc(SDL_FPoint* first, SDL_FPoint* second, SDL_FPoint* velocity) {
-    int steps = std::max(abs(first->x - second->x), abs(first->y - second->y));
-
-    if (steps == 0) {
-        velocity->x = velocity->y = 0;
-        return;
-    }
-
-    velocity->x = (first->x - second->x) / steps;
-    velocity->y = (first->y - second->y) / steps;
+    game->utils->calc(&first, &second, &velocity);
 }

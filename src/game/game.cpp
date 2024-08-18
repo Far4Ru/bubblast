@@ -7,6 +7,8 @@ Game::Game() {
     FPSText* fps_text = new FPSText();
     MouseText* mouse_text = new MouseText();
     bullet_manager = new BulletManager();
+    enemy_manager = new EnemyManager();
+    utils = new Utils();
 }
 
 void Game::start() {
