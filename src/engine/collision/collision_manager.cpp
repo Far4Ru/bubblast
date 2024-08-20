@@ -13,5 +13,7 @@ void CollisionManager::remove(CollisionObject* object) {
 }
 
 void CollisionManager::check() {
-    
+    for (const CollisionObject* collision_object : collision_objects) {
+        // TODO: - check method
+    }
 }
