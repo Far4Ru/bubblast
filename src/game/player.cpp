@@ -63,3 +63,7 @@ void Player::update() {
     x = player->x + (player->width / 2) * player->scale;
     y = player->y + (player->height / 2) * player->scale;
 }
+
+void Player::updateVelocity() {
+    
+}
