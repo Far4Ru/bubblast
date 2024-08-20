@@ -1,10 +1,10 @@
-#include "game/utils.hpp"
+#include "engine/utils/axis_computing.hpp"
 
-Utils::Utils() {
+AxisComputing::AxisComputing() {
 
 }
 
-void Utils::calc(SDL_FPoint* first, SDL_FPoint* second, SDL_FPoint* velocity) {
+void AxisComputing::computeVelocity(SDL_FPoint* first, SDL_FPoint* second, SDL_FPoint* velocity) {
     int steps = std::max(std::abs(first->x - second->x), std::abs(first->y - second->y));
 
     if (steps == 0) {

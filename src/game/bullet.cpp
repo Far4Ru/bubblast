@@ -31,5 +31,5 @@ void Bullet::updateVelocity() {
     SDL_FPoint second;
     second.x = bullet_image->x + (bullet_image->height / 2 * bullet_image->scale);
     second.y = bullet_image->y + (bullet_image->width / 2 * bullet_image->scale);
-    game->utils->calc(&first, &second, &velocity);
+    engine->axis_computing->computeVelocity(&first, &second, &velocity);
 }

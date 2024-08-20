@@ -26,6 +26,7 @@ void Engine::start() {
         fps->start();
         keyboard->process();
         mouse->process();
+        collision->check();
         renderer->render();
         fps->end();
     }
@@ -58,6 +59,8 @@ int Engine::init() {
     fps = new FPS();
     mouse = new MouseManager();
     add = new ObjectFactory(renderer, loader);
+    axis_computing = new AxisComputing();
+    collision = new CollisionManager();
 
     return 0;
 }

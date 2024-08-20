@@ -20,7 +20,7 @@ void Enemy::updateVelocity() {
     SDL_FPoint second;
     second.x = enemy_image->x + (enemy_image->width / 2 * enemy_image->scale);
     second.y = enemy_image->y + (enemy_image->height / 2 * enemy_image->scale);
-    game->utils->calc(&first, &second, &velocity);
+    engine->axis_computing->computeVelocity(&first, &second, &velocity);
 
     enemy_image->x += velocity.x * 3;
     enemy_image->y += velocity.y * 3;

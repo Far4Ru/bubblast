@@ -1,5 +1,5 @@
 #include "engine/engine.hpp"
-#include "game/collision_object.hpp"
+#include "engine/collision/collision_object.hpp"
 
 class Enemy : public CollisionObject  {
     public:

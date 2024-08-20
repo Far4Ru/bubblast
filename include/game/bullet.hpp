@@ -2,7 +2,7 @@
 #define BULLET_H
 
 #include "engine/engine.hpp"
-#include "game/collision_object.hpp"
+#include "engine/collision/collision_object.hpp"
 
 #define MAX_BULLET_LIFE 60
 
