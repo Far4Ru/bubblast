@@ -9,6 +9,7 @@
 #include "game/mouse_text.hpp"
 #include "game/bullet_manager.hpp"
 #include "game/enemy_manager.hpp"
+#include "game/collision_manager.hpp"
 #include "game/utils.hpp"
 
 class Game {
@@ -20,7 +21,8 @@ class Game {
         Sound* sound;
         BulletManager* bullet_manager;
         EnemyManager* enemy_manager;
-        Utils* utils;
+        CollisionManager* collision_manager;
+        Utils* utils; // TODO: - move to engine
 };
 
 extern Game* game;

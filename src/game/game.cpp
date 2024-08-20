@@ -8,6 +8,7 @@ Game::Game() {
     MouseText* mouse_text = new MouseText();
     bullet_manager = new BulletManager();
     enemy_manager = new EnemyManager();
+    collision_manager = new CollisionManager();
     utils = new Utils();
 }
 
