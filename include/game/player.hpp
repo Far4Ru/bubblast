@@ -6,6 +6,7 @@ class Player : public CollisionObject {
         Player();
         int x = 0, y = 0;
         void updateVelocity();
+        void updateSides();
     private:
         ImageObject* player;
         void update();

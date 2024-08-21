@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <SDL2/SDL.h>
 #include "engine/collision/collision_object.hpp"
 
 class CollisionManager {
@@ -8,7 +9,8 @@ class CollisionManager {
         CollisionManager();
         void add(CollisionObject* object);
         void remove(CollisionObject* object);
-        void check();
+        void process();
+        bool check(CollisionObject* first, CollisionObject* second);
     private:
         std::vector<CollisionObject*> collision_objects;
 };

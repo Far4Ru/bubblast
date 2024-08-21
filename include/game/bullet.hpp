@@ -10,6 +10,7 @@ class Bullet : public CollisionObject {
     public:
         Bullet(int x, int y);
         void updateVelocity();
+        void updateSides();
     private:
         int life = MAX_BULLET_LIFE;
         int speed = 10;

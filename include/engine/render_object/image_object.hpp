@@ -15,6 +15,7 @@ class ImageObject : public RenderObject {
         int width = 100;
         int height = 100;
         float scale = 1;
+        SDL_Rect crop;
 
         void turnLeft();
         void turnRight();

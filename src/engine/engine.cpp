@@ -26,7 +26,7 @@ void Engine::start() {
         fps->start();
         keyboard->process();
         mouse->process();
-        collision->check();
+        collision->process();
         renderer->render();
         fps->end();
     }

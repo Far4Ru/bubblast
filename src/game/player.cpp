@@ -2,8 +2,13 @@
 
 Player::Player() {
     player = engine->add->image("wizard");
+    SDL_Rect crop = { 308, 199, 439, 629 };
     player->x = 50;
     player->scale = 0.25;
+    engine->collision->add(this);
+    player->crop = crop;
+    player->width = crop.w;
+    player->height = crop.h;
     update();
     engine->keyboard->add(SDL_SCANCODE_UP, [&]() {
         if (player->y > 0) {
@@ -57,6 +62,7 @@ Player::Player() {
             update();
         }
     });
+    type = PLAYER;
 }
 
 void Player::update() {
@@ -65,5 +71,12 @@ void Player::update() {
 }
 
 void Player::updateVelocity() {
-    
+    updateSides();
+}
+
+void Player::updateSides() {
+    left = player->x - (player->width / 2) * player->scale;
+    right = player->x + (player->width / 2) * player->scale;
+    top = player->y - (player->height / 2) * player->scale;
+    bottom = player->y + (player->height / 2) * player->scale;
 }
