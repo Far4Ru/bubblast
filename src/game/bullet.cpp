@@ -25,6 +25,7 @@ Bullet::Bullet(int x, int y) {
             bullet_image->x += velocity.x * speed;
             bullet_image->y += velocity.y * speed;
             life--;
+            updateSides();
         } else {
             bullet_image->active = false;
         }
@@ -42,12 +43,11 @@ void Bullet::updateVelocity() {
     second.x = bullet_image->x + (bullet_image->height / 2 * bullet_image->scale);
     second.y = bullet_image->y + (bullet_image->width / 2 * bullet_image->scale);
     engine->axis_computing->computeVelocity(&first, &second, &velocity);
-    updateSides();
 }
 
 void Bullet::updateSides() {
-    left = bullet_image->x - (bullet_image->width / 2) * bullet_image->scale;
-    right = bullet_image->x + (bullet_image->width / 2) * bullet_image->scale;
-    top = bullet_image->y - (bullet_image->height / 2) * bullet_image->scale;
-    bottom = bullet_image->y + (bullet_image->height / 2) * bullet_image->scale;
+    left = bullet_image->x;
+    right = bullet_image->x + bullet_image->width * bullet_image->scale;
+    top = bullet_image->y;
+    bottom = bullet_image->y + bullet_image->height * bullet_image->scale;
 }

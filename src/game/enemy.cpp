@@ -47,10 +47,10 @@ void Enemy::updateVelocity() {
 }
 
 void Enemy::updateSides() {
-    left = enemy_image->x - (enemy_image->width / 2) * enemy_image->scale;
-    right = enemy_image->x + (enemy_image->width / 2) * enemy_image->scale;
-    top = enemy_image->y - (enemy_image->height / 2) * enemy_image->scale;
-    bottom = enemy_image->y + (enemy_image->height / 2) * enemy_image->scale;
+    left = enemy_image->x;
+    right = enemy_image->x + enemy_image->width * enemy_image->scale;
+    top = enemy_image->y;
+    bottom = enemy_image->y + enemy_image->height * enemy_image->scale;
 }
 
 void Enemy::destroy() {

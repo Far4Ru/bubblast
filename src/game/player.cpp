@@ -75,8 +75,8 @@ void Player::updateVelocity() {
 }
 
 void Player::updateSides() {
-    left = player->x - (player->width / 2) * player->scale;
-    right = player->x + (player->width / 2) * player->scale;
-    top = player->y - (player->height / 2) * player->scale;
-    bottom = player->y + (player->height / 2) * player->scale;
+    left = player->x;
+    right = player->x + player->width * player->scale;
+    top = player->y;
+    bottom = player->y + player->height * player->scale;
 }
