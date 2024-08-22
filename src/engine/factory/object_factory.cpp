@@ -18,3 +18,9 @@ TextObject* ObjectFactory::text(std::string name) {
     renderer->add(text);
     return text;
 }
+
+TimeObject* ObjectFactory::time() {
+    TimeObject* time = new TimeObject();
+    renderer->add(time);
+    return time;
+}

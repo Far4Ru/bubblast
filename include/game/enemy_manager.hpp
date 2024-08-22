@@ -1,3 +1,6 @@
+#include <cstdlib>
+#include <ctime>
+
 #include "game/enemy.hpp"
 
 class EnemyManager {
