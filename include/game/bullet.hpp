@@ -9,6 +9,8 @@
 class Bullet : public CollisionObject {
     public:
         Bullet(int x, int y);
+        ~Bullet();
+
         void updateVelocity();
         void updateSides();
     private:

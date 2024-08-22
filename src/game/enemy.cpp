@@ -29,7 +29,7 @@ Enemy::Enemy(int x, int y, std::string name) {
 }
 
 Enemy::~Enemy() {
-
+    engine->collision->remove(this);
 }
 
 void Enemy::updateVelocity() {

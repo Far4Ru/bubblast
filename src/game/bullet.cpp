@@ -35,6 +35,10 @@ Bullet::Bullet(int x, int y) {
     type = BULLET;
 }
 
+Bullet::~Bullet() {
+    engine->collision->remove(this);
+}
+
 void Bullet::updateVelocity() {
     SDL_FPoint first;
     first.x = engine->mouse->x;
