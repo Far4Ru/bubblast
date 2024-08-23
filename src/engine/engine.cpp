@@ -30,12 +30,7 @@ void Engine::start() {
 
         if(resized) {
             resized = false;
-            // TODO: - add resizing
-            // SDL_GetWindowSize(window, &width, &height);
-            // surface = SDL_GetWindowSurface(window);
-            // uint32_t black = SDL_MapRGBA(surface->format, 0, 0, 0, 255);
-            // SDL_FillRect(surface, NULL, black);        // clear the screen
-            // SDL_UpdateWindowSurface(window);
+            renderer->window->resize();
         }
         fps->start();
         keyboard->process();

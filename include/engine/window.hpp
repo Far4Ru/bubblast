@@ -10,6 +10,9 @@ class Window {
         SDL_Window* get();
         int create();
         void fill();
+        void resize();
+        int width;
+        int height;
     private:
         SDL_Surface* screenSurface = NULL;
         SDL_Window *window;

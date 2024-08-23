@@ -15,7 +15,7 @@ Renderer::~Renderer() {
 }
 
 void Renderer::start() {
-    window->fill();
+    window->resize();
 }
 
 void Renderer::render() {
