@@ -7,6 +7,12 @@ Enemy::Enemy(int x, int y, std::string name) {
         crop = { 290, 395, 370, 187 };
     } else if (name == "candy_2") {
         crop = { 345, 402, 251, 197 };
+    } else if (name == "candy_3") {
+        crop = { 383, 348, 154, 247 };
+    } else if (name == "candy_4") {
+        crop = { 361, 384, 213, 207 };
+    } else if (name == "candy_5") {
+        crop = { 374, 337, 131, 275 };
     }
     enemy_image->scale = 0.5;
     enemy_image->crop = crop;
