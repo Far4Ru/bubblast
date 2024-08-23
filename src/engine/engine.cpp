@@ -8,6 +8,7 @@ void Engine::start() {
     renderer->start();
 
     SDL_Event e;
+    bool resized = false;
 
     while (true) {
         while (SDL_PollEvent(&e) != 0) {
@@ -19,14 +20,28 @@ void Engine::start() {
                     case SDLK_ESCAPE:
                         close();
                         return;
+                    case SDL_WINDOWEVENT_RESIZED:
+                    case SDL_WINDOWEVENT_SIZE_CHANGED:
+                        resized = true;
+                        break;
                 }
             }
         }
-        
+
+        if(resized) {
+            resized = false;
+            // TODO: - add resizing
+            // SDL_GetWindowSize(window, &width, &height);
+            // surface = SDL_GetWindowSurface(window);
+            // uint32_t black = SDL_MapRGBA(surface->format, 0, 0, 0, 255);
+            // SDL_FillRect(surface, NULL, black);        // clear the screen
+            // SDL_UpdateWindowSurface(window);
+        }
         fps->start();
         keyboard->process();
         mouse->process();
         collision->process();
+        camera->process();
         renderer->render();
         fps->end();
     }
@@ -61,6 +76,7 @@ int Engine::init() {
     add = new ObjectFactory(renderer, loader);
     axis_computing = new AxisComputing();
     collision = new CollisionManager();
+    camera = new CameraManager();
 
     return 0;
 }

@@ -15,6 +15,7 @@
 #include "engine/manager/mouse_manager.hpp"
 #include "engine/utils/axis_computing.hpp"
 #include "engine/collision/collision_manager.hpp"
+#include "engine/camera_manager.hpp"
 
 class Engine {
     public:
@@ -22,13 +23,17 @@ class Engine {
         ~Engine();
 
         void start();
+
         ObjectFactory* add;
+
         SoundManager* sound;
         KeyboardManager* keyboard;
         FPS* fps;
         MouseManager* mouse;
-        AxisComputing* axis_computing;
+        CameraManager* camera;
         CollisionManager* collision;
+
+        AxisComputing* axis_computing;
     private:
         Renderer* renderer;
         Loader* loader;
