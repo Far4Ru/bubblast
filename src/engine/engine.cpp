@@ -8,7 +8,7 @@ void Engine::start() {
     renderer->start();
 
     SDL_Event e;
-    bool resized = false;
+    bool resized = true;
 
     while (true) {
         while (SDL_PollEvent(&e) != 0) {
@@ -37,7 +37,25 @@ void Engine::start() {
         if (resized) {
             resized = false;
             renderer->window->resize();
+
+            /** viewport resizing */
+            float width = renderer->window->width;
+            float height = renderer->window->height;
+            SDL_Rect viewport;
+            if ((width - (WIDTH - HEIGHT)) > height) {
+                viewport.y = 0;
+                viewport.w = height * ((float)WIDTH / HEIGHT);
+                viewport.h = height;
+                viewport.x = width / 2 - (float)viewport.w / 2;
+            } else {
+                viewport.x = 0;
+                viewport.w = width;
+                viewport.h = width * ((float)HEIGHT / WIDTH);
+                viewport.y = height / 2 - (float)viewport.h / 2;
+            }
+            SDL_RenderSetViewport(renderer->get(), &viewport);
         }
+        game_area->process();
         fps->start();
         keyboard->process();
         mouse->process();
@@ -78,6 +96,7 @@ int Engine::init() {
     axis_computing = new AxisComputing();
     collision = new CollisionManager();
     camera = new CameraManager();
+    game_area = new GameAreaManager();
 
     return 0;
 }
