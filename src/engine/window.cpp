@@ -5,7 +5,7 @@ Window::Window() {
 }
 
 int Window::create() {
-    window = SDL_CreateWindow(GAME_NAME, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
+    window = SDL_CreateWindow(GAME_NAME, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_RESIZABLE);
     if (window == NULL) {
         SDL_Log(GAME_ERROR_WINDOW_CREATE);
         // SDL_Log(SDL_GetError());
@@ -35,5 +35,5 @@ void Window::resize() {
     SDL_UpdateWindowSurface(window);
 
     // TODO: - use screen width and height
-    // SDL_Log("%d %d", width, height);
+    SDL_Log("%d %d", width, height);
 }

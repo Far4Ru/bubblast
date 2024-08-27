@@ -12,23 +12,29 @@ void Engine::start() {
 
     while (true) {
         while (SDL_PollEvent(&e) != 0) {
-            if (e.type == SDL_QUIT) {
-                close();
-                return;
-            } else if (e.type == SDL_KEYDOWN) {
-                switch (e.key.keysym.sym) {
-                    case SDLK_ESCAPE:
-                        close();
-                        return;
-                    case SDL_WINDOWEVENT_RESIZED:
-                    case SDL_WINDOWEVENT_SIZE_CHANGED:
-                        resized = true;
-                        break;
-                }
+            switch (e.type) {
+                case SDL_QUIT:
+                    close();
+                    return;
+                case SDL_KEYDOWN:
+                    switch (e.key.keysym.sym) {
+                        case SDLK_ESCAPE:
+                            close();
+                            return;
+                    }
+                    break;
+                case SDL_WINDOWEVENT:
+                    switch(e.window.event) {
+                        case SDL_WINDOWEVENT_RESIZED:
+                        case SDL_WINDOWEVENT_SIZE_CHANGED:
+                            resized = true;
+                            break;
+                    }
+                    break;
             }
         }
 
-        if(resized) {
+        if (resized) {
             resized = false;
             renderer->window->resize();
         }
