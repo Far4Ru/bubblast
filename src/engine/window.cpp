@@ -35,5 +35,5 @@ void Window::resize() {
     SDL_UpdateWindowSurface(window);
 
     // TODO: - use screen width and height
-    SDL_Log("%d %d", width, height);
+    // SDL_Log("%d %d", width, height);
 }

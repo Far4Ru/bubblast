@@ -1,4 +1,4 @@
-#include "engine/render_object/time_object.hpp"
+#include "engine/entity/render_object/time_object.hpp"
 
 TimeObject::TimeObject() {
 

@@ -1,6 +1,6 @@
 #include "engine/renderer.hpp"
 #include "engine/loader/loader.hpp"
-#include "engine/render_object/time_object.hpp"
+#include "engine/entity/render_object/time_object.hpp"
 
 class ObjectFactory {
     public:

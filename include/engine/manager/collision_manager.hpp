@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <SDL2/SDL.h>
-#include "engine/collision/collision_object.hpp"
+#include "engine/entity/collision_object.hpp"
 
 class CollisionManager {
     public:

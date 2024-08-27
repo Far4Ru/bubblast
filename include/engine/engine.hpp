@@ -13,9 +13,9 @@
 #include "engine/manager/keyboard_manager.hpp"
 #include "engine/manager/fps_manager.hpp"
 #include "engine/manager/mouse_manager.hpp"
+#include "engine/manager/camera_manager.hpp"
+#include "engine/manager/collision_manager.hpp"
 #include "engine/utils/axis_computing.hpp"
-#include "engine/collision/collision_manager.hpp"
-#include "engine/camera_manager.hpp"
 
 class Engine {
     public:
