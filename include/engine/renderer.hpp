@@ -22,6 +22,7 @@ class Renderer {
         void add(RenderObject* object);
         void remove(RenderObject* object);
         SDL_Renderer* get();
+        void setScale(float scale);
 
         Window* window;
     private:

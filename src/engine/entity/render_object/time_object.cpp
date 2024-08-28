@@ -22,6 +22,10 @@ void TimeObject::process() {
     }
 }
 
+void TimeObject::setScale(float scale) {
+    
+}
+
 void TimeObject::setProcess(std::function<void()> func) {
     process_function = func;
 }

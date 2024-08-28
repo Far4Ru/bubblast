@@ -38,6 +38,7 @@ void Engine::start() {
             resized = false;
             renderer->window->resize();
             game_area->resize(renderer->get(), renderer->window);
+            renderer->setScale(game_area->scale);
         }
         fps->start();
         keyboard->process();

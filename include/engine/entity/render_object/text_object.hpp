@@ -14,10 +14,12 @@ class TextObject : public RenderObject {
         void setFont(TTF_Font* font);
         void process();
         void setProcess(std::function<void()> func);
+        void setScale(float scale);
         void destroy();
         int x = 0;
         int y = 0;
     private:
+        float render_scale = 0;
         SDL_Texture* mTexture = NULL;
         SDL_Surface* textSurface = NULL;
         SDL_Color textColor = {255,0,0};

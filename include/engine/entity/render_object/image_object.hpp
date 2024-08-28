@@ -24,8 +24,10 @@ class ImageObject : public RenderObject {
         bool load(SDL_Renderer* renderer, SDL_Surface* imageSurface);
         void process();
         void setProcess(std::function<void()> func);
+        void setScale(float scale);
     private:
         SDL_RendererFlip flipType = SDL_FLIP_NONE;
+        float render_scale = 0;
         SDL_Texture* texture = NULL;
         std::function<void()> process_function;
 };

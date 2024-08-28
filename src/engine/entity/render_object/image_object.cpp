@@ -43,8 +43,12 @@ void ImageObject::setProcess(std::function<void()> func) {
     process_function = func;
 }
 
+void ImageObject::setScale(float scale) {
+    render_scale = scale;
+}
+
 void ImageObject::render(SDL_Renderer* renderer) {
-    SDL_Rect rect1 = {x, y, width * scale, height * scale};
+    SDL_Rect rect1 = {x, y, width * scale * render_scale, height * scale * render_scale};
     SDL_RenderCopyEx(renderer, texture, &crop, &rect1, 0, NULL, flipType);
 
     /** debug rectangle */

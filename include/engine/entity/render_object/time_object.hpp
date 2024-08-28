@@ -14,6 +14,7 @@ class TimeObject : public RenderObject {
         bool load(SDL_Renderer* renderer, SDL_Surface* imageSurface);
         void process();
         void setProcess(std::function<void()> func);
+        void setScale(float scale);
     private:
         std::function<void()> process_function;
 };

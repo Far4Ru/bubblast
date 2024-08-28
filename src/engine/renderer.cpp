@@ -18,6 +18,12 @@ void Renderer::start() {
     window->resize();
 }
 
+void Renderer::setScale(float scale) {
+    for (RenderObject* render_object : render_queue) {
+        render_object->setScale(scale);
+    }
+}
+
 void Renderer::render() {
     SDL_RenderClear(renderer);
 

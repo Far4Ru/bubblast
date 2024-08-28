@@ -11,6 +11,7 @@ class RenderObject {
         virtual void process() = 0;
         virtual void destroy() = 0;
         virtual ~RenderObject() = default;
+        virtual void setScale(float scale) = 0;
         bool active = true;
 };
 

@@ -30,9 +30,13 @@ void TextObject::setProcess(std::function<void()> func) {
     process_function = func;
 }
 
+void TextObject::setScale(float scale) {
+    render_scale = scale;
+}
+
 void TextObject::render(SDL_Renderer* renderer) {
     textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
     mTexture =  SDL_CreateTextureFromSurface(renderer, textSurface);
-    SDL_Rect abcPosition = { x, y, textSurface->w, textSurface->h };
+    SDL_Rect abcPosition = { x, y, textSurface->w * render_scale, textSurface->h * render_scale};
     SDL_RenderCopy(renderer, mTexture, NULL, &abcPosition);
 }
