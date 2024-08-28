@@ -37,6 +37,6 @@ void TextObject::setScale(float scale) {
 void TextObject::render(SDL_Renderer* renderer) {
     textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
     mTexture =  SDL_CreateTextureFromSurface(renderer, textSurface);
-    SDL_Rect abcPosition = { x, y, textSurface->w * render_scale, textSurface->h * render_scale};
+    SDL_Rect abcPosition = { x * render_scale, y * render_scale, textSurface->w * render_scale, textSurface->h * render_scale};
     SDL_RenderCopy(renderer, mTexture, NULL, &abcPosition);
 }
