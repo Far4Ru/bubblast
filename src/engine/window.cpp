@@ -21,7 +21,7 @@ SDL_Window* Window::get() {
 void Window::fill() {
     /** surface */
     screenSurface = SDL_GetWindowSurface(get());
-    SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 255, 255, 255));
+    SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0, 0, 0));
 }
 
 Window::~Window() {

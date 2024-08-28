@@ -1,5 +1,9 @@
 #include <SDL2/SDL.h>
 #include <iostream>
+
+#ifndef WINDOW_H
+#define WINDOW_H
+
 #include "config/config.hpp"
 
 class Window {
@@ -17,3 +21,5 @@ class Window {
         SDL_Surface* screenSurface = NULL;
         SDL_Window *window;
 };
+
+#endif

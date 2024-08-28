@@ -35,7 +35,7 @@ EnemyManager::EnemyManager() {
             timer.start();
         }
     };
-    time->setProcess(timeFunc);
+    // time->setProcess(timeFunc);
 }
 
 void EnemyManager::add(Enemy* enemy) {
