@@ -13,59 +13,56 @@ Player::Player() {
     engine->camera->follow(player);
     update();
     engine->keyboard->add(SDL_SCANCODE_UP, [&]() {
-        if (player->y > 0) {
-            player->y -= 10;
-            update();
-        }
+        move(MOVE_UP);
     });
     engine->keyboard->add(SDL_SCANCODE_W, [&]() {
-        if (player->y > 0) {
-            player->y -= 10;
-            update();
-        }
+        move(MOVE_UP);
     });
     engine->keyboard->add(SDL_SCANCODE_DOWN, [&]() {
-        if (player->y < HEIGHT) {
-            player->y += 10;
-            update();
-        }
+        move(MOVE_DOWN);
     });
     engine->keyboard->add(SDL_SCANCODE_S, [&]() {
-        if (player->y < HEIGHT) {
-            player->y += 10;
-            update();
-        }
+        move(MOVE_DOWN);
     });
     engine->keyboard->add(SDL_SCANCODE_LEFT, [&]() {
-        if (player->x > 0) {
-            player->x -= 10;
-            player->turnLeft();
-            update();
-        }
+        move(MOVE_LEFT);
     });
     engine->keyboard->add(SDL_SCANCODE_A, [&]() {
-        if (player->x > 0) {
-            player->x -= 10;
-            player->turnLeft();
-            update();
-        }
+        move(MOVE_LEFT);
     });
     engine->keyboard->add(SDL_SCANCODE_RIGHT, [&]() {
-        if (player->x < WIDTH) {
-            player->x += 10;
-            player->turnRight();
-            update();
-        }
+        move(MOVE_RIGHT);
     });
     engine->keyboard->add(SDL_SCANCODE_D, [&]() {
-        if (player->x < WIDTH) {
-            player->x += 10;
-            player->turnRight();
-            update();
-        }
+        move(MOVE_RIGHT);
     });
     type = PLAYER;
 }
+
+void Player::move(MoveType side) {
+    switch (side) {
+        case MOVE_UP:
+            if (player->y < 150) { break; }
+            player->y -= 10;
+            break;
+        case MOVE_LEFT:
+            if (player->x < 150) { break; }
+            player->x -= 10;
+            player->turnLeft();
+            break;
+        case MOVE_RIGHT:
+            if (player->x > WIDTH + 500) { break; }
+            player->x += 10;
+            player->turnRight();
+            break;
+        case MOVE_DOWN:
+            if (player->y > HEIGHT + 150) { break; }
+            player->y += 10;
+            break;
+    }
+    update();
+}
+
 
 void Player::update() {
     player->setOffset(-engine->camera->x - (player->width / 2) * player->scale, -engine->camera->y - (player->height / 2) * player->scale);

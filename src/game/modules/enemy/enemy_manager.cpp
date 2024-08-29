@@ -6,7 +6,7 @@ EnemyManager::EnemyManager() {
     TimeObject* time = engine->add->time();
     auto timeFunc = [&]() {
         int ticks = timer.get_ticks();
-        if (ticks > 10 * (1000 / 60)) {
+        if (ticks > 2000 * (1000 / 60)) {
             int enemy_number = rand() % (5 - 1 + 1) + 1;
             int side = std::rand() / ((RAND_MAX + 1u) / 4);
             int x = 0, y = 0;
@@ -35,7 +35,7 @@ EnemyManager::EnemyManager() {
             timer.start();
         }
     };
-    // time->setProcess(timeFunc);
+    time->setProcess(timeFunc);
 }
 
 void EnemyManager::add(Enemy* enemy) {

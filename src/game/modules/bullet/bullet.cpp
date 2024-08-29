@@ -18,6 +18,7 @@ Bullet::Bullet(int x, int y) {
         //     bullet_image->active = false;
         //     return;
         // }
+        bullet_image->setOffset(-engine->camera->x , -engine->camera->y );
         if (life == MAX_BULLET_LIFE) {
             updateVelocity();
         }
