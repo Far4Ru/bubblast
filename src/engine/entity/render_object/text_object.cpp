@@ -43,13 +43,12 @@ void TextObject::render(SDL_Renderer* renderer) {
     textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
     mTexture =  SDL_CreateTextureFromSurface(renderer, textSurface);
     if (textSurface) {
-        SDL_Log("%d %d %d %d", x, y, textSurface->w, textSurface->h);
-        SDL_Rect abcPosition = {
+        SDL_Rect bounds = {
             x * render_scale + offsetX,
             y * render_scale + offsetY,
             textSurface->w * render_scale,
             textSurface->h * render_scale
         };
-        SDL_RenderCopy(renderer, mTexture, NULL, &abcPosition);
+        SDL_RenderCopy(renderer, mTexture, NULL, &bounds);
     }
 }

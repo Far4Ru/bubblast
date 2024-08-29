@@ -53,15 +53,15 @@ void ImageObject::setOffset(int x, int y) {
 }
 
 void ImageObject::render(SDL_Renderer* renderer) {
-    SDL_Rect rect1 = {
+    SDL_Rect bounds = {
         x * render_scale + offsetX,
         y * render_scale + offsetY,
         width * scale * render_scale,
         height * scale * render_scale
     };
-    SDL_RenderCopyEx(renderer, texture, &crop, &rect1, 0, NULL, flipType);
+    SDL_RenderCopyEx(renderer, texture, &crop, &bounds, 0, NULL, flipType);
 
     /** debug rectangle */
     SDL_SetRenderDrawColor( renderer, 0x00, 0xFF, 0x00, 0xFF );        
-    SDL_RenderDrawRect( renderer, &rect1 );
+    SDL_RenderDrawRect( renderer, &bounds );
 }
