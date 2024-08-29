@@ -47,8 +47,18 @@ void ImageObject::setScale(float scale) {
     render_scale = scale;
 }
 
+void ImageObject::setOffset(int x, int y) {
+    offsetX = x;
+    offsetY = y;
+}
+
 void ImageObject::render(SDL_Renderer* renderer) {
-    SDL_Rect rect1 = {x * render_scale, y * render_scale, width * scale * render_scale, height * scale * render_scale};
+    SDL_Rect rect1 = {
+        x * render_scale + offsetX,
+        y * render_scale + offsetY,
+        width * scale * render_scale,
+        height * scale * render_scale
+    };
     SDL_RenderCopyEx(renderer, texture, &crop, &rect1, 0, NULL, flipType);
 
     /** debug rectangle */

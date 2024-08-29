@@ -16,9 +16,12 @@ class TextObject : public RenderObject {
         void setProcess(std::function<void()> func);
         void setScale(float scale);
         void destroy();
+        void setOffset(int x, int y);
         int x = 0;
         int y = 0;
     private:
+        int offsetX = 0;
+        int offsetY = 0;
         float render_scale = 0;
         SDL_Texture* mTexture = NULL;
         SDL_Surface* textSurface = NULL;

@@ -34,9 +34,22 @@ void TextObject::setScale(float scale) {
     render_scale = scale;
 }
 
+void TextObject::setOffset(int x, int y) {
+    offsetX = x;
+    offsetY = y;
+}
+
 void TextObject::render(SDL_Renderer* renderer) {
     textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
     mTexture =  SDL_CreateTextureFromSurface(renderer, textSurface);
-    SDL_Rect abcPosition = { x * render_scale, y * render_scale, textSurface->w * render_scale, textSurface->h * render_scale};
-    SDL_RenderCopy(renderer, mTexture, NULL, &abcPosition);
+    if (textSurface) {
+        SDL_Log("%d %d %d %d", x, y, textSurface->w, textSurface->h);
+        SDL_Rect abcPosition = {
+            x * render_scale + offsetX,
+            y * render_scale + offsetY,
+            textSurface->w * render_scale,
+            textSurface->h * render_scale
+        };
+        SDL_RenderCopy(renderer, mTexture, NULL, &abcPosition);
+    }
 }

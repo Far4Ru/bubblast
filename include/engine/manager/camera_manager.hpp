@@ -1,12 +1,13 @@
-#include "engine/entity/render_object/render_object.hpp"
+#include "config/config.hpp"
+#include "engine/entity/render_object/image_object.hpp"
 
 class CameraManager {
     public:
         CameraManager();
-        int x;
-        int y;
+        int x = 0, y = 0;
+        int width = 0, height = 0;
         void process();
-        void follow(RenderObject* object);
+        void follow(ImageObject* object);
     private:
-        RenderObject* follow_object = NULL;
+        ImageObject* follow_object;
 };

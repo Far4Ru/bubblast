@@ -18,10 +18,8 @@ Enemy::Enemy(int x, int y, std::string name) {
     enemy_image->crop = crop;
     enemy_image->width = crop.w;
     enemy_image->height = crop.h;
-    enemy_image->x = x;
-    enemy_image->y = y;
-    enemy_image->x -= (enemy_image->width / 2) * enemy_image->scale;
-    enemy_image->y -= (enemy_image->height / 2) * enemy_image->scale;
+    enemy_image->x = x - (enemy_image->width / 2);
+    enemy_image->y = y - (enemy_image->height / 2);
     auto bullet_func = [&]() {
         if (collision == BULLET) {
             game->enemy_manager->kill(this);

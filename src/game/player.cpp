@@ -3,12 +3,14 @@
 Player::Player() {
     player = engine->add->image("wizard");
     SDL_Rect crop = { 308, 199, 439, 629 };
-    player->x = 50;
+    player->x = WIDTH / 2;
+    player->y = HEIGHT / 2;
     player->scale = 0.25;
     engine->collision->add(this);
     player->crop = crop;
     player->width = crop.w;
     player->height = crop.h;
+    engine->camera->follow(player);
     update();
     engine->keyboard->add(SDL_SCANCODE_UP, [&]() {
         if (player->y > 0) {
@@ -66,6 +68,7 @@ Player::Player() {
 }
 
 void Player::update() {
+    player->setOffset(-engine->camera->x - (player->width / 2) * player->scale, -engine->camera->y - (player->height / 2) * player->scale);
     x = player->x + (player->width / 2) * player->scale;
     y = player->y + (player->height / 2) * player->scale;
 }
