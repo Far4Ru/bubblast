@@ -11,6 +11,7 @@ void Engine::start() {
     bool resized = true;
 
     while (true) {
+        fps->start();
         while (SDL_PollEvent(&e) != 0) {
             switch (e.type) {
                 case SDL_QUIT:
