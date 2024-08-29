@@ -1,4 +1,4 @@
-#include "game/mouse_text.hpp"
+#include "game/components/mouse_text.hpp"
 
 MouseText::MouseText() {
     TextObject* mouse_text = engine->add->text("WinterCat");

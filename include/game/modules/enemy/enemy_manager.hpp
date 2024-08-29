@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "game/enemy.hpp"
+#include "game/modules/enemy/enemy.hpp"
 
 class EnemyManager {
     public:

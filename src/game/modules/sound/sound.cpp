@@ -1,4 +1,4 @@
-#include "game/sound.hpp"
+#include "game/modules/sound/sound.hpp"
 
 Sound::Sound() {
     engine->sound->playMusic("PositiveEnergy");

@@ -1,4 +1,4 @@
-#include "game/bullet.hpp"
+#include "game/modules/bullet/bullet.hpp"
 #include "game/game.hpp"
 
 Bullet::Bullet(int x, int y) {

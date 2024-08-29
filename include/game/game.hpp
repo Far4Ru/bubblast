@@ -2,14 +2,14 @@
 #define GAME_H
 
 #include "engine/engine.hpp"
-#include "game/background.hpp"
-#include "game/player.hpp"
-#include "game/sound.hpp"
-#include "game/fps_text.hpp"
-#include "game/mouse_text.hpp"
-#include "game/screen_text.hpp"
-#include "game/bullet_manager.hpp"
-#include "game/enemy_manager.hpp"
+#include "game/components/background.hpp"
+#include "game/modules/player/player.hpp"
+#include "game/modules/sound/sound.hpp"
+#include "game/components/fps_text.hpp"
+#include "game/components/mouse_text.hpp"
+#include "game/components/screen_text.hpp"
+#include "game/modules/bullet/bullet_manager.hpp"
+#include "game/modules/enemy/enemy_manager.hpp"
 
 class Game {
     public:

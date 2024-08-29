@@ -1,4 +1,4 @@
-#include "game/player.hpp"
+#include "game/modules/player/player.hpp"
 
 Player::Player() {
     player = engine->add->image("wizard");

@@ -1,4 +1,4 @@
-#include "game/enemy_manager.hpp"
+#include "game/modules/enemy/enemy_manager.hpp"
 
 EnemyManager::EnemyManager() {
     timer.start();

@@ -1,4 +1,4 @@
-#include "game/screen_text.hpp"
+#include "game/components/screen_text.hpp"
 
 ScreenText::ScreenText() {
     TextObject* screen_text = engine->add->text("WinterCat");

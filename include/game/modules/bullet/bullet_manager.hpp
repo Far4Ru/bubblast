@@ -1,5 +1,5 @@
 #include "engine/engine.hpp"
-#include "game/bullet.hpp"
+#include "game/modules/bullet/bullet.hpp"
 
 class BulletManager {
     public:
