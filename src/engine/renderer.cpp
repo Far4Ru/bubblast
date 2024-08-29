@@ -36,6 +36,7 @@ void Renderer::render() {
             render_object->destroy();
         }
     }
+    SDL_SetRenderDrawColor( renderer, 0x00, 0x00, 0x00, 0x00 );
 
     SDL_RenderPresent(renderer);
 }

@@ -7,8 +7,8 @@ CameraManager::CameraManager() {
 
 void CameraManager::process() {
     if (follow_object) {
-        x = follow_object->x - WIDTH / 2;
-        y = follow_object->y - HEIGHT / 2;
+        x = follow_object->x - width / 2;
+        y = follow_object->y - height / 2;
     }
 
     // other objects except the follow_object: x = ... + camera.x; y = ... + camera.y
