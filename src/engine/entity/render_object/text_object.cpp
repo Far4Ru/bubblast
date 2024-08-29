@@ -50,5 +50,7 @@ void TextObject::render(SDL_Renderer* renderer) {
             textSurface->h * render_scale
         };
         SDL_RenderCopy(renderer, mTexture, NULL, &bounds);
+        SDL_FreeSurface(textSurface);
+        SDL_DestroyTexture(mTexture);
     }
 }
