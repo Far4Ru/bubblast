@@ -16,11 +16,11 @@ void GameAreaManager::resize(SDL_Renderer* renderer, Window* window) {
     if (full_width - width > full_height - height) {
         height = full_height;
         viewport.x = full_width / 2 - (float)width / 2;
-        scale = (float)width / full_width;
+        scale = (float)width / WIDTH;
     } else {
         width = full_width;
         viewport.y = full_height / 2 - (float)height / 2;
-        scale = (float)height / full_height;
+        scale = (float)height / HEIGHT;
     }
     viewport.w = width;
     viewport.h = height;
