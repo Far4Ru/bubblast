@@ -80,3 +80,11 @@ void Player::updateSides() {
     top = player->y;
     bottom = player->y + player->height * player->scale;
 }
+
+int Player::centerX() {
+    return x - (player->width / 2) * player->scale;
+}
+
+int Player::centerY() {
+    return y - (player->height / 2) * player->scale;
+}

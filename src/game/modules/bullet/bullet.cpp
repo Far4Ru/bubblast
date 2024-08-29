@@ -41,12 +41,12 @@ Bullet::~Bullet() {
 }
 
 void Bullet::updateVelocity() {
-    SDL_FPoint first;
-    first.x = engine->mouse->x;
-    first.y = engine->mouse->y;
     SDL_FPoint second;
     second.x = bullet_image->x + (bullet_image->height / 2 * bullet_image->scale);
     second.y = bullet_image->y + (bullet_image->width / 2 * bullet_image->scale);
+    SDL_FPoint first;
+    first.x = second.x - WIDTH / 2 + engine->mouse->x;
+    first.y = second.y - HEIGHT / 2 + engine->mouse->y;
     engine->axis_computing->computeVelocity(&first, &second, &velocity);
 }
 

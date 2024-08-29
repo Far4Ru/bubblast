@@ -16,6 +16,8 @@ class Player : public CollisionObject {
         int x = 0, y = 0;
         void updateVelocity();
         void updateSides();
+        int centerX();
+        int centerY();
     private:
         ImageObject* player;
         void update();
