@@ -1,13 +1,13 @@
-# Game
+# Игра «Аркадный шутер»
+
+## Правила игры
+Пользователь управляет персонажем, запертым на арене. Из-за границ арены бесконечно (или несколькими волнами) приходят враги нескольких видов (на усмотрение программиста) и атакуют персонажа. Игрок может стрелять в них, целясь с помощью мыши, и передвигаться, чтобы избегать урона. Поле может содержать укрытия (на усмотрение программиста). За каждого побеждённого противника, игроку начисляются очки. Как только игрок потеряет все жизни, или противники закончатся, игра заканчивается и на экран выводится количество очков, набранных во время прохождения игры. 10 лучших результатов хранятся в файле и выводятся на экран по запросу пользователя.
 
 ## Build and run
 - Linux
 > make
 - Windows (bash)
 > mingw32-make
-
-## Game rules
-The user controls a character trapped in the arena. Enemies of several types come endlessly (or in several waves) from outside the arena and attack the character. The player can shoot at them by aiming with the mouse, and move around to avoid damage. The field may contain shelters. For each defeated opponent, the player is awarded points. As soon as the player loses all lives, or the opponents run out, the game ends and the number of points scored during the game is displayed on the screen. The top 10 results are stored in a file and displayed on the screen at the user's request.
 
 ## Screens
 
