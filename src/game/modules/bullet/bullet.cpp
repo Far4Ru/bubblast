@@ -18,6 +18,7 @@ Bullet::Bullet(int x, int y) {
         if (collision == ENEMY) {
             active = false;
             bullet_image->active = false;
+            to_destroy = true;
             engine->collision->remove(this);
             return;
         }
@@ -32,6 +33,7 @@ Bullet::Bullet(int x, int y) {
             updateSides();
         } else {
             bullet_image->active = false;
+            to_destroy = true;
         }
     };
     bullet_image->setProcess(bullet_func);

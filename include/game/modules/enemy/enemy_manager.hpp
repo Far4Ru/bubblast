@@ -6,7 +6,10 @@
 class EnemyManager {
     public:
         EnemyManager();
+        ~EnemyManager();
+
         void kill(Enemy* enemy);
+        void killAll();
         void add(Enemy* enemy);
         void remove(Enemy* enemy);
     private:

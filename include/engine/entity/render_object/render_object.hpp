@@ -13,6 +13,7 @@ class RenderObject {
         virtual ~RenderObject() = default;
         virtual void setScale(float scale) = 0;
         bool active = true;
+        bool to_destroy = false;
 };
 
 #endif

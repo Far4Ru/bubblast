@@ -8,6 +8,7 @@ class KeyboardManager {
         KeyboardManager();
         void process();
         void add(SDL_Scancode code, std::function<void()> func);
+        void remove(SDL_Scancode code);
     private:
         const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
         std::map<SDL_Scancode, std::function<void()>> key_press_queue = {};

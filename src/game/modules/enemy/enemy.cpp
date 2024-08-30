@@ -24,8 +24,9 @@ Enemy::Enemy(int x, int y, std::string name) {
         if (!active) { return; }
         enemy_image->setOffset(-engine->camera->x , -engine->camera->y );
         if (collision == BULLET) {
-            game->enemy_manager->kill(this);
+            game->gameScene->enemy_manager->kill(this);
             active = false;
+            to_destroy = true;
             return;
         }
         updateVelocity();
@@ -41,8 +42,8 @@ Enemy::~Enemy() {
 
 void Enemy::updateVelocity() {
     SDL_FPoint player_position;
-    player_position.x = game->player->centerX();
-    player_position.y = game->player->centerY();
+    player_position.x = game->gameScene->player->centerX();
+    player_position.y = game->gameScene->player->centerY();
     SDL_FPoint enemy_position;
     enemy_position.x = enemy_image->x + (enemy_image->width / 2 * enemy_image->scale);
     enemy_position.y = enemy_image->y + (enemy_image->height / 2 * enemy_image->scale);
@@ -62,5 +63,6 @@ void Enemy::updateSides() {
 
 void Enemy::destroy() {
     enemy_image->active = false;
+    enemy_image->to_destroy = true;
     this->~Enemy();
 }

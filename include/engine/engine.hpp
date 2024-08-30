@@ -36,8 +36,8 @@ class Engine {
         GameAreaManager* game_area;
 
         AxisComputing* axis_computing;
-    private:
         Renderer* renderer;
+    private:
         Loader* loader;
         int init();
         void close();

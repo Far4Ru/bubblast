@@ -13,3 +13,9 @@ Sound::Sound() {
 void Sound::playFire() {
     engine->sound->playSound("BubbleSpell");
 }
+
+Sound::~Sound() {
+    engine->sound->pauseMusic();
+    engine->keyboard->remove(SDL_SCANCODE_1);
+    engine->keyboard->remove(SDL_SCANCODE_2);
+}

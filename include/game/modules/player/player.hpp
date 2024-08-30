@@ -13,6 +13,8 @@ enum MoveType {
 class Player : public CollisionObject {
     public:
         Player();
+        void destroy();
+
         int x = 0, y = 0;
         void updateVelocity();
         void updateSides();

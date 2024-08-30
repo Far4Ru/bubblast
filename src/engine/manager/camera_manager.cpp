@@ -17,3 +17,7 @@ void CameraManager::process() {
 void CameraManager::follow(ImageObject* object) {
     follow_object = object;
 };
+
+void CameraManager::unfollow() {
+    follow_object = nullptr;
+};

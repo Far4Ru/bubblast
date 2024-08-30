@@ -39,6 +39,19 @@ Player::Player() {
     type = PLAYER;
 }
 
+void Player::destroy() {
+    engine->collision->remove(this);
+    player->destroy();
+    engine->keyboard->remove(SDL_SCANCODE_UP);
+    engine->keyboard->remove(SDL_SCANCODE_W);
+    engine->keyboard->remove(SDL_SCANCODE_DOWN);
+    engine->keyboard->remove(SDL_SCANCODE_S);
+    engine->keyboard->remove(SDL_SCANCODE_LEFT);
+    engine->keyboard->remove(SDL_SCANCODE_A);
+    engine->keyboard->remove(SDL_SCANCODE_RIGHT);
+    engine->keyboard->remove(SDL_SCANCODE_D);
+}
+
 void Player::move(MoveType side) {
     switch (side) {
         case MOVE_UP:

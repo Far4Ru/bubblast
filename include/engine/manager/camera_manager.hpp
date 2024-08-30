@@ -8,6 +8,7 @@ class CameraManager {
         int width = 0, height = 0;
         void process();
         void follow(ImageObject* object);
+        void unfollow();
     private:
         ImageObject* follow_object;
 };

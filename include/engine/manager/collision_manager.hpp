@@ -10,6 +10,7 @@ class CollisionManager {
         void add(CollisionObject* object);
         void remove(CollisionObject* object);
         void process();
+        void clear();
         bool check(CollisionObject* first, CollisionObject* second);
     private:
         std::vector<CollisionObject*> collision_objects;

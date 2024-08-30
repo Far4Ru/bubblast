@@ -38,6 +38,11 @@ EnemyManager::EnemyManager() {
     time->setProcess(timeFunc);
 }
 
+EnemyManager::~EnemyManager() {
+    timer.stop();
+    killAll();
+}
+
 void EnemyManager::add(Enemy* enemy) {
     enemies.push_back(enemy);
 }
@@ -49,4 +54,10 @@ void EnemyManager::remove(Enemy* enemy) {
 void EnemyManager::kill(Enemy* enemy) {
     remove(enemy);
     enemy->destroy();
+}
+
+void EnemyManager::killAll() {
+    for (Enemy* enemy : enemies) {
+        kill(enemy);
+    }
 }

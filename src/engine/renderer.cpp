@@ -26,12 +26,11 @@ void Renderer::setScale(float scale) {
 
 void Renderer::render() {
     SDL_RenderClear(renderer);
-
     for (RenderObject* render_object : render_queue) {
         if (render_object->active) {
             render_object->process();
             render_object->render(renderer);
-        } else {
+        } else if (render_object->to_destroy) {
             remove(render_object);
             render_object->destroy();
         }
@@ -47,6 +46,12 @@ void Renderer::add(RenderObject* object) {
 
 void Renderer::remove(RenderObject* object) {
     render_queue.erase(std::remove(render_queue.begin(), render_queue.end(), object), render_queue.end());
+}
+
+void Renderer::clear() {
+    for (RenderObject* render_object : render_queue) {
+        remove(render_object);
+    }
 }
 
 SDL_Renderer* Renderer::get() {

@@ -15,3 +15,7 @@ void KeyboardManager::process() {
 void KeyboardManager::add(SDL_Scancode code, std::function<void()> func) {
     key_press_queue[code] = func;
 }
+
+void KeyboardManager::remove(SDL_Scancode code) {
+    key_press_queue[code] = [](){};
+}

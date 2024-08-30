@@ -4,6 +4,7 @@
 class BulletManager {
     public:
         BulletManager();
+        ~BulletManager();
     private:
         std::vector<Bullet*> bullets;
         Timer timer;
