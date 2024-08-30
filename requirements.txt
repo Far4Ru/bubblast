@@ -1,0 +1,4 @@
+libsdl2-dev
+mixer-devel-2.8.0-mingw
+image-devel-2.8.2-mingw
+ttf-devel-2.22.0-mingw
