@@ -41,8 +41,8 @@ Enemy::~Enemy() {
 
 void Enemy::updateVelocity() {
     SDL_FPoint first;
-    first.x = game->player->x;
-    first.y = game->player->y;
+    first.x = game->player->centerX();
+    first.y = game->player->centerY();
     SDL_FPoint second;
     second.x = enemy_image->x + (enemy_image->width / 2 * enemy_image->scale);
     second.y = enemy_image->y + (enemy_image->height / 2 * enemy_image->scale);
