@@ -14,6 +14,7 @@ class Bullet : public CollisionObject {
         void updateVelocity();
         void updateSides();
     private:
+        bool active = true;
         int life = MAX_BULLET_LIFE;
         int speed = 10;
         ImageObject* bullet_image;

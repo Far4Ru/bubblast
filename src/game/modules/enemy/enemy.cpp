@@ -21,9 +21,11 @@ Enemy::Enemy(int x, int y, std::string name) {
     enemy_image->x = x - (enemy_image->width / 2);
     enemy_image->y = y - (enemy_image->height / 2);
     auto bullet_func = [&]() {
+        if (!active) { return; }
         enemy_image->setOffset(-engine->camera->x , -engine->camera->y );
         if (collision == BULLET) {
             game->enemy_manager->kill(this);
+            active = false;
             return;
         }
         updateVelocity();

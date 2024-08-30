@@ -14,10 +14,13 @@ Bullet::Bullet(int x, int y) {
     bullet_image->y -= (bullet_image->height / 2) * bullet_image->scale;
 
     auto bullet_func = [&]() {
-        // if (collision == ENEMY) {
-        //     bullet_image->active = false;
-        //     return;
-        // }
+        if (!active) { return; }
+        if (collision == ENEMY) {
+            active = false;
+            bullet_image->active = false;
+            engine->collision->remove(this);
+            return;
+        }
         bullet_image->setOffset(-engine->camera->x , -engine->camera->y );
         if (life == MAX_BULLET_LIFE) {
             updateVelocity();

@@ -12,4 +12,5 @@ class Enemy : public CollisionObject  {
     private:
         ImageObject* enemy_image;
         SDL_FPoint velocity;
+        bool active = true;
 };
