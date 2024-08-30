@@ -44,13 +44,13 @@ Bullet::~Bullet() {
 }
 
 void Bullet::updateVelocity() {
-    SDL_FPoint second;
-    second.x = bullet_image->x + (bullet_image->height / 2 * bullet_image->scale);
-    second.y = bullet_image->y + (bullet_image->width / 2 * bullet_image->scale);
-    SDL_FPoint first;
-    first.x = second.x - WIDTH / 2 + engine->mouse->x;
-    first.y = second.y - HEIGHT / 2 + engine->mouse->y;
-    engine->axis_computing->computeVelocity(&first, &second, &velocity);
+    SDL_FPoint bullet_position;
+    bullet_position.x = bullet_image->x + (bullet_image->height / 2 * bullet_image->scale);
+    bullet_position.y = bullet_image->y + (bullet_image->width / 2 * bullet_image->scale);
+    SDL_FPoint mouse_position;
+    mouse_position.x = bullet_position.x - (WIDTH / 2) * engine->game_area->scale + engine->mouse->x;
+    mouse_position.y = bullet_position.y - (HEIGHT / 2) * engine->game_area->scale + engine->mouse->y;
+    engine->axis_computing->computeVelocity(&mouse_position, &bullet_position, &velocity);
 }
 
 void Bullet::updateSides() {

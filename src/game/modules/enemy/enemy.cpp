@@ -40,13 +40,13 @@ Enemy::~Enemy() {
 }
 
 void Enemy::updateVelocity() {
-    SDL_FPoint first;
-    first.x = game->player->centerX();
-    first.y = game->player->centerY();
-    SDL_FPoint second;
-    second.x = enemy_image->x + (enemy_image->width / 2 * enemy_image->scale);
-    second.y = enemy_image->y + (enemy_image->height / 2 * enemy_image->scale);
-    engine->axis_computing->computeVelocity(&first, &second, &velocity);
+    SDL_FPoint player_position;
+    player_position.x = game->player->centerX();
+    player_position.y = game->player->centerY();
+    SDL_FPoint enemy_position;
+    enemy_position.x = enemy_image->x + (enemy_image->width / 2 * enemy_image->scale);
+    enemy_position.y = enemy_image->y + (enemy_image->height / 2 * enemy_image->scale);
+    engine->axis_computing->computeVelocity(&player_position, &enemy_position, &velocity);
 
     enemy_image->x += velocity.x * 3;
     enemy_image->y += velocity.y * 3;
