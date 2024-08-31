@@ -10,6 +10,7 @@ void MenuScene::clear() {
         engine->renderer->clear();
         delete background;
         delete logo;
+        delete play;
     }
 }
 
@@ -18,5 +19,6 @@ void MenuScene::start() {
         this->active = true;
         background = new MenuBackground();
         logo = new Logo();
+        play = new PlayButton();
     }
 }

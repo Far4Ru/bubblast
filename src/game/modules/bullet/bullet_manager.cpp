@@ -2,7 +2,7 @@
 
 BulletManager::BulletManager() {
     timer.start();
-    engine->mouse->add("bullet_manager", [&](int x, int y) {
+    engine->mouse->addClick("bullet_manager", [&](int x, int y) {
         if (timer.is_paused()) { return; }
         int ticks = timer.get_ticks();
         if (ticks > 10 * (1000 / 60)) {
@@ -20,5 +20,5 @@ BulletManager::~BulletManager() {
     }
     std::vector<Bullet*>().swap(bullets);
     timer.stop();
-    engine->mouse->remove("bullet_manager");
+    engine->mouse->removeClick("bullet_manager");
 }
