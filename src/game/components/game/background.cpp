@@ -1,4 +1,4 @@
-#include "game/components/background.hpp"
+#include "game/components/game/background.hpp"
 
 Background::Background() {
     image = engine->add->image("bg_front");

@@ -16,17 +16,13 @@ void Engine::start() {
         while (SDL_PollEvent(&e) != 0) {
             switch (e.type) {
                 case SDL_QUIT:
-                    close();
-                    return;
-                    
+                    active = false;
+                    break;
                 case SDL_MOUSEBUTTONDOWN:
                     mouse->clicked = true;
                     break;
                 case SDL_KEYDOWN:
                     switch (e.key.keysym.sym) {
-                        case SDLK_ESCAPE:
-                            close();
-                            return;
                         case SDLK_f:
                             fullScreen = !fullScreen;
                             if(fullScreen){
@@ -56,6 +52,10 @@ void Engine::start() {
         renderer->setScale(game_area->scale);
         keyboard->process();
         mouse->process();
+        if (!active) {
+            close();
+            return;
+        }
         collision->process();
         camera->process();
         renderer->render();

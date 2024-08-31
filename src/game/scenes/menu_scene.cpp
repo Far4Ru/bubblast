@@ -11,6 +11,9 @@ void MenuScene::clear() {
         delete background;
         delete logo;
         delete play;
+        delete settings;
+        delete results;
+        delete exit;
     }
 }
 
@@ -20,5 +23,8 @@ void MenuScene::start() {
         background = new MenuBackground();
         logo = new Logo();
         play = new PlayButton();
+        settings = new SettingsButton();
+        results = new ResultsButton();
+        exit = new ExitButton();
     }
 }

@@ -1,4 +1,4 @@
-#include "game/components/logo.hpp"
+#include "game/components/menu/logo.hpp"
 
 Logo::Logo() {
     image = engine->add->image("logo");

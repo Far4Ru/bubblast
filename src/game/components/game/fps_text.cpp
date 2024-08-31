@@ -1,4 +1,4 @@
-#include "game/components/fps_text.hpp"
+#include "game/components/game/fps_text.hpp"
 
 FPSText::FPSText() {
     fps_text = engine->add->text("WinterCat");

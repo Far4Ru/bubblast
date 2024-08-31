@@ -37,6 +37,7 @@ class Engine {
 
         AxisComputing* axis_computing;
         Renderer* renderer;
+        bool active = true;
     private:
         Loader* loader;
         int init();

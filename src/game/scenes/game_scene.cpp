@@ -1,4 +1,4 @@
-#include "game/scenes/game_scene.hpp"
+#include "game/game.hpp"
 
 GameScene::GameScene() {
 
@@ -32,5 +32,10 @@ void GameScene::start() {
         screen_text = new ScreenText();
         bullet_manager = new BulletManager();
         enemy_manager = new EnemyManager();
+        
+        engine->keyboard->add(SDL_SCANCODE_ESCAPE, [&]() {
+            game->gameScene->clear();
+            game->menuScene->start();
+        });
     }
 }
