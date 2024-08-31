@@ -18,6 +18,10 @@ void Engine::start() {
                 case SDL_QUIT:
                     close();
                     return;
+                    
+                case SDL_MOUSEBUTTONDOWN:
+                    mouse->clicked = true;
+                    break;
                 case SDL_KEYDOWN:
                     switch (e.key.keysym.sym) {
                         case SDLK_ESCAPE:

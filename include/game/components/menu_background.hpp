@@ -1,3 +1,6 @@
+#ifndef MENU_BACKGROUND_H
+#define MENU_BACKGROUND_H
+
 #include "engine/engine.hpp"
 
 class MenuBackground {
@@ -7,3 +10,5 @@ class MenuBackground {
     private:
         ImageObject* image;
 };
+
+#endif

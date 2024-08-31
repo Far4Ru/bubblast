@@ -22,6 +22,8 @@ void GameAreaManager::resize(SDL_Renderer* renderer, Window* window) {
         viewport.y = full_height / 2 - (float)height / 2;
         scale = (float)height / HEIGHT;
     }
+    x = viewport.x;
+    y = viewport.y;
     viewport.w = width;
     viewport.h = height;
     SDL_RenderSetViewport(renderer, &viewport);
