@@ -9,6 +9,7 @@ void Engine::start() {
 
     SDL_Event e;
     bool resized = true;
+    bool fullScreen = false;
 
     while (true) {
         fps->start();
@@ -22,6 +23,15 @@ void Engine::start() {
                         case SDLK_ESCAPE:
                             close();
                             return;
+                        case SDLK_f:
+                            fullScreen = !fullScreen;
+                            if(fullScreen){
+                                SDL_SetWindowFullscreen(renderer->window->get(), SDL_WINDOW_FULLSCREEN);
+                            }
+                            else{
+                                SDL_SetWindowFullscreen(renderer->window->get(), 0);
+                            }
+                            break;
                     }
                     break;
                 case SDL_WINDOWEVENT:
