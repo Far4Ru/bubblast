@@ -6,7 +6,7 @@ CameraManager::CameraManager() {
 }
 
 void CameraManager::process() {
-    if (follow_object) {
+    if (follow_object != nullptr) {
         x = follow_object->x - width / 2;
         y = follow_object->y - height / 2;
     }

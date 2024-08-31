@@ -51,8 +51,10 @@ void Bullet::updateVelocity() {
     bullet_position.x = bullet_image->x + (bullet_image->height / 2 * bullet_image->scale);
     bullet_position.y = bullet_image->y + (bullet_image->width / 2 * bullet_image->scale);
     SDL_FPoint mouse_position;
-    mouse_position.x = bullet_position.x - (WIDTH / 2) * engine->game_area->scale + engine->mouse->x;
-    mouse_position.y = bullet_position.y - (HEIGHT / 2) * engine->game_area->scale + engine->mouse->y;
+    mouse_position.x = engine->mouse->x / engine->game_area->scale + engine->camera->x * engine->game_area->scale - ((engine->game_area->full_width - engine->game_area->width)/ engine->game_area->scale) / 2;
+    mouse_position.y = engine->mouse->y / engine->game_area->scale + engine->camera->y * engine->game_area->scale - ((engine->game_area->full_height - engine->game_area->height)/ engine->game_area->scale) / 2;
+    SDL_Log("bullet: %f %f", bullet_position.x, bullet_position.y);
+    SDL_Log("mouse: %f %f", mouse_position.x, mouse_position.y);
     engine->axis_computing->computeVelocity(&mouse_position, &bullet_position, &velocity);
 }
 

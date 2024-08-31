@@ -54,8 +54,8 @@ void ImageObject::setOffset(int x, int y) {
 
 void ImageObject::render(SDL_Renderer* renderer) {
     SDL_Rect bounds = {
-        x * render_scale + offsetX,
-        y * render_scale + offsetY,
+        x * render_scale + offsetX * render_scale,
+        y * render_scale + offsetY * render_scale,
         width * scale * render_scale,
         height * scale * render_scale
     };

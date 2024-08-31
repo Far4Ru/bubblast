@@ -44,8 +44,8 @@ void TextObject::render(SDL_Renderer* renderer) {
     mTexture =  SDL_CreateTextureFromSurface(renderer, textSurface);
     if (textSurface) {
         SDL_Rect bounds = {
-            x * render_scale + offsetX,
-            y * render_scale + offsetY,
+            x * render_scale + offsetX * render_scale,
+            y * render_scale + offsetY * render_scale,
             textSurface->w * render_scale,
             textSurface->h * render_scale
         };
