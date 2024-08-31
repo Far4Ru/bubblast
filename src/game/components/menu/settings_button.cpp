@@ -9,7 +9,7 @@ SettingsButton::SettingsButton() {
     text->x = PLAY_BUTTON_X;
     text->y = PLAY_BUTTON_Y;
 
-    SDL_Rect hit_area = { PLAY_BUTTON_X, PLAY_BUTTON_Y - 35, 150, 70 };
+    SDL_Rect hit_area = { PLAY_BUTTON_X, PLAY_BUTTON_Y - 15, 150, 70 };
     engine->mouse->addClick("settings_button", [&, hit_area](int x, int y) {
         SDL_Rect current_hit_area = {
             engine->game_area->x + hit_area.x,
