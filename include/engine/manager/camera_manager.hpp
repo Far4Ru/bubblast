@@ -10,5 +10,5 @@ class CameraManager {
         void follow(ImageObject* object);
         void unfollow();
     private:
-        ImageObject* follow_object;
+        ImageObject* follow_object = nullptr;
 };
