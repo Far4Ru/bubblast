@@ -9,6 +9,7 @@ void MenuScene::clear() {
         this->active = false;
         engine->renderer->clear();
         delete background;
+        delete logo;
     }
 }
 
@@ -16,5 +17,6 @@ void MenuScene::start() {
     if (!this->active) {
         this->active = true;
         background = new MenuBackground();
+        logo = new Logo();
     }
 }
