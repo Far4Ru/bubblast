@@ -13,9 +13,7 @@ void CollisionManager::remove(CollisionObject* object) {
 }
 
 void CollisionManager::clear() {
-    for (CollisionObject* object : collision_objects) {
-        remove(object);
-    }
+    std::vector<CollisionObject*>().swap(collision_objects);
 }
 
 void CollisionManager::process() {

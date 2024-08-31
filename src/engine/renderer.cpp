@@ -49,9 +49,7 @@ void Renderer::remove(RenderObject* object) {
 }
 
 void Renderer::clear() {
-    for (RenderObject* render_object : render_queue) {
-        remove(render_object);
-    }
+    std::vector<RenderObject*>().swap(render_queue);
 }
 
 SDL_Renderer* Renderer::get() {

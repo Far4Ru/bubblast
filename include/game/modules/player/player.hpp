@@ -13,6 +13,7 @@ enum MoveType {
 class Player : public CollisionObject {
     public:
         Player();
+        ~Player();
         void destroy();
 
         int x = 0, y = 0;

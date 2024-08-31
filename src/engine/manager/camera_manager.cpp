@@ -10,8 +10,6 @@ void CameraManager::process() {
         x = follow_object->x - width / 2;
         y = follow_object->y - height / 2;
     }
-
-    // other objects except the follow_object: x = ... + camera.x; y = ... + camera.y
 }
 
 void CameraManager::follow(ImageObject* object) {

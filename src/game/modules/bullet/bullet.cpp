@@ -43,6 +43,7 @@ Bullet::Bullet(int x, int y) {
 
 Bullet::~Bullet() {
     engine->collision->remove(this);
+    bullet_image->destroy();
 }
 
 void Bullet::updateVelocity() {

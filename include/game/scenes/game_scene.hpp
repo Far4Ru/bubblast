@@ -11,8 +11,10 @@
 class GameScene {
     public:
         GameScene();
+
         void clear();
         void start();
+
         Background* background;
         Player* player;
         Sound* sound;
@@ -22,4 +24,5 @@ class GameScene {
         MouseText* mouse_text;
         ScreenText* screen_text;
     private:
+        bool active = false;
 };

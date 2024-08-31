@@ -12,3 +12,8 @@ Background::Background() {
     };
     frame->setProcess(frameFunc);
 }
+
+Background::~Background() {
+    image->destroy();
+    frame->destroy();
+}

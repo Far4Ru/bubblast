@@ -58,6 +58,7 @@ void EnemyManager::kill(Enemy* enemy) {
 
 void EnemyManager::killAll() {
     for (Enemy* enemy : enemies) {
-        kill(enemy);
+        enemy->destroy();
     }
+    std::vector<Enemy*>().swap(enemies);
 }

@@ -39,6 +39,10 @@ Player::Player() {
     type = PLAYER;
 }
 
+Player::~Player() {
+    destroy();
+}
+
 void Player::destroy() {
     engine->collision->remove(this);
     player->destroy();

@@ -3,4 +3,7 @@
 class MouseText {
     public:
         MouseText();
+        ~MouseText();
+    private:
+        TextObject* mouse_text;
 };
