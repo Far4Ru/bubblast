@@ -15,12 +15,12 @@ PlayerLives::~PlayerLives() {
 
 void PlayerLives::reduce() {
     count--;
+    for (int i = count; i < MAX_PLAYER_LIVES; i++) {
+        lives[i]->inactive();
+    }
     if (count < 1) {
         game->gameScene->clear();
         game->loseScene->start();
-    }
-    for (int i = count; i < MAX_PLAYER_LIVES; i++) {
-        lives[i]->inactive();
     }
 }
 
