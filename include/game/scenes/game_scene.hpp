@@ -10,6 +10,7 @@
 #include "game/components/game/screen_text.hpp"
 #include "game/components/game/player_lives.hpp"
 #include "game/components/game/game_time_text.hpp"
+#include "game/components/game/game_score_text.hpp"
 #include "game/modules/bullet/bullet_manager.hpp"
 #include "game/modules/enemy/enemy_manager.hpp"
 
@@ -30,6 +31,7 @@ class GameScene {
         ScreenText* screen_text;
         PlayerLives* lives;
         GameTimeText* game_time_text;
+        GameScoreText* game_score_text;
     private:
         bool active = false;
 };

@@ -24,6 +24,7 @@ Enemy::Enemy(int x, int y, std::string name) {
         if (!active) { return; }
         enemy_image->setOffset(-engine->camera->x , -engine->camera->y );
         if (collision == BULLET) {
+            game->gameScene->game_score_text->game_score++;
             game->gameScene->enemy_manager->kill(this);
             active = false;
             to_destroy = true;
