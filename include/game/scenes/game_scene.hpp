@@ -8,6 +8,7 @@
 #include "game/components/game/fps_text.hpp"
 #include "game/components/game/mouse_text.hpp"
 #include "game/components/game/screen_text.hpp"
+#include "game/components/game/player_lives.hpp"
 #include "game/modules/bullet/bullet_manager.hpp"
 #include "game/modules/enemy/enemy_manager.hpp"
 
@@ -26,6 +27,7 @@ class GameScene {
         FPSText* fps_text;
         MouseText* mouse_text;
         ScreenText* screen_text;
+        PlayerLives* lives;
     private:
         bool active = false;
 };
