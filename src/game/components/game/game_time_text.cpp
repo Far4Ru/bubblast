@@ -10,6 +10,11 @@ GameTimeText::GameTimeText() {
         if (ticks > 1000 ) {
             game_seconds++;
             text->setText(getTime());
+            if (game_seconds > 5 * 60) {
+                    game->gameScene->clear();
+                    game->winScene->start();
+                return;
+            }
             timer.start();
         }
     };
