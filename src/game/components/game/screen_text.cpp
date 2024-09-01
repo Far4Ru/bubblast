@@ -3,6 +3,7 @@
 ScreenText::ScreenText() {
     screen_text = engine->add->text("WinterCat");
     auto textFunc = [&]() {
+        return;
         std::string widthText = std::to_string(engine->game_area->width);
         std::string heightText = std::to_string(engine->game_area->height);
         std::string full_widthText = std::to_string(engine->game_area->full_width);
