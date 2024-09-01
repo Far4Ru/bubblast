@@ -1,3 +1,6 @@
+#ifndef EXIT_BUTTON_H
+#define EXIT_BUTTON_H
+
 #include "engine/engine.hpp"
 
 class ExitButton {
@@ -7,3 +10,5 @@ class ExitButton {
     private:
         TextObject* text;
 };
+
+#endif

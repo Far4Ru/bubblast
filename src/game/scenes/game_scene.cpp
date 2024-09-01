@@ -18,6 +18,7 @@ void GameScene::clear() {
         delete bullet_manager;
         delete enemy_manager;
         delete player;
+        engine->keyboard->remove(SDL_SCANCODE_ESCAPE);
     }
 }
 

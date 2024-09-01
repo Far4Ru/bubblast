@@ -1,3 +1,6 @@
+#ifndef GAME_SCENE_H
+#define GAME_SCENE_H
+
 #include "engine/engine.hpp"
 #include "game/components/game/background.hpp"
 #include "game/modules/player/player.hpp"
@@ -26,3 +29,5 @@ class GameScene {
     private:
         bool active = false;
 };
+
+#endif

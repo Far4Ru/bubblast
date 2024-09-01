@@ -1,8 +1,8 @@
-#include <SDL2/SDL.h>
-#include <iostream>
-
 #ifndef WINDOW_H
 #define WINDOW_H
+
+#include <SDL2/SDL.h>
+#include <iostream>
 
 #include "config/config.hpp"
 

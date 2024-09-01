@@ -1,3 +1,6 @@
+#ifndef MENU_SCENE_H
+#define MENU_SCENE_H
+
 #include "engine/engine.hpp"
 #include "game/components/menu/menu_background.hpp"
 #include "game/components/menu/logo.hpp"
@@ -21,3 +24,5 @@ class MenuScene {
         SettingsButton* settings;
         ExitButton* exit;
 };
+
+#endif

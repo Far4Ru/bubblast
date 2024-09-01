@@ -23,7 +23,7 @@ ResultsButton::ResultsButton() {
             y < (current_hit_area.y + current_hit_area.h)
             ) {
             game->menuScene->clear();
-            game->gameScene->start();
+            game->resultsScene->start();
         }
     });
     engine->mouse->addHover("results_button", [&, hit_area](int x, int y) {

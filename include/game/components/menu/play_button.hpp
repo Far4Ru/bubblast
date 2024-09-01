@@ -1,3 +1,6 @@
+#ifndef PLAY_BUTTON_H
+#define PLAY_BUTTON_H
+
 #include "engine/engine.hpp"
 
 class PlayButton {
@@ -7,3 +10,5 @@ class PlayButton {
     private:
         TextObject* text;
 };
+
+#endif

@@ -5,7 +5,6 @@ EnemyManager::EnemyManager() {
     std::srand(std::time(nullptr));
     TimeObject* time = engine->add->time();
     auto timeFunc = [&]() {
-        return;
         int ticks = timer.get_ticks();
         if (ticks > 100 * (1000 / 60)) {
             int enemy_number = rand() % (5 - 1 + 1) + 1;
