@@ -9,6 +9,7 @@
 #include "game/components/game/mouse_text.hpp"
 #include "game/components/game/screen_text.hpp"
 #include "game/components/game/player_lives.hpp"
+#include "game/components/game/game_time_text.hpp"
 #include "game/modules/bullet/bullet_manager.hpp"
 #include "game/modules/enemy/enemy_manager.hpp"
 
@@ -28,6 +29,7 @@ class GameScene {
         MouseText* mouse_text;
         ScreenText* screen_text;
         PlayerLives* lives;
+        GameTimeText* game_time_text;
     private:
         bool active = false;
 };

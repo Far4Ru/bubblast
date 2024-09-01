@@ -12,7 +12,9 @@ class EnemyManager {
         void killAll();
         void add(Enemy* enemy);
         void remove(Enemy* enemy);
+        std::string getTime();
     private:
+        int game_seconds = 0;
         Timer timer;
         std::vector<Enemy*> enemies;
 };

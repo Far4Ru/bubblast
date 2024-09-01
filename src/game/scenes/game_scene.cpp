@@ -15,6 +15,7 @@ void GameScene::clear() {
         delete fps_text;
         delete mouse_text;
         delete screen_text;
+        delete game_time_text;
         delete lives;
         delete bullet_manager;
         delete enemy_manager;
@@ -35,6 +36,7 @@ void GameScene::start() {
         bullet_manager = new BulletManager();
         enemy_manager = new EnemyManager();
         lives = new PlayerLives();
+        game_time_text = new GameTimeText();
         
         engine->keyboard->add(SDL_SCANCODE_ESCAPE, [&]() {
             game->gameScene->clear();
