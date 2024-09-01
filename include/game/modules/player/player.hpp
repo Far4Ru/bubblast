@@ -22,6 +22,7 @@ class Player : public CollisionObject {
         int centerX();
         int centerY();
     private:
+        int last_hit_seconds = 0;
         ImageObject* player;
         void update();
         void move(MoveType side);

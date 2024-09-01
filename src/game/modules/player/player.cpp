@@ -1,4 +1,4 @@
-#include "game/modules/player/player.hpp"
+#include "game/game.hpp"
 
 Player::Player() {
     player = engine->add->image("wizard");
@@ -10,6 +10,18 @@ Player::Player() {
     player->crop = crop;
     player->width = crop.w;
     player->height = crop.h;
+    auto player_func = [&]() {
+        updateSides();
+        int game_seconds = game->gameScene->game_time_text->game_seconds;
+        if (game_seconds > (last_hit_seconds + 5)) {
+            if (collision == ENEMY) {
+                game->gameScene->lives->reduce();
+                last_hit_seconds = game_seconds;
+                return;
+            }
+        }
+    };
+    player->setProcess(player_func);
     engine->camera->follow(player);
     update();
     engine->keyboard->add(SDL_SCANCODE_UP, [&]() {
@@ -88,7 +100,7 @@ void Player::update() {
 }
 
 void Player::updateVelocity() {
-    updateSides();
+    // updateSides();
 }
 
 void Player::updateSides() {

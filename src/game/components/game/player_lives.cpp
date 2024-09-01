@@ -1,10 +1,9 @@
-#include "game/components/game/player_lives.hpp"
+#include "game/game.hpp"
 
 PlayerLives::PlayerLives() {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < MAX_PLAYER_LIVES; i++) {
         add(new PlayerLife(i));
     }
-    lives[2]->inactive();
 }
 
 PlayerLives::~PlayerLives() {
@@ -12,6 +11,17 @@ PlayerLives::~PlayerLives() {
         life->destroy();
     }
     std::vector<PlayerLife*>().swap(lives);
+}
+
+void PlayerLives::reduce() {
+    count--;
+    if (count < 1) {
+        game->gameScene->clear();
+        game->loseScene->start();
+    }
+    for (int i = count; i < MAX_PLAYER_LIVES; i++) {
+        lives[i]->inactive();
+    }
 }
 
 void PlayerLives::add(PlayerLife* life) {
