@@ -8,6 +8,7 @@
 #include "game/scenes/results_scene.hpp"
 #include "game/scenes/settings_scene.hpp"
 #include "game/scenes/win_scene.hpp"
+#include "game/scenes/scene_base.hpp"
 
 
 class Game {
@@ -21,6 +22,10 @@ class Game {
         SettingsScene* settingsScene;
         WinScene* winScene;
         LoseScene* loseScene;
+
+        void change_scene(SceneBase* scene);
+    private:
+        SceneBase* current_scene = NULL;
 };
 
 extern Game* game;

@@ -9,16 +9,22 @@ Game::Game() {
     loseScene = new LoseScene();
 
     engine->keyboard->add(SDL_SCANCODE_C, [&]() {
-        gameScene->clear();
-        menuScene->start();
+        change_scene(loseScene);
     });
     engine->keyboard->add(SDL_SCANCODE_V, [&]() {
-        menuScene->clear();
-        gameScene->start();
+        change_scene(winScene);
     });
 }
 
 void Game::start() {
-    menuScene->start();
+    change_scene(menuScene);
     engine->start();
+}
+
+void Game::change_scene(SceneBase* scene) {
+    if (current_scene != NULL) {
+        current_scene->clear();
+    }
+    current_scene = scene;
+    current_scene->start();
 }

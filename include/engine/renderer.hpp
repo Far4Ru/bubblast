@@ -27,6 +27,7 @@ class Renderer {
 
         Window* window;
     private:
+        bool active = false;
         SDL_Renderer* renderer = NULL;
         std::vector<RenderObject*> render_queue;
 };

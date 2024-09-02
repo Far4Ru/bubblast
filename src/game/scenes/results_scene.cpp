@@ -19,8 +19,7 @@ void ResultsScene::start() {
         background = new MenuBackground();
         
         engine->keyboard->add(SDL_SCANCODE_ESCAPE, [&]() {
-            game->resultsScene->clear();
-            game->menuScene->start();
+            game->change_scene(game->menuScene);
         });
     }
 }

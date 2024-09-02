@@ -2,8 +2,9 @@
 #define SETTINGS_SCENE_H
 
 #include "engine/engine.hpp"
+#include "game/scenes/scene_base.hpp"
 
-class SettingsScene {
+class SettingsScene : public SceneBase {
     public:
         SettingsScene();
 

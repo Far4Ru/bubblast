@@ -41,8 +41,7 @@ void GameScene::start() {
         game_score_text = new GameScoreText();
         
         engine->keyboard->add(SDL_SCANCODE_ESCAPE, [&]() {
-            game->gameScene->clear();
-            game->menuScene->start();
+            game->change_scene(game->menuScene);
         });
     }
 }

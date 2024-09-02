@@ -2,8 +2,9 @@
 #define RESULTS_SCENE_H
 
 #include "engine/engine.hpp"
+#include "game/scenes/scene_base.hpp"
 
-class ResultsScene {
+class ResultsScene : public SceneBase {
     public:
         ResultsScene();
 

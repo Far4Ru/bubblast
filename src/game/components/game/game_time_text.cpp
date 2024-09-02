@@ -11,8 +11,7 @@ GameTimeText::GameTimeText() {
             game_seconds++;
             text->setText(getTime());
             if (game_seconds > 5 * 60) {
-                    game->gameScene->clear();
-                    game->winScene->start();
+                    game->change_scene(game->winScene);
                 return;
             }
             timer.start();

@@ -8,8 +8,9 @@
 #include "game/components/menu/settings_button.hpp"
 #include "game/components/menu/results_button.hpp"
 #include "game/components/menu/exit_button.hpp"
+#include "game/scenes/scene_base.hpp"
 
-class MenuScene {
+class MenuScene : public SceneBase {
     public:
         MenuScene();
 

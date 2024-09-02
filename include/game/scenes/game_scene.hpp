@@ -13,8 +13,9 @@
 #include "game/components/game/game_score_text.hpp"
 #include "game/modules/bullet/bullet_manager.hpp"
 #include "game/modules/enemy/enemy_manager.hpp"
+#include "game/scenes/scene_base.hpp"
 
-class GameScene {
+class GameScene : public SceneBase {
     public:
         GameScene();
 

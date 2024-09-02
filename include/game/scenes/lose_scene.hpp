@@ -2,8 +2,9 @@
 #define LOSE_SCENE_H
 
 #include "engine/engine.hpp"
+#include "game/scenes/scene_base.hpp"
 
-class LoseScene {
+class LoseScene : public SceneBase {
     public:
         LoseScene();
 
@@ -11,6 +12,7 @@ class LoseScene {
         void start();
     private:
         bool active = false;
+        MenuBackground* background;
 };
 
 #endif

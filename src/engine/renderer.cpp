@@ -27,12 +27,16 @@ void Renderer::setScale(float scale) {
 void Renderer::render() {
     SDL_RenderClear(renderer);
     for (RenderObject* render_object : render_queue) {
-        if (render_object->active) {
-            render_object->process();
-            render_object->render(renderer);
-        } else if (render_object->to_destroy) {
-            remove(render_object);
-            render_object->destroy();
+        if (active) {
+            if (render_object->active) {
+                render_object->process();
+                if (active) {
+                    render_object->render(renderer);
+                }
+            } else if (render_object->to_destroy) {
+                remove(render_object);
+                render_object->destroy();
+            }
         }
     }
     SDL_SetRenderDrawColor( renderer, 0x00, 0x00, 0x00, 0x00 );
@@ -41,6 +45,7 @@ void Renderer::render() {
 }
 
 void Renderer::add(RenderObject* object) {
+    active = true;
     render_queue.push_back(object);
 }
 
@@ -50,6 +55,7 @@ void Renderer::remove(RenderObject* object) {
 
 void Renderer::clear() {
     std::vector<RenderObject*>().swap(render_queue);
+    active = false;
 }
 
 SDL_Renderer* Renderer::get() {
