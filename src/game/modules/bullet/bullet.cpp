@@ -15,7 +15,7 @@ Bullet::Bullet(int x, int y) {
 
     auto bullet_func = [&]() {
         if (!active) { return; }
-        if (collision == ENEMY) {
+        if (collision!= NULL && collision->type == ENEMY) {
             active = false;
             bullet_image->active = false;
             to_destroy = true;

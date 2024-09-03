@@ -16,6 +16,7 @@
 #include "engine/manager/camera_manager.hpp"
 #include "engine/manager/collision_manager.hpp"
 #include "engine/manager/game_area_manager.hpp"
+#include "engine/manager/scene_manager.hpp"
 #include "engine/utils/axis_computing.hpp"
 
 class Engine {
@@ -34,6 +35,7 @@ class Engine {
         CameraManager* camera;
         CollisionManager* collision;
         GameAreaManager* game_area;
+        SceneManager* scene;
 
         AxisComputing* axis_computing;
         Renderer* renderer;

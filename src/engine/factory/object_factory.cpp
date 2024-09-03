@@ -8,19 +8,22 @@ ObjectFactory::ObjectFactory(Renderer* renderer, Loader* loader) {
 ImageObject* ObjectFactory::image(std::string name) {
     ImageObject* image = new ImageObject();
     image->load(renderer->get(), loader->getImage(name));
-    renderer->add(image);
+    image->name = name;
+    renderer->add_next(image);
     return image;
 }
 
 TextObject* ObjectFactory::text(std::string name) {
     TextObject* text = new TextObject();
     text->setFont(loader->getFont(name));
-    renderer->add(text);
+    text->name = name;
+    renderer->add_next(text);
     return text;
 }
 
 TimeObject* ObjectFactory::time() {
     TimeObject* time = new TimeObject();
-    renderer->add(time);
+    time->name = "time";
+    renderer->add_next(time);
     return time;
 }

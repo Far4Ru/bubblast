@@ -20,6 +20,7 @@ class Renderer {
         void render();
         void start();
         void add(RenderObject* object);
+        void add_next(RenderObject* object);
         void remove(RenderObject* object);
         SDL_Renderer* get();
         void setScale(float scale);
@@ -29,6 +30,7 @@ class Renderer {
     private:
         bool active = false;
         SDL_Renderer* renderer = NULL;
+        std::vector<RenderObject*> next_render_queue;
         std::vector<RenderObject*> render_queue;
 };
 

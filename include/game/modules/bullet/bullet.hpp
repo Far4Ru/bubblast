@@ -19,7 +19,6 @@ class Bullet : public CollisionObject {
         int life = MAX_BULLET_LIFE;
         int speed = 10;
         ImageObject* bullet_image;
-        SDL_FPoint velocity;
 };
 
 #endif

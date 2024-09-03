@@ -22,7 +22,7 @@ PlayButton::PlayButton() {
             current_hit_area.y < y &&
             y < (current_hit_area.y + current_hit_area.h)
             ) {
-            game->change_scene(game->gameScene);
+            pressed = true;
         }
     });
     engine->mouse->addHover("play_button", [&, hit_area](int x, int y) {

@@ -7,6 +7,8 @@ class ResultsButton {
     public:
         ResultsButton();
         ~ResultsButton();
+
+        bool pressed = false;
     private:
         TextObject* text;
 };

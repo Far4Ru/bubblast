@@ -12,18 +12,22 @@ Player::Player() {
     player->height = crop.h;
     auto player_func = [&]() {
         updateSides();
-        int game_seconds = game->gameScene->game_time_text->game_seconds;
-        if (game_seconds > (last_hit_seconds + 5)) {
-            if (collision == ENEMY) {
-                game->gameScene->lives->reduce();
-                last_hit_seconds = game_seconds;
-                return;
+        if (game->gameScene->game_time_text) {
+            int game_seconds = game->gameScene->game_time_text->game_seconds;
+            if (game_seconds > (last_hit_seconds + 1)) {
+                if (collision != NULL && collision->type == ENEMY) {
+                    game->gameScene->lives->reduce();
+                    last_hit_seconds = game_seconds;
+                    return;
+                }
             }
         }
     };
     player->setProcess(player_func);
     engine->camera->follow(player);
+    engine->camera->process();
     update();
+    player_func();
     engine->keyboard->add(SDL_SCANCODE_UP, [&]() {
         move(MOVE_UP);
     });

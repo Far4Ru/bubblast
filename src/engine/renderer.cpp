@@ -39,6 +39,12 @@ void Renderer::render() {
             }
         }
     }
+    
+    for (RenderObject* next_render_object : next_render_queue) {
+        add(next_render_object);
+    }
+    std::vector<RenderObject*>().swap(next_render_queue);
+
     SDL_SetRenderDrawColor( renderer, 0x00, 0x00, 0x00, 0x00 );
 
     SDL_RenderPresent(renderer);
@@ -47,6 +53,10 @@ void Renderer::render() {
 void Renderer::add(RenderObject* object) {
     active = true;
     render_queue.push_back(object);
+}
+
+void Renderer::add_next(RenderObject* object) {
+    next_render_queue.push_back(object);
 }
 
 void Renderer::remove(RenderObject* object) {

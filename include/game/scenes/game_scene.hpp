@@ -31,7 +31,7 @@ class GameScene : public SceneBase {
         MouseText* mouse_text;
         ScreenText* screen_text;
         PlayerLives* lives;
-        GameTimeText* game_time_text;
+        GameTimeText* game_time_text = NULL;
         GameScoreText* game_score_text;
     private:
         bool active = false;

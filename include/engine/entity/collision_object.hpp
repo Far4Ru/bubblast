@@ -17,7 +17,8 @@ class CollisionObject {
         int top = 0;
         int bottom = 0;
         CollisionObjectType type = NONE;
-        CollisionObjectType collision = NONE;
+        CollisionObject* collision = NULL;
+        SDL_FPoint velocity;
 };
 
 #endif

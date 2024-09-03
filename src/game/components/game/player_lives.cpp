@@ -21,9 +21,6 @@ void PlayerLives::reduce() {
     for (int i = count; i < MAX_PLAYER_LIVES; i++) {
         lives[i]->inactive();
     }
-    if (count < 1) {
-        game->change_scene(game->loseScene);
-    }
 }
 
 void PlayerLives::add(PlayerLife* life) {

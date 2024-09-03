@@ -1,4 +1,4 @@
-#include "game/scenes/menu_scene.hpp"
+#include "game/game.hpp"
 
 MenuScene::MenuScene() {
 
@@ -8,6 +8,7 @@ void MenuScene::clear() {
     if (this->active) {
         this->active = false;
         engine->renderer->clear();
+        engine->scene->unset();
         delete background;
         delete logo;
         delete play;
@@ -26,5 +27,14 @@ void MenuScene::start() {
         settings = new SettingsButton();
         results = new ResultsButton();
         exit = new ExitButton();
+        engine->scene->set([&]() {
+            if (play->pressed) {
+                game->change_scene(game->gameScene);
+            } else if (results->pressed) {
+                game->change_scene(game->resultsScene);
+            } else if (settings->pressed) {
+                game->change_scene(game->settingsScene);
+            }
+        });
     }
 }

@@ -23,12 +23,18 @@ Enemy::Enemy(int x, int y, std::string name) {
     auto bullet_func = [&]() {
         if (!active) { return; }
         enemy_image->setOffset(-engine->camera->x , -engine->camera->y );
-        if (collision == BULLET) {
-            game->gameScene->game_score_text->game_score++;
-            game->gameScene->enemy_manager->kill(this);
-            active = false;
-            to_destroy = true;
-            return;
+        if (collision != NULL && collision->type == BULLET) {
+            enemy_image->x += collision->velocity.x * 100;
+            enemy_image->y += collision->velocity.y * 100;
+            collision = NULL;
+            hits--;
+            if (hits < 1) {
+                game->gameScene->game_score_text->game_score++;
+                game->gameScene->enemy_manager->kill(this);
+                active = false;
+                to_destroy = true;
+                return;
+            }
         }
         updateVelocity();
     };

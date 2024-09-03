@@ -22,8 +22,8 @@ void CollisionManager::process() {
             for (std::vector<CollisionObject*>::size_type j = i + 1; j != collision_objects.size(); j++) {
                 bool isCollide = check(collision_objects[i], collision_objects[j]);
                 if (isCollide) {
-                    collision_objects[i]->collision = collision_objects[j]->type;
-                    collision_objects[j]->collision = collision_objects[i]->type;
+                    collision_objects[i]->collision = collision_objects[j];
+                    collision_objects[j]->collision = collision_objects[i];
                 }
             }
         }

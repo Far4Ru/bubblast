@@ -5,6 +5,7 @@ PlayerLife::PlayerLife(int number) {
     image->scale = 0.25;
     image->x = number * 70 - 40;
     image->y = -70;
+    image->active = true;
     image_inactive = engine->add->image("heart_empty");
     image_inactive->scale = 0.25;
     image_inactive->x = number * 70 - 40;

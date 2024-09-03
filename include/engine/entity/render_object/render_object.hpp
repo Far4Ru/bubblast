@@ -12,6 +12,8 @@ class RenderObject {
         virtual void destroy() = 0;
         virtual ~RenderObject() = default;
         virtual void setScale(float scale) = 0;
+
+        std::string name = "";
         bool active = true;
         bool to_destroy = false;
 };

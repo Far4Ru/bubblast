@@ -22,7 +22,7 @@ SettingsButton::SettingsButton() {
             current_hit_area.y < y &&
             y < (current_hit_area.y + current_hit_area.h)
             ) {
-            game->change_scene(game->settingsScene);
+            pressed = true;
         }
     });
     engine->mouse->addHover("settings_button", [&, hit_area](int x, int y) {

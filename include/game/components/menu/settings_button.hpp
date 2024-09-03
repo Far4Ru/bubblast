@@ -7,6 +7,8 @@ class SettingsButton {
     public:
         SettingsButton();
         ~SettingsButton();
+
+        bool pressed = false;
     private:
         TextObject* text;
 };

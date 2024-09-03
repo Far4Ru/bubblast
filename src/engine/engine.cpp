@@ -50,6 +50,7 @@ void Engine::start() {
         }
         game_area->resize(renderer->get(), renderer->window);
         renderer->setScale(game_area->scale);
+        scene->process();
         keyboard->process();
         mouse->process();
         if (!active) {
@@ -94,6 +95,7 @@ int Engine::init() {
     collision = new CollisionManager();
     camera = new CameraManager();
     game_area = new GameAreaManager();
+    scene = new SceneManager();
 
     return 0;
 }

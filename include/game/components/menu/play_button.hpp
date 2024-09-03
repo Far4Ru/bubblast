@@ -7,6 +7,8 @@ class PlayButton {
     public:
         PlayButton();
         ~PlayButton();
+        
+        bool pressed = false;
     private:
         TextObject* text;
 };

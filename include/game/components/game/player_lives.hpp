@@ -10,7 +10,7 @@ class PlayerLives {
         void add(PlayerLife* life);
         void remove(PlayerLife* life);
         void reduce();
-    private:
         int count = MAX_PLAYER_LIVES;
+    private:
         std::vector<PlayerLife*> lives;
 };
