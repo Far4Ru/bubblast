@@ -29,6 +29,7 @@ void GameScene::clear() {
 void GameScene::start() {
     if (!this->active) {
         this->active = true;
+        engine->sound->pauseMusic();
         background = new Background();
         player = new Player();
         sound = new Sound();

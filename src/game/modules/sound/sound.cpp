@@ -1,7 +1,7 @@
 #include "game/modules/sound/sound.hpp"
 
 Sound::Sound() {
-    engine->sound->playMusic("PositiveEnergy");
+    engine->sound->playMusic("game_music");
     engine->keyboard->add(SDL_SCANCODE_1, [&]() {
         engine->sound->pauseMusic();
     });
