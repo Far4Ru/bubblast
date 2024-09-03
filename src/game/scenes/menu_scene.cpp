@@ -20,6 +20,7 @@ void MenuScene::clear() {
 void MenuScene::start() {
     if (!this->active) {
         this->active = true;
+        engine->sound->playMusic("menu_music");
         background = new MenuBackground();
         logo = new Logo();
         play = new PlayButton();
