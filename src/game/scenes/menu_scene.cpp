@@ -21,13 +21,15 @@ void MenuScene::clear() {
 void MenuScene::start() {
     if (!this->active) {
         this->active = true;
-        engine->sound->playMusic("menu_music");
+        engine->sound->playMusic("menu_music", true);
         background = new MenuBackground();
         logo = new Logo();
         play = new PlayButton();
         settings = new SettingsButton();
         results = new ResultsButton();
         exit = new ExitButton();
+        // VersionInfoText
+        // AuthorInfoText
         engine->scene->set([&]() {
             if (play->pressed) {
                 game->change_scene(game->gameScene);

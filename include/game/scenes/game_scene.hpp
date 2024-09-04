@@ -11,6 +11,7 @@
 #include "game/components/game/player_lives.hpp"
 #include "game/components/game/game_time_text.hpp"
 #include "game/components/game/game_score_text.hpp"
+#include "game/components/game/mouse_image.hpp"
 #include "game/modules/bullet/bullet_manager.hpp"
 #include "game/modules/enemy/enemy_manager.hpp"
 #include "game/scenes/scene_base.hpp"
@@ -31,6 +32,7 @@ class GameScene : public SceneBase {
         MouseText* mouse_text;
         ScreenText* screen_text;
         PlayerLives* lives;
+        MouseImage* mouse;
         GameTimeText* game_time_text = NULL;
         GameScoreText* game_score_text;
     private:

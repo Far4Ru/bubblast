@@ -7,7 +7,7 @@ class SoundManager {
     public:
         SoundManager(Loader* loader);
         void playSound(std::string name);
-        void playMusic(std::string name);
+        void playMusic(std::string name, bool loop);
         void resumeMusic();
         void pauseMusic();
     private:

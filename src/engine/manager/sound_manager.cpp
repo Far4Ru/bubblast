@@ -8,8 +8,8 @@ void SoundManager::playSound(std::string name) {
     Mix_PlayChannel(-1, loader->getChunk(name), 0);
 }
 
-void SoundManager::playMusic(std::string name) {
-    Mix_PlayMusic(loader->getMusic(name), -1);
+void SoundManager::playMusic(std::string name, bool loop) {
+    Mix_PlayMusic(loader->getMusic(name), loop ? -1 : 0);
 }
 
 void SoundManager::resumeMusic() {

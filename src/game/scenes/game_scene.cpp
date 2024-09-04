@@ -18,6 +18,7 @@ void GameScene::clear() {
         delete screen_text;
         delete game_time_text;
         delete game_score_text;
+        delete mouse;
         delete lives;
         delete bullet_manager;
         delete enemy_manager;
@@ -41,6 +42,7 @@ void GameScene::start() {
         lives = new PlayerLives();
         game_time_text = new GameTimeText();
         game_score_text = new GameScoreText();
+        mouse = new MouseImage();
         engine->scene->set([&]() {
             if (game_time_text->game_seconds > 5 * 60) {
                 game->change_scene(game->winScene);

@@ -1,9 +1,9 @@
 #include "engine/engine.hpp"
 
-class WinTitle {
+class MouseImage {
     public:
-        WinTitle();
-        ~WinTitle();
+        MouseImage();
+        ~MouseImage();
     private:
         ImageObject* image;
 };
