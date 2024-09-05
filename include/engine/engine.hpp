@@ -40,10 +40,14 @@ class Engine {
         AxisComputing* axis_computing;
         Renderer* renderer;
         bool active = true;
-    private:
+
+        void setFullscreen(bool value);
+        bool isFullscreen();
         Loader* loader;
+    private:
         int init();
         void close();
+        bool fullScreen = false;
 };
 
 extern Engine* engine;

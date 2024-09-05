@@ -11,6 +11,9 @@ void SettingsScene::clear() {
         delete background;
         delete title;
         delete back_to_menu;
+        delete fullscreen_settings;
+        delete music_settings;
+        delete sound_settings;
         engine->keyboard->remove(SDL_SCANCODE_ESCAPE);
     }
 }
@@ -21,10 +24,9 @@ void SettingsScene::start() {
         background = new MenuBackground();
         title = new SettingsTitleText();
         back_to_menu = new BackMenuButton();
-
-        // FullscreenOption (on/off)
-        // MusicOption (0 to 10, +/-)
-        // SoundOption (0 to 10, +/-)
+        fullscreen_settings = new FullscreenSettings();
+        music_settings = new MusicSettings();
+        sound_settings = new SoundSettings();
         // InputHelp
         engine->scene->set([&]() {
             if (back_to_menu->pressed) {
