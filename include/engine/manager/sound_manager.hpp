@@ -12,4 +12,5 @@ class SoundManager {
         void pauseMusic();
     private:
         Loader* loader;
+        std::string current_music_name;
 };

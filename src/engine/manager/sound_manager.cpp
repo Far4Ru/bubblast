@@ -9,7 +9,9 @@ void SoundManager::playSound(std::string name) {
 }
 
 void SoundManager::playMusic(std::string name, bool loop) {
+    if (current_music_name == name && loop) { return; }
     Mix_PlayMusic(loader->getMusic(name), loop ? -1 : 0);
+    if (loop) { current_music_name = name; }
 }
 
 void SoundManager::resumeMusic() {
@@ -18,4 +20,5 @@ void SoundManager::resumeMusic() {
 
 void SoundManager::pauseMusic() {
     Mix_PauseMusic();
+    current_music_name = "";
 }
