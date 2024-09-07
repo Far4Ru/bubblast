@@ -27,7 +27,7 @@ void ResultsTable::get_file_data() {
 
 void ResultsTable::make_table() {
     int y = RESULTS_TABLE_Y;
-    std::sort(table_values.begin(), table_values.end(), std::greater());
+    std::sort(table_values.begin(), table_values.end(), std::greater<std::pair<int, std::__cxx11::string>>());
     int count = 0;
     for (std::pair<int, std::string> table_value : table_values) {
         count++;
