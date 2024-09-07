@@ -26,6 +26,12 @@ SoundSettings::SoundSettings() {
     right->x = 875;
     right->y = SOUND_SETTINGS_Y;
 
+    if (value <= 0) {
+        left->setText("");
+    } else if (value >= 100) {
+        right->setText("");
+    }
+
     SDL_Rect left_hit_area = { left->x, left->y - 15, 150, 70 };
     engine->mouse->addClick("left_sound_button", [&, left_hit_area](int x, int y) {
         SDL_Rect current_hit_area = {
