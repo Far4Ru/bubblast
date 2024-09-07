@@ -3,7 +3,8 @@
 
 class File {
     public:
-        bool init_file(std::string name);
+        static bool init_file(std::string name);
+        File() = delete;
     private:
-        bool is_empty(std::fstream& file);
+        static bool is_empty(std::fstream& file);
 };
