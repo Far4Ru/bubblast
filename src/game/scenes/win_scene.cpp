@@ -1,4 +1,5 @@
 #include "game/game.hpp"
+#include "engine/utils/file.hpp"
 
 WinScene::WinScene() {
 
@@ -20,7 +21,6 @@ void WinScene::start() {
         title = new WinTitle();
         // WinBackgroundImage
         // WinResultText
-        // BackMenuButton
         restart = new RestartButton();
         back_to_menu = new BackMenuButton();
         engine->sound->playMusic("win_sound", false);
@@ -31,5 +31,13 @@ void WinScene::start() {
                 game->change_scene(game->menuScene);
             }
         });
+        save_result();
     }
+}
+
+void WinScene::save_result() {
+    File::init_file("results.data");
+    std::ofstream data_file;
+    data_file.open("results.data", std::ios_base::app);
+    data_file << "\nPlayer - 0";
 }

@@ -4,6 +4,7 @@
 #include "engine/engine.hpp"
 #include "game/scenes/scene_base.hpp"
 #include "game/components/results/results_title_text.hpp"
+#include "game/components/results/results_table.hpp"
 
 class ResultsScene : public SceneBase {
     public:
@@ -16,6 +17,7 @@ class ResultsScene : public SceneBase {
         MenuBackground* background;
         BackMenuButton* back_to_menu;
         ResultsTitleText* title;
+        ResultsTable* table;
 };
 
 #endif

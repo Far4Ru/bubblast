@@ -10,6 +10,7 @@ void ResultsScene::clear() {
         engine->renderer->clear();
         delete background;
         delete title;
+        delete table;
         delete back_to_menu;
         engine->keyboard->remove(SDL_SCANCODE_ESCAPE);
     }
@@ -20,10 +21,9 @@ void ResultsScene::start() {
         this->active = true;
         background = new MenuBackground();
         title = new ResultsTitleText();
+        table = new ResultsTable();
         back_to_menu = new BackMenuButton();
 
-        // ResultsTitle
-        // ResultsList
         engine->scene->set([&]() {
             if (back_to_menu->pressed) {
                 game->change_scene(game->menuScene);
