@@ -1,8 +1,10 @@
 #include "game/components/input_name/input_name_field.hpp"
 
+#define INPUT_NAME_MAX_SIZE 5
+
 InputNameField::InputNameField() {
     text = engine->add->text("Airfool");
-    text->x = WIDTH / 2;
+    text->x = WIDTH / 2 - text->width / 2;
     text->y = 200;
     text->textColor = {84, 140, 47};
     timer.start();
@@ -10,7 +12,7 @@ InputNameField::InputNameField() {
         int ticks = timer.get_ticks();
         if (ticks > 150 ) {
             int strokeSize = stroke.size();
-            if (strokeSize < 16) {
+            if (strokeSize < INPUT_NAME_MAX_SIZE) {
                 stroke += engine->keyboard->getKey();
             }
             text->setText(stroke);

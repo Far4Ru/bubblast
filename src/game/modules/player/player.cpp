@@ -12,6 +12,10 @@ Player::Player() {
     player->height = crop.h;
     timer.start();
     auto player_func = [&]() {
+        player->x += moveX;
+        player->y += moveY;
+        moveX = 0;
+        moveY = 0;
         updateSides();
         int ticks = timer.get_ticks();
         if (ticks > 1000) {
@@ -76,22 +80,22 @@ void Player::destroy() {
 void Player::move(MoveType side) {
     switch (side) {
         case MOVE_UP:
-            if (player->y < 150) { break; }
-            player->y -= 10;
+            if (player->y < 115) { break; }
+            moveY = -10;
             break;
         case MOVE_LEFT:
-            if (player->x < 150) { break; }
-            player->x -= 10;
+            if (player->x < 115) { break; }
+            moveX = -10;
             player->turnLeft();
             break;
         case MOVE_RIGHT:
             if (player->x > WIDTH + 500) { break; }
-            player->x += 10;
+            moveX = 10;
             player->turnRight();
             break;
         case MOVE_DOWN:
-            if (player->y > HEIGHT + 150) { break; }
-            player->y += 10;
+            if (player->y > HEIGHT + 190) { break; }
+            moveY = 10;
             break;
     }
     update();

@@ -4,7 +4,7 @@
 ScoreText::ScoreText() {
     text = engine->add->text("Airfool");
     text->setText("Счет: " + std::to_string(game->score) + " очков");
-    text->x = WIDTH / 2 - 150;
+    text->x = WIDTH / 2 - text->width / 2;
     text->y = 350;
     save();
 }

@@ -3,7 +3,7 @@
 ResultsTitleText::ResultsTitleText() {
     text = engine->add->text("Airfool");
     text->setText("Результаты");
-    text->x = WIDTH / 2 - 70;
+    text->x = WIDTH / 2 - text->width / 2;
     text->y = 100;
 }
 

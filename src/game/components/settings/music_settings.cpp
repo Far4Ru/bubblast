@@ -5,12 +5,12 @@
 MusicSettings::MusicSettings() {
     title = engine->add->text("Airfool");
     title->setText("Громкость музыки:");
-    title->x = 350;
+    title->x = 215;
     title->y = MUSIC_SETTINGS_Y;
 
     left = engine->add->text("Airfool");
     left->setText("-");
-    left->x = 700;
+    left->x = 765;
     left->y = MUSIC_SETTINGS_Y;
 
     int mix_value = Mix_VolumeMusic(-1);
@@ -18,12 +18,12 @@ MusicSettings::MusicSettings() {
 
     value_text = engine->add->text("Airfool");
     value_text->setText(std::to_string(value) + "%");
-    value_text->x = 750;
+    value_text->x = 805;
     value_text->y = MUSIC_SETTINGS_Y;
     
     right = engine->add->text("Airfool");
     right->setText("+");
-    right->x = 875;
+    right->x = 920;
     right->y = MUSIC_SETTINGS_Y;
 
     if (value <= 0) {

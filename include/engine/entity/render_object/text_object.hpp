@@ -20,6 +20,8 @@ class TextObject : public RenderObject {
         SDL_Color textColor = {255,0,0};
         int x = 0;
         int y = 0;
+        int width = 0;
+        int height = 0;
     private:
         int offsetX = 0;
         int offsetY = 0;

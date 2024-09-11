@@ -5,12 +5,12 @@
 SoundSettings::SoundSettings() {
     title = engine->add->text("Airfool");
     title->setText("Громкость звуков:");
-    title->x = 350;
+    title->x = 240;
     title->y = SOUND_SETTINGS_Y;
 
     left = engine->add->text("Airfool");
     left->setText("-");
-    left->x = 700;
+    left->x = 760;
     left->y = SOUND_SETTINGS_Y;
 
     int mix_value = Mix_VolumeChunk(engine->loader->getChunk("BubbleSpell"), -1);
@@ -18,12 +18,12 @@ SoundSettings::SoundSettings() {
 
     value_text = engine->add->text("Airfool");
     value_text->setText(std::to_string(value) + "%");
-    value_text->x = 750;
+    value_text->x = 810;
     value_text->y = SOUND_SETTINGS_Y;
     
     right = engine->add->text("Airfool");
     right->setText("+");
-    right->x = 875;
+    right->x = 935;
     right->y = SOUND_SETTINGS_Y;
 
     if (value <= 0) {

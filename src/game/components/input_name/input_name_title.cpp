@@ -3,7 +3,7 @@
 InputNameTitle::InputNameTitle() {
     text = engine->add->text("Airfool");
     text->setText("Введите имя:");
-    text->x = WIDTH / 2 - 150;
+    text->x = WIDTH / 2 - text->width / 2;
     text->y = 100;
 }
 

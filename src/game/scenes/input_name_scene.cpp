@@ -20,7 +20,6 @@ void InputNameScene::clear() {
 void InputNameScene::start() {
     if (!this->active) {
         this->active = true;
-        engine->sound->pauseMusic();
         background = new MenuBackground();
         title = new InputNameTitle();
         inputNameField = new InputNameField();

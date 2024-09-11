@@ -9,6 +9,9 @@ TextObject::~TextObject() {
 }
 
 void TextObject::setText(std::string text) {
+    TTF_SizeText(font, text.c_str(), &width, &height);
+    width *= 0.5;
+    height *= 0.5;
     this->text = text;
 }
 
@@ -40,8 +43,6 @@ void TextObject::setOffset(int x, int y) {
 }
 
 void TextObject::render(SDL_Renderer* renderer) {
-    // int text_size_w = 0, text_size_h = 0;
-    // TTF_SizeText(font, text.c_str(), &text_size_w, &text_size_h);
     textSurface = TTF_RenderUTF8_Solid(font, text.c_str(), textColor);
     mTexture =  SDL_CreateTextureFromSurface(renderer, textSurface);
     if (textSurface) {
