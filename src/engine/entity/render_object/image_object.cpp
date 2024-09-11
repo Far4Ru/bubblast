@@ -62,6 +62,6 @@ void ImageObject::render(SDL_Renderer* renderer) {
     SDL_RenderCopyEx(renderer, texture, &crop, &bounds, 0, NULL, flipType);
 
     /** debug rectangle */
-    SDL_SetRenderDrawColor( renderer, 0x00, 0xFF, 0x00, 0xFF );        
-    SDL_RenderDrawRect( renderer, &bounds );
+    // SDL_SetRenderDrawColor( renderer, 0x00, 0xFF, 0x00, 0xFF );        
+    // SDL_RenderDrawRect( renderer, &bounds );
 }

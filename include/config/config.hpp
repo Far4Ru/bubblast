@@ -1,4 +1,4 @@
-#define GAME_NAME "Isekai Quest"
+#define GAME_NAME "Бабласт"
 #define WIDTH 1280
 #define HEIGHT 720
 #define GAME_ERROR_WINDOW_CREATE "Could not create window: "
