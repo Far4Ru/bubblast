@@ -8,6 +8,7 @@ void SettingsScene::clear() {
     if (this->active) {
         this->active = false;
         engine->renderer->clear();
+        engine->scene->unset();
         delete background;
         delete title;
         delete back_to_menu;
@@ -27,7 +28,7 @@ void SettingsScene::start() {
         fullscreen_settings = new FullscreenSettings();
         music_settings = new MusicSettings();
         sound_settings = new SoundSettings();
-        // InputHelp
+        // TODO: - InputHelp
         engine->scene->set([&]() {
             if (back_to_menu->pressed) {
                 game->change_scene(game->menuScene);

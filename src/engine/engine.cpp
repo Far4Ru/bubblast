@@ -1,6 +1,7 @@
 #include "engine/engine.hpp"
 
 Engine::Engine() {
+    setlocale(LC_ALL, "Russian");
     this->init();
 }
 
@@ -22,15 +23,15 @@ void Engine::start() {
                     break;
                 case SDL_KEYDOWN:
                     switch (e.key.keysym.sym) {
-                        case SDLK_f:
-                            fullScreen = !fullScreen;
-                            if(fullScreen){
-                                SDL_SetWindowFullscreen(renderer->window->get(), SDL_WINDOW_FULLSCREEN);
-                            }
-                            else{
-                                SDL_SetWindowFullscreen(renderer->window->get(), 0);
-                            }
-                            break;
+                        // case SDLK_f:
+                        //     fullScreen = !fullScreen;
+                        //     if(fullScreen){
+                        //         SDL_SetWindowFullscreen(renderer->window->get(), SDL_WINDOW_FULLSCREEN);
+                        //     }
+                        //     else{
+                        //         SDL_SetWindowFullscreen(renderer->window->get(), 0);
+                        //     }
+                        //     break;
                     }
                     break;
                 case SDL_WINDOWEVENT:
@@ -68,11 +69,7 @@ void Engine::close() {
 }
 
 void Engine::setFullscreen(bool value) {
-    if (value) {
-        SDL_SetWindowFullscreen(renderer->window->get(), SDL_WINDOW_FULLSCREEN);
-    } else {
-        SDL_SetWindowFullscreen(renderer->window->get(), 0);
-    }
+    renderer->window->set_fullscreen(value);
     fullScreen = value;
 }
 

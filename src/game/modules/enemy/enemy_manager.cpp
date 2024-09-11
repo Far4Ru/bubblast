@@ -7,26 +7,27 @@ EnemyManager::EnemyManager() {
     auto timeFunc = [&]() {
         int ticks = timer.get_ticks();
         if (ticks > 100 * (1000 / 60)) {
-            int level = game->gameScene->game_time_text->game_seconds / 60;
+            int level = (game->gameScene->game_time_text->game_seconds * 5) / 60;
             int enemy_number = rand() % (1 + level) + 1;
             int side = std::rand() / ((RAND_MAX + 1u) / 4);
             int x = 0, y = 0;
+            int width = 1920, height = 1080, padding = 100;
             switch (side) {
                 case 0:
-                    x = -(std::rand() / ((RAND_MAX + 1u) / 50));
-                    y = std::rand() / ((RAND_MAX + 1u) / 1200);
+                    x = std::rand() / ((RAND_MAX + 1u) / width);
+                    y =  -(std::rand() / ((RAND_MAX + 1u) / padding));
                     break;
                 case 1:
-                    x = 1900 + (std::rand() / ((RAND_MAX + 1u) / 50));
-                    y = std::rand() / ((RAND_MAX + 1u) / 1200);
+                    x = width + (std::rand() / ((RAND_MAX + 1u) / padding));
+                    y = std::rand() / ((RAND_MAX + 1u) / height);
                     break;
                 case 2:
-                    x = 1200 + std::rand() / ((RAND_MAX + 1u) / 100);
-                    y = std::rand() / ((RAND_MAX + 1u) / 700);
+                    x = std::rand() / ((RAND_MAX + 1u) / width);
+                    y = height + std::rand() / ((RAND_MAX + 1u) / padding);
                     break;
                 case 3:
-                    x = std::rand() / ((RAND_MAX + 1u) / 1200);
-                    y = 700 + std::rand() / ((RAND_MAX + 1u) / 100);
+                    x =  -(std::rand() / ((RAND_MAX + 1u) / padding));
+                    y = std::rand() / ((RAND_MAX + 1u) / height);
                     break;
             }
             std::string enemy_prefix = "candy_";

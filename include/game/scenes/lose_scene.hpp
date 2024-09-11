@@ -6,6 +6,7 @@
 #include "game/components/lose/restart_button.hpp"
 #include "game/components/lose/lose_title.hpp"
 #include "game/components/lose/back_menu_button.hpp"
+#include "game/components/lose/score_text.hpp"
 
 class LoseScene : public SceneBase {
     public:
@@ -17,6 +18,7 @@ class LoseScene : public SceneBase {
         bool active = false;
         MenuBackground* background;
         LoseTitle* title;
+        ScoreText* score;
         RestartButton* restart;
         BackMenuButton* back_to_menu;
 

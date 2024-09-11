@@ -23,7 +23,9 @@ void CollisionManager::process() {
                 bool isCollide = check(collision_objects[i], collision_objects[j]);
                 if (isCollide) {
                     collision_objects[i]->collision = collision_objects[j];
+                    collision_objects[i]->proccessed = false;
                     collision_objects[j]->collision = collision_objects[i];
+                    collision_objects[j]->proccessed = false;
                 }
             }
         }

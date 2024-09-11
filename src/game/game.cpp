@@ -7,13 +7,14 @@ Game::Game() {
     settingsScene = new SettingsScene();
     winScene = new WinScene();
     loseScene = new LoseScene();
+    inputNameScene = new InputNameScene();
 
-    engine->keyboard->add(SDL_SCANCODE_C, [&]() {
-        change_scene(loseScene);
-    });
-    engine->keyboard->add(SDL_SCANCODE_V, [&]() {
-        change_scene(winScene);
-    });
+    // engine->keyboard->add(SDL_SCANCODE_C, [&]() {
+    //     change_scene(loseScene);
+    // });
+    // engine->keyboard->add(SDL_SCANCODE_V, [&]() {
+    //     change_scene(winScene);
+    // });
 }
 
 void Game::start() {

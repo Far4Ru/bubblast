@@ -1,9 +1,9 @@
 #include "game/components/game/fps_text.hpp"
 
 FPSText::FPSText() {
-    fps_text = engine->add->text("WinterCat");
+    fps_text = engine->add->text("Airfool");
     auto textFunc = [&]() {
-        fps_text->setText(engine->fps->get() + " FPS");
+        fps_text->setText(engine->fps->get() + " ФПС");
     };
     fps_text->setProcess(textFunc);
     fps_text->x = WIDTH - 200;

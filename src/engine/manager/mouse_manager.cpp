@@ -1,4 +1,4 @@
-#include "engine/manager/mouse_manager.hpp"
+#include "engine/engine.hpp"
 
 MouseManager::MouseManager() {
 
@@ -23,6 +23,19 @@ void MouseManager::addClick(std::string name, std::function<void(int, int)> func
 
 void MouseManager::removeClick(std::string name) {
     mouse_click_queue[name] = [](int x, int y){};
+}
+
+bool MouseManager::check(SDL_Rect hit_area, int x, int y) {
+    SDL_Rect current_hit_area = {
+                engine->game_area->x + hit_area.x * engine->game_area->scale,
+                engine->game_area->y + hit_area.y * engine->game_area->scale,
+                hit_area.w * engine->game_area->scale,
+                hit_area.h * engine->game_area->scale,
+            };
+    return current_hit_area.x < x &&
+                x < (current_hit_area.w + current_hit_area.x) &&
+                current_hit_area.y < y &&
+                y < (current_hit_area.y + current_hit_area.h);
 }
 
 void MouseManager::addHover(std::string name, std::function<void(int, int)> func) {

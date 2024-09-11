@@ -17,6 +17,7 @@ class TextObject : public RenderObject {
         void setScale(float scale);
         void destroy();
         void setOffset(int x, int y);
+        SDL_Color textColor = {255,0,0};
         int x = 0;
         int y = 0;
     private:
@@ -25,7 +26,6 @@ class TextObject : public RenderObject {
         float render_scale = 0;
         SDL_Texture* mTexture = NULL;
         SDL_Surface* textSurface = NULL;
-        SDL_Color textColor = {255,0,0};
         TTF_Font* font = NULL;
         std::string text = "";
         std::function<void()> process_function;

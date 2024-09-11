@@ -8,6 +8,7 @@ void ResultsScene::clear() {
     if (this->active) {
         this->active = false;
         engine->renderer->clear();
+        engine->scene->unset();
         delete background;
         delete title;
         delete table;

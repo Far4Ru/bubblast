@@ -19,7 +19,6 @@ SDL_Window* Window::get() {
 }
 
 void Window::fill() {
-    /** surface */
     screenSurface = SDL_GetWindowSurface(get());
     SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0, 0, 0));
 }
@@ -29,11 +28,16 @@ Window::~Window() {
     SDL_DestroyWindow(window);
 }
 
+void Window::set_fullscreen(bool value) {
+    if (value) {
+        SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+    } else {
+        SDL_SetWindowFullscreen(window, 0);
+    }
+}
+
 void Window::resize() {
     SDL_GetWindowSize(window, &width, &height);
     fill();
     SDL_UpdateWindowSurface(window);
-
-    // TODO: - use screen width and height
-    // SDL_Log("%d %d", width, height);
 }

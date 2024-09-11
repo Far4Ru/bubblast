@@ -13,5 +13,6 @@ class Enemy : public CollisionObject  {
         ImageObject* enemy_image;
         bool active = true;
         bool to_destroy = false;
-        int hits = 2;
+        int hits = 1;
+        int points = 1;
 };

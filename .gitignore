@@ -4,3 +4,5 @@ build
 # SDL
 SDL2/
 *.dll
+
+results.data

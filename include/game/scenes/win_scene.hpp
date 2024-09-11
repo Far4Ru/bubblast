@@ -8,6 +8,7 @@
 #include "game/components/win/win_title.hpp"
 #include "game/components/lose/restart_button.hpp"
 #include "game/components/lose/back_menu_button.hpp"
+#include "game/components/lose/score_text.hpp"
 
 class WinScene : public SceneBase {
     public:
@@ -15,12 +16,11 @@ class WinScene : public SceneBase {
 
         void clear();
         void start();
-
-        void save_result();
     private:
         bool active = false;
         MenuBackground* background;
         WinTitle* title;
+        ScoreText* score;
         RestartButton* restart;
         BackMenuButton* back_to_menu;
 };

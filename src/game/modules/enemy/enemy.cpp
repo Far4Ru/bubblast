@@ -5,16 +5,26 @@ Enemy::Enemy(int x, int y, std::string name) {
     SDL_Rect crop = {0, 0, enemy_image->width, enemy_image->height };
     if (name == "candy_1") {
         crop = { 290, 395, 370, 187 };
+        hits = 1;
+        points = 1;
     } else if (name == "candy_2") {
         crop = { 345, 402, 251, 197 };
+        hits = 2;
+        points = 2;
     } else if (name == "candy_3") {
         crop = { 383, 348, 154, 247 };
+        hits = 3;
+        points = 3;
     } else if (name == "candy_4") {
         crop = { 361, 384, 213, 207 };
+        hits = 4;
+        points = 4;
     } else if (name == "candy_5") {
         crop = { 374, 337, 131, 275 };
+        hits = 5;
+        points = 5;
     }
-    enemy_image->scale = 0.5;
+    enemy_image->scale = 0.2;
     enemy_image->crop = crop;
     enemy_image->width = crop.w;
     enemy_image->height = crop.h;
@@ -23,17 +33,33 @@ Enemy::Enemy(int x, int y, std::string name) {
     auto bullet_func = [&]() {
         if (!active) { return; }
         enemy_image->setOffset(-engine->camera->x , -engine->camera->y );
-        if (collision != NULL && collision->type == BULLET) {
-            enemy_image->x += collision->velocity.x * 100;
-            enemy_image->y += collision->velocity.y * 100;
-            collision = NULL;
-            hits--;
-            if (hits < 1) {
-                game->gameScene->game_score_text->game_score++;
-                game->gameScene->enemy_manager->kill(this);
-                active = false;
-                to_destroy = true;
-                return;
+        updateSides();
+        if (collision != NULL) {
+            if (collision->type == BULLET) {
+                if (hits > 1) {
+                    enemy_image->x += collision->velocity.x * 100;
+                    enemy_image->y += collision->velocity.y * 100;
+                }
+                collision = NULL;
+                hits--;
+                if (hits < 1) {
+                    game->gameScene->game_score_text->game_score += points;
+                    game->gameScene->enemy_manager->kill(this);
+                    active = false;
+                    to_destroy = true;
+                    left = 0;
+                    right = 0;
+                    top = 0;
+                    bottom = 0;
+                    return;
+                }
+            } else if (collision->type == ENEMY && !collision->proccessed) {
+                enemy_image->x -= velocity.x * 6;
+                enemy_image->y -= velocity.y * 6;
+                proccessed = true;
+                collision = NULL;
+                engine->collision->remove(this);
+                engine->collision->add(this);
             }
         }
         updateVelocity();
@@ -56,9 +82,8 @@ void Enemy::updateVelocity() {
     enemy_position.y = enemy_image->y + (enemy_image->height / 2 * enemy_image->scale);
     engine->axis_computing->computeVelocity(&player_position, &enemy_position, &velocity);
 
-    enemy_image->x += velocity.x * 3;
-    enemy_image->y += velocity.y * 3;
-    updateSides();
+    enemy_image->x += velocity.x * 2;
+    enemy_image->y += velocity.y * 2;
 }
 
 void Enemy::updateSides() {

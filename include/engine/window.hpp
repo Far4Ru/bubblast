@@ -17,6 +17,8 @@ class Window {
         void resize();
         int width;
         int height;
+
+        void set_fullscreen(bool value);
     private:
         SDL_Surface* screenSurface = NULL;
         SDL_Window *window;

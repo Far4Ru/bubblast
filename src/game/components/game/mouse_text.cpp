@@ -1,7 +1,7 @@
 #include "game/components/game/mouse_text.hpp"
 
 MouseText::MouseText() {
-    mouse_text = engine->add->text("WinterCat");
+    mouse_text = engine->add->text("Airfool");
     auto mouse_text_func = [&]() {
         return;
         mouse_text->setText("Mouse:" + std::to_string(engine->mouse->x) + ":" + std::to_string(engine->mouse->y));

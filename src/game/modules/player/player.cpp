@@ -5,22 +5,22 @@ Player::Player() {
     SDL_Rect crop = { 308, 199, 439, 629 };
     player->x = WIDTH / 2;
     player->y = HEIGHT / 2;
-    player->scale = 0.25;
+    player->scale = 0.1;
     engine->collision->add(this);
     player->crop = crop;
     player->width = crop.w;
     player->height = crop.h;
+    timer.start();
     auto player_func = [&]() {
         updateSides();
-        if (game->gameScene->game_time_text) {
-            int game_seconds = game->gameScene->game_time_text->game_seconds;
-            if (game_seconds > (last_hit_seconds + 1)) {
-                if (collision != NULL && collision->type == ENEMY) {
-                    game->gameScene->lives->reduce();
-                    last_hit_seconds = game_seconds;
-                    return;
-                }
+        int ticks = timer.get_ticks();
+        if (ticks > 1000) {
+            if (collision != NULL && collision->type == ENEMY) {
+                timer.start();
+                game->gameScene->lives->reduce();
             }
+        } else {
+            collision = NULL;
         }
     };
     player->setProcess(player_func);
@@ -60,6 +60,7 @@ Player::~Player() {
 }
 
 void Player::destroy() {
+    timer.stop();
     engine->collision->remove(this);
     player->destroy();
     engine->keyboard->remove(SDL_SCANCODE_UP);

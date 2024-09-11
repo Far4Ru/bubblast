@@ -28,11 +28,11 @@ void MenuScene::start() {
         settings = new SettingsButton();
         results = new ResultsButton();
         exit = new ExitButton();
-        // VersionInfoText
-        // AuthorInfoText
+        // TODO: - VersionInfoText
+        // TODO: - AuthorInfoText
         engine->scene->set([&]() {
             if (play->pressed) {
-                game->change_scene(game->gameScene);
+                game->change_scene(game->inputNameScene);
             } else if (results->pressed) {
                 game->change_scene(game->resultsScene);
             } else if (settings->pressed) {

@@ -27,12 +27,12 @@ void ResultsTable::get_file_data() {
 
 void ResultsTable::make_table() {
     int y = RESULTS_TABLE_Y;
-    std::sort(table_values.begin(), table_values.end(), std::greater<std::pair<int, std::__cxx11::string>>());
+    std::sort(table_values.begin(), table_values.end(), std::greater<std::pair<int, std::string>>());
     int count = 0;
     for (std::pair<int, std::string> table_value : table_values) {
         count++;
-        TextObject* text = engine->add->text("WinterCat");
-        text->setText(std::to_string(count) + ". " + table_value.second + " - " + std::to_string(table_value.first) + " pts");
+        TextObject* text = engine->add->text("Airfool");
+        text->setText(std::to_string(count) + ". " + table_value.second + " - " + std::to_string(table_value.first) + " очков");
         text->x = count <= 5 ? RESULTS_TABLE_LEFT_X : RESULTS_TABLE_RIGHT_X;
         text->y = y;
         lines.push_back(text);

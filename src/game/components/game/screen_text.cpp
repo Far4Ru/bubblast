@@ -1,7 +1,7 @@
 #include "game/components/game/screen_text.hpp"
 
 ScreenText::ScreenText() {
-    screen_text = engine->add->text("WinterCat");
+    screen_text = engine->add->text("Airfool");
     auto textFunc = [&]() {
         return;
         std::string widthText = std::to_string(engine->game_area->width);

@@ -4,7 +4,7 @@
 Bullet::Bullet(int x, int y) {
     bullet_image = engine->add->image("bullet_bubble");
     SDL_Rect crop = { 353, 292, 325, 361 };
-    bullet_image->scale = 0.1;
+    bullet_image->scale = 0.04;
     bullet_image->crop = crop;
     bullet_image->width = crop.w;
     bullet_image->height = crop.h;

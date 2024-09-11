@@ -1,7 +1,7 @@
 #include "game/game.hpp"
 
 GameTimeText::GameTimeText() {
-    text = engine->add->text("WinterCat");
+    text = engine->add->text("Airfool");
     text->x = WIDTH / 2 - 70;
     text->y = 0;
     timer.start();
@@ -22,7 +22,7 @@ GameTimeText::~GameTimeText() {
 }
 
 std::string GameTimeText::getTime() {
-    int game_seconds_display = 5 * 60 - game_seconds;
+    int game_seconds_display = GAME_DURATION - game_seconds;
     std::string seconds = std::to_string(game_seconds_display % 60);
     std::string minutes = std::to_string(game_seconds_display / 60);
     return (minutes.length() > 1 ? "" : "0") + minutes + ":" + (seconds.length() > 1 ? "" : "0") + seconds;

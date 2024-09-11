@@ -43,12 +43,17 @@ void GameScene::start() {
         game_time_text = new GameTimeText();
         game_score_text = new GameScoreText();
         mouse = new MouseImage();
+        game->score = 0;
+        game->game_seconds = 0;
         engine->scene->set([&]() {
-            if (game_time_text->game_seconds > 5 * 60) {
+            if (game_time_text->game_seconds > GAME_DURATION) {
+                game->score = game_score_text->game_score;
                 game->change_scene(game->winScene);
                 return;
             }
             if (lives->count < 1) {
+                game->game_seconds = game_time_text->game_seconds;
+                game->score = game_score_text->game_score;
                 game->change_scene(game->loseScene);
             }
         });
