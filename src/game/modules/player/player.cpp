@@ -16,6 +16,7 @@ Player::Player() {
         player->y += moveY;
         moveX = 0;
         moveY = 0;
+        update();
         updateSides();
         int ticks = timer.get_ticks();
         if (ticks > 1000) {
@@ -98,7 +99,6 @@ void Player::move(MoveType side) {
             moveY = 10;
             break;
     }
-    update();
 }
 
 
