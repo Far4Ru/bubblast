@@ -5,7 +5,7 @@ OSX      := "darwin"
 CXX      := g++
 
 ifeq ("$(OSTYPE)", "$(WINDOWS)")
-LDFLAGS  := -LSDL2/lib -mwindows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+LDFLAGS  := icon/icon.o -LSDL2/lib -mwindows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 INCLUDE  := -Iinclude/ -ISDL2/include/
 BUILD    := ./build/build-windows
 CXXFLAGS := -std=c++0x -g -O3 -w -Wl,-subsystem,windows
@@ -43,7 +43,7 @@ $(OBJ_DIR)/%.o: %.cpp
 
 $(APP_DIR)/$(TARGET): $(OBJECTS)
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -o $(APP_DIR)/$(TARGET) icon/icon.o $^ $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o $(APP_DIR)/$(TARGET) $^ $(LDFLAGS)
 
 -include $(DEPENDENCIES)
 
