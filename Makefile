@@ -8,7 +8,7 @@ ifeq ("$(OSTYPE)", "$(WINDOWS)")
 LDFLAGS  := -LSDL2/lib -mwindows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 INCLUDE  := -Iinclude/ -ISDL2/include/
 BUILD    := ./build/build-windows
-CXXFLAGS := -std=c++0x -g -O3 -w -Wl,-subsystem,windows
+CXXFLAGS := -std=c++0x -g -O3 -w -Wl,-subsystem,windows -static-libgcc -static-libstdc++
 else
 LDFLAGS  := -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 INCLUDE  := -Iinclude/
